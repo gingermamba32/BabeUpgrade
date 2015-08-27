@@ -1,0 +1,14 @@
+extends layout
+
+block content
+
+form 
+ input(type="text", name="barcode", value="barcode")
+ input(type="submit", value="submit")
+
+
+ul 
+ each product in products 
+  li= product
+
+
