@@ -42,7 +42,9 @@ var connection = mysql.createConnection({
 });
 connection.connect();
 
-connection.query()
+connection.query('SELECT * from `users` WHERE uid = 3723', function(err, results, fields){
+	console.log(results);
+})
 
 
 
