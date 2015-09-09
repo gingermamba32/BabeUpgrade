@@ -8,16 +8,9 @@ try{
 }
 catch(err){
 	console.log("no connection file so go on to Heroku config var");
-	var uristring = process.env.MONGOLAB_URI;   //if Heroku env
+	var uristring = process.env.MONGOLAB_URI;   //if Heroku env set the config variable
 }
 console.log("uristring is "+ uristring);
-
-
-// // connect to the database
-// mongoose.connect( 'mongodb://gingermamba32:leigh1@ds035613.mongolab.com:35613/babedata' ); 
-
-
-
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
