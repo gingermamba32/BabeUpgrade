@@ -1,14 +1,21 @@
 extends layout
 
 block content
-
-form 
- input(type="text", name="barcode", value="barcode")
- input(type="submit", value="submit")
+  h1= title
+  p Welcome to #{title}
 
 
-ul 
- each product in products 
-  li= product
 
 
+  form(method="POST", action="/query", name="barcodeQuery")
+   h1 INPUT BARCODE
+   input(type="text", placeholder="BARCODE", size="40", name="barcode" required)
+   button(type="submit") Submit Barcode
+
+
+
+   h1 Current Inventory
+   ul
+   	each product, i in location
+     li 
+      h1 product.quantity
