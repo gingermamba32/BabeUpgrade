@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+
+
+
+  form(method="POST", action="/query", name="barcodeQuery")
+   h1 INPUT BARCODE
+   input(type="text", placeholder="BARCODE", size="40", name="barcode" required)
+   button(type="submit") Submit Barcode
+
+
+
+   h1 Current Inventory
+   ul
+   	each product, i in location
+     li 
+      h1 product.quantity
