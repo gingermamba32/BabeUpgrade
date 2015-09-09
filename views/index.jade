@@ -13,9 +13,8 @@ block content
    button(type="submit") Submit Barcode
 
 
-
-   h1 Current Inventory
+  h1 Current Inventory
    ul
-   	each product, i in location
+    each product, i in products
      li 
-      h1 product.quantity
+      h1 #{product.quantity}
