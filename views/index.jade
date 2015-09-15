@@ -7,14 +7,33 @@ block content
 
 
 
-  form(method="Post", action="/query", name="barcodeQuery")
-   h2 INPUT BARCODE
-   input(type="text", placeholder="BARCODE", size="40", name="barcode" required)
+  form(method="Post", action="/query", name="barcodeQuery" id="searchForm")
+   h2 Find Location of a Product
+   input(type="text", id="barcodeSearch", placeholder="BARCODE", size="40", name="barcode" required)
    button(type="submit") Submit Barcode
+
+   form(method="Post", action="/addQty", name="ProductQuantity")
+   h2 Scan Price and Input Quantity
+   input(type="text", placeholder="BARCODE", size="40", name="barcode" required)
+   input(type="text", placeholder="BARCODE", size="40", name="quantity" required)
+   button(type="submit", id="searchForm1") Submit Barcode
+
+
+
 
 
   h1 Current Inventory
    ul
     each product, i in products
      li 
-      h1 #{product.quantity}
+       h1 #{product.quantity}
+
+  script.
+    $(document).ready(function() {
+    $("#barcodeSearch").keyup(function() {
+        if ($(this).val().length === 7) {
+            $("#searchForm").submit();
+            }
+        });
+    });
+
