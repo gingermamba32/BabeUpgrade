@@ -86,14 +86,26 @@ router.post('/add', function(req, res, next ){
             });          
 })
 
-// router.get('/upcsearch', function(req, res, next){
-// 	// console.log(req.params.id);
-// 	console.log(req.body.barcode + ' hello');
-// 	Locations.find( {upc: req.body.barcode}, function(err, docs){
-// 		// console.log(docs);
-// 		res.render('upcsearch.jade', {post: docs})
-// 	})
-// })
+
+router.post('/locate', function( req, res, next ){
+	console.log(req.body.bin);
+	console.log(req.body.productupc);
+	console.log(req.body.qty);
+	Locations.findOneAndUpdate(
+		{location: req.body.bin, upc: req.body.productupc},  
+		{$inc: {
+                	quantity     	  : req.body.qty
+            }}, 
+            {upsert: false} , function(err, docs) {
+            	console.log( docs + " Updated Document by searching bin and upc");
+            	res.redirect('/');
+		// console.log(docs + ' This is what is in this bin');
+		// // res.render('binsearch', {'products':docs});
+
+		// res.redirect('/');
+	});
+})
+
 
 
 

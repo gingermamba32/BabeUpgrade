@@ -14,8 +14,15 @@ block content
 
   form(method="Post", action="/add", name="ProductQuantity")
    h2 Scan Price and Input Quantity
-   input(type="text", placeholder="BARCODEUPC", size="40", name="barcodeupc" )
-   input(type="text", placeholder="QTY", size="40", name="quantity" )
+   input(type="text", placeholder="BARCODEUPC", size="30", name="barcodeupc" )
+   input(type="text", placeholder="QTY", size="30", name="quantity" )
+   button(type="submit") Submit Quantity for Product
+
+  form(method="Post", action="/locate", name="ProductQuantity")
+   h2 Scan by Location and UPC, add quantity
+   input(type="text", placeholder="LOCATION", size="30", name="bin" )
+   input(type="text", placeholder="BARCODEUPC", size="30", name="productupc" )
+   input(type="text", placeholder="QTY", size="30", name="qty" )
    button(type="submit") Submit Quantity for Product
 
 
