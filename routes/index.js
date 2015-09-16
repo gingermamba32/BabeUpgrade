@@ -52,28 +52,38 @@ var Locations = db.model('location', {
 
 
 
-/* GET home page with product list*/
+/* GET home page with All Database Products*/
 router.get('/', function(req, res, next) {
 	Locations.find( {}, function(err, docs) {
 		docs.reverse();
-		// console.log(docs + "products");
 	res.render('index', { 'products': docs });
 	});
-
-
 })
 
-router.post('/query', function( req, res, next){
+// Query the database by UPC and return 
+router.post('/query', function( req, res, next ){
 	console.log(req.body.barcode);
-	// if(req.body.barcode) {
-	// 	Locations.find( {upc: req.body.barcode}, function(err, docs) {
-	// 		console.log(docs + ' upc query');
-	// 	}
-	// 	res.render('upcsearch', { 'query': docs });
 	Locations.findOne({upc: req.body.barcode}, function(err, docs) {
 			console.log( docs + ' good query');
 		res.render('upcsearch', {post:docs});
 	 });
+})
+
+
+// adding quantity = add success message 
+router.post('/add', function(req, res, next ){
+	console.log(req.body.barcodeupc);
+	console.log(req.body.quantity);
+	var qtyupdate = parseInt(req.body.quantity);
+		Locations.findOneAndUpdate(
+			{upc: req.body.barcodeupc},
+            {$inc: {
+                	quantity     	  : qtyupdate
+            }}, 
+            {upsert: false} , function(err, docs) {
+            	console.log( docs + " Updated Document");
+            	res.redirect('/');
+            });          
 })
 
 // router.get('/upcsearch', function(req, res, next){

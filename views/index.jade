@@ -9,14 +9,14 @@ block content
 
   form(method="Post", action="/query", name="barcodeQuery" id="searchForm")
    h2 Find Location of a Product
-   input(type="text", id="barcodeSearch", placeholder="BARCODE", size="40", name="barcode" required)
+   input(type="text", id="barcodeSearch", placeholder="BARCODE", size="40", name="barcode" )
    button(type="submit") Submit Barcode
 
-   form(method="Post", action="/addQty", name="ProductQuantity")
+  form(method="Post", action="/add", name="ProductQuantity")
    h2 Scan Price and Input Quantity
-   input(type="text", placeholder="BARCODE", size="40", name="barcode" required)
-   input(type="text", placeholder="BARCODE", size="40", name="quantity" required)
-   button(type="submit", id="searchForm1") Submit Barcode
+   input(type="text", placeholder="BARCODEUPC", size="40", name="barcodeupc" )
+   input(type="text", placeholder="QTY", size="40", name="quantity" )
+   button(type="submit") Submit Quantity for Product
 
 
 
