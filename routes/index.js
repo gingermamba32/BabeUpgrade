@@ -74,9 +74,9 @@ router.post('/query', function( req, res, next ){
 // ********************************************
 router.post('/queryLoc', function( req, res, next ){
 	console.log(req.body.locations);
-	Locations.find({locations: req.body.locations}, function(err, docs) {
+	Locations.find({location: req.body.locations}, function(err, docs) {
 			console.log( docs + ' good query');
-		res.render('locsearch', {post:docs});
+		res.render('locsearch', { 'products': docs});
 	 });
 })
 

@@ -1,10 +1,10 @@
 extends layout
 
 block content
-	h1 Your Porducts in the requested location 
+	h1 Your Product by UPC
 
-    ul
-     each product, i in products
-       li 
-        h1 #{product.type}
-        h1 #{product.quantity}
+	p #{post.upc}
+	p #{post.length}
+	p #{post.color}
+	p #{post.quantity} Products
+	p #{post.location} location
