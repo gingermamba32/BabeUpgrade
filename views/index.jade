@@ -1,8 +1,8 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  
+  p(id="header") Welcome to Babe Inventory Scanner
 
 
 
@@ -12,7 +12,7 @@ block content
    input(type="text", id="barcodeSearch", placeholder="BARCODE", size="40", name="barcode" )
    button(type="submit") Submit Barcode
 
-  form(method="Post", action="/add", name="ProductQuantity")
+  form(method="Post", action="/add", name="ProductQuantity" id="add")
    h2 Scan Price and Input Quantity
    input(type="text", placeholder="BARCODEUPC", size="30", name="barcodeupc" )
    input(type="text", placeholder="QTY", size="30", name="quantity" )
@@ -47,11 +47,28 @@ block content
   script.
     $(document).ready(function() {
     $("#barcodeSearch").keyup(function() {
-        if ($(this).val().length === 7) {
+        if ($(this).val().length === 6) {
             $("#searchForm").submit();
             }
         });
     	$('input[name=barcode]').focus();
+
+    	//- Add form submit message to the page
+    	$("#add").submit(function(){
+    		$('<div class=header>' + value + '</div>').appendTo('#header');
+    		})
     });
     //- Need to have all forms submit 
+    //- messages for all submit buttons
+
+
+
+
+
+
+
+
+
+
+
 
