@@ -25,6 +25,15 @@ block content
    input(type="text", placeholder="INPUT QTY", size="30", name="qty" )
    button(type="submit") Submit Quantity for Product
 
+  form(method="Post", action="/locateMulti", name="ProductQuantity")
+   h2 Scan by Location and UPC, add quantity
+   input(type="text", placeholder="SCAN LOCATION", size="30", name="bin" )
+   input(type="text", placeholder="SCAN BARCODEUPC", size="30", name="productupc1" )
+   input(type="text", placeholder="INPUT QTY", size="30", name="qty1" )
+   input(type="text", placeholder="SCAN BARCODEUPC", size="30", name="productupc2" )
+   input(type="text", placeholder="INPUT QTY", size="30", name="qty2" )
+   button(type="submit") Submit Quantity for Product
+
 
 
 
@@ -43,4 +52,5 @@ block content
             }
         });
     });
+    //- Need to have all forms submit 
 

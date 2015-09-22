@@ -106,10 +106,12 @@ router.post('/locate', function( req, res, next ){
 	});
 })
 
-router.post('/locate2', function( req, res, next ){
+router.post('/locateMulti', function( req, res, next ){
 	console.log(req.body.bin);
-	console.log(req.body.productupc);
-	console.log(req.body.qty);
+	console.log(req.body.productupc1);
+	console.log(req.body.qty1);
+	console.log(req.body.productupc2);
+	console.log(req.body.qty2);
 	Locations.findOneAndUpdate(
 		{location: req.body.bin, upc: req.body.productupc},  
 		{$inc: {
