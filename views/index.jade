@@ -27,7 +27,7 @@ block content
 
   form(method="Post", action="/locateMulti", name="ProductQuantity")
    h2 Scan by Location and UPC, add quantity
-   input(type="text", placeholder="SCAN LOCATION", size="30", name="bin" )
+   input(type="text", placeholder="SCAN LOCATION", size="30", name="bin1" )
    input(type="text", placeholder="SCAN BARCODEUPC", size="30", name="productupc1" )
    input(type="text", placeholder="INPUT QTY", size="30", name="qty1" )
    input(type="text", placeholder="SCAN BARCODEUPC", size="30", name="productupc2" )
@@ -51,6 +51,7 @@ block content
             $("#searchForm").submit();
             }
         });
+    	$('input[name=barcode]').focus();
     });
     //- Need to have all forms submit 
 

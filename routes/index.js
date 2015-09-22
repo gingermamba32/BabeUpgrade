@@ -99,32 +99,40 @@ router.post('/locate', function( req, res, next ){
             {upsert: false} , function(err, docs) {
             	console.log( docs + " Updated Document by searching bin and upc");
             	res.redirect('/');
-		// console.log(docs + ' This is what is in this bin');
-		// // res.render('binsearch', {'products':docs});
 
-		// res.redirect('/');
 	});
 })
 
 router.post('/locateMulti', function( req, res, next ){
-	console.log(req.body.bin);
+	console.log(req.body);
+	console.log(req.body.bin1);
 	console.log(req.body.productupc1);
 	console.log(req.body.qty1);
 	console.log(req.body.productupc2);
 	console.log(req.body.qty2);
+	if ( req.body.productupc2 != undefined && req.body.qty2 != undefined){
 	Locations.findOneAndUpdate(
-		{location: req.body.bin, upc: req.body.productupc},  
+		{location: req.body.bin1, upc: req.body.productupc1},  
 		{$inc: {
-                	quantity     	  : req.body.qty
+                	quantity     	  : req.body.qty1
             }}, 
             {upsert: false} , function(err, docs) {
             	console.log( docs + " Updated Document by searching bin and upc");
             	res.redirect('/');
-		// console.log(docs + ' This is what is in this bin');
-		// // res.render('binsearch', {'products':docs});
+		});
+	}
+	else {
+		Locations.findOneAndUpdate(
+		{location: req.body.bin1, upc: req.body.productupc1},  
+		{$inc: {
+                	quantity     	  : req.body.qty1
+            }}, 
+            {upsert: false} , function(err, docs) {
+            	console.log( docs + " Updated Document by searching bin and upc");
+            	res.redirect('/');
+		});
 
-		// res.redirect('/');
-	});
+	}
 })
 
 
