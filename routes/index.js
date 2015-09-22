@@ -144,6 +144,10 @@ router.post('/locateMulti', function( req, res, next ){
 	}
 })
 
+
+
+
+
 router.post('/locateThree', function( req, res, next ){
 	console.log(req.body);
 	console.log(req.body.bin11);
@@ -182,7 +186,7 @@ router.post('/locateThree', function( req, res, next ){
             	res.redirect('/');
 			});
 	}
-	
+
 	else if ( req.body.productupc2 != '' && req.body.qty2 != ''){
 	Locations.findOneAndUpdate(
 		{location: req.body.bin1, upc: req.body.productupc1},  
