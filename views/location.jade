@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  
+  h1(id="header") Search By Location
+
+  .submit-content
+   form.proposal-form.br(method="Post", action="/queryLoc", name="LocationQuery" id="locationForm")
+    h2.sub  SEARCH LOCATION
+    input(type="text", id="barcodeSearch", placeholder="LOCATION", size="40", name="locations" )
+    button.btn(type="submit") Submit Location
+
+  script.
+   $(document).ready(function() {
+   	$('input[name=locations]').focus();
+   	});

@@ -1,8 +1,14 @@
 extends layout
 
 block content
-    p All Products in a Particular Location
-    ul
-     each product, i in products
-       li 
-         h1 #{product.quantity}
+	h1 Location Search
+
+    .submit-content
+		form.proposal-form.br(method="Post", action="/queryLoc", name="LocationQuery" id="locationForm")
+			h2.sub  SEARCH LOCATION
+			input(type="text", id="barcodeSearch", placeholder="LOCATION", size="40", name="locations" )
+			button.btn(type="submit") Submit Location
+	ul
+	 each product, i in products
+		li 
+			h1 #{product.quantity}

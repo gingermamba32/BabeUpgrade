@@ -60,6 +60,14 @@ router.get('/', function(req, res, next) {
 	});
 })
 
+router.get('/upc', function(req, res, next) {
+	res.render('upc');
+})
+
+router.get('/location', function(req, res, next) {
+	res.render('location');
+})
+
 // Query the database by UPC and return 
 router.post('/query', function( req, res, next ){
 	console.log(req.body.barcode);

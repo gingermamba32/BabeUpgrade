@@ -1,8 +1,349 @@
+/*web fonts*/
+@font-face {
+  font-family: 'Abolition Regular';
+  src: url('../fonts/abolition-regular-webfont.eot');
+  src: url('../fonts/abolition-regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/abolition-regular-webfont.woff') format('woff'),
+       url('../fonts/abolition-regular-webfont.ttf') format('truetype');
+   }
+
+/* Base Styles -------------------- */
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #B1B9C1;
+  font-size: 1em;
+  font-weight: 200;
+  font-family: 'Roboto', Helvetica, Arial, serif;
+  width: 100%;
+  text-align: center;
 }
 
 a {
-  color: #00B7FF;
+  color: #5FB6E1;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #53A4C4;
+  text-decoration: none;
+}
+
+p {
+  margin-bottom: 40px;
+}
+h1, h2 {
+  font-weight: 400;
+  width: 100%;
+}
+
+h2 {
+  font-size: 42px;
+  color: #465058;
+  margin: 40px 0 0;
+}
+h3 {
+  font-weight: 400;
+  font-size: 24px;
+  margin: 40px 0 0;
+  color: #465058;
+}
+h4 {
+  font-weight: 200;
+  font-size: 24px;
+  margin: 10px 0 0;
+}
+h5 {
+  font-weight: 300;
+  font-size: 20px;
+  margin: 10px 0 40px;
+}
+img {
+  max-width: 100%;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+ul{
+  margin: 30px 0;
+  list-style-type: none;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+/* Main Styles ******************************--------------------- */
+
+/*NAV-BAR STYLES*/
+.nav-row{
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.grid-left {
+  width: 30%;
+  float: left;
+}
+.grid-right {
+  width: 70%;
+  float: left;
+}
+
+.desc{
+  line-height: 60px;
+  width: 100%;
+  font-size: 1.8em;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+a.desc:hover {
+  text-decoration: none;
+}
+
+nav{
+  float: right;
+}
+
+nav a {
+  transition: .35s linear;
+  padding: 0 15px;
+  font-weight: 500;
+  line-height: 60px;
+  color: #B1B9C1;
+  text-align: right;
+}
+nav a:last-child {
+  padding-right: 35px;
+}
+nav a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+
+
+
+/*COVER PICTURE*/
+
+.main-header {
+  padding-top: 110px;
+  float: top;
+  height: 850px;
+  margin: 0 auto;
+  background: url('/images/UCLA.jpg') no-repeat center;
+  background-size: cover;
+}
+
+.header-text{
+	  color: white;
+  	font-size: 5.625rem; /* 26px/16px */
+  	letter-spacing: .065em;
+  	font-weight: 100;
+  	padding-bottom: 200px;
+  	text-align: center;
+}
+
+/*Splash Button*/
+
+.splash {
+  background: #ffffff;
+  background-image: -webkit-linear-gradient(top, #ffffff, #cccccc);
+  background-image: -moz-linear-gradient(top, #ffffff, #cccccc);
+  background-image: -ms-linear-gradient(top, #ffffff, #cccccc);
+  background-image: -o-linear-gradient(top, #ffffff, #cccccc);
+  background-image: linear-gradient(to bottom, #ffffff, #cccccc);
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0px;
+  font-family: Arial;
+  color: #000000;
+  font-size: 35px;
+  padding: 10px 20px 10px 20px;
+  border: solid #000000 1px;
+  text-decoration: none;
+  opacity: 0.55;
+}
+
+.splash:hover {
+  background: #ffffff;
+  background-image: -webkit-linear-gradient(top, #ffffff, #8f9091);
+  background-image: -moz-linear-gradient(top, #ffffff, #8f9091);
+  background-image: -ms-linear-gradient(top, #ffffff, #8f9091);
+  background-image: -o-linear-gradient(top, #ffffff, #8f9091);
+  background-image: linear-gradient(to bottom, #ffffff, #8f9091);
+  text-decoration: none;
+}
+
+a.splashlink{
+  font-family: Arial;
+  color: #000000;
+  font-weight: 100;
+  font-size: 35px;
+}
+
+a.splashlink:hover{
+  color: black;
+  text-decoration: none;
+}
+
+/*ABOUT INFORMATION*/
+.about-content {
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 100px 0;
+  background-color: #f4f4f4;
+}
+
+
+
+
+/*SUBMIT FORM FORM STYLINGS*************/
+
+label {
+  display: block;
+  margin-bottom: 0.5em;
+  float: left; 
+  padding-left: 5px;
+}
+
+input,
+textarea {
+  font-size: 1em;
+  color: #222;
+  font-weight: 300; 
+  width: 100%;
+  border: none;
+  height: auto;
+  padding: 15px;
+  outline: 0;
+  margin-bottom: 1.2em;
+  border-radius: .3em;
+  border-bottom: 3px solid rgba(0,0,0, 0.05);
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+}
+
+.br{
+  border-radius: .5em;
+}
+
+.proposal-form {
+  padding: 2px 24px 10px;
+  background: #D0D0D0;
+}
+
+.submit-content {
+  max-width: 500px;
+  margin: 90px auto;
+  padding-top: 60px;
+}
+h1.sub{
+  padding-top: -30px;
+}
+
+.btn {
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 400;
+  background-color: #52bab3;
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  opacity: .65;
+}
+
+
+/***************FOOTER**********************************************/
+footer {
+  margin: 80px 0 0; 
+  float: left;
+  width: 100%;
+  background-color: #f4f4f4;
+  padding-top: 5px;
+}
+
+
+.grid-full {
+  width: 100%;
+  float: left;
+}
+
+
+
+
+.textstyle{
+  width: 500px;
+}
+
+/*LOGIN PAGE*********************/
+.login{
+  max-width: 500px;
+  margin: 0 auto;
+  padding-top: 200px;
+}
+
+.login-form{
+  padding: 2px 24px 10px;
+  background: #D0D0D0;
+}
+
+/*THANKYOU PAGE*****************/
+
+
+/*EDIT FORM*/
+.edit{
+  max-width: 500px;
+  margin: 0 auto;
+  padding-top: 70px;
+}
+
+.edit-form{
+  padding: 1px 24px 10px;
+  background: #D0D0D0;
+}
+/*Proposal LIST*/
+.proposals{
+  max-width: 600px;
+  margin: 0 auto;
+  padding-top: 120px;
+}
+li.post-list-design{
+  margin-bottom: 15px;
+}
+
+.post-list-design{
+  background-color: #D0D0D0;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.btn-list{
+  margin: 15px;
+}
+
+a.list:hover {
+  text-decoration: none;
+}
+
+
+/*Thankyou page*/
+.thankyou{
+  padding-top: 250px;
+  /*font-weight: 400;*/
+}
+
+
+/*STICKY NAV STYLES**************/
+.sticky-nav {
+  transition: 1.5s;
+}
+
+.is-sticky .sticky-nav {
+  background-color: #fff;
+  opacity: 0.85;
+  z-index: 1000;
 }

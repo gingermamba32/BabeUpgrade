@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  
+  h1(id="header") Enter Product UPC
+
+  .submit-content
+   form.proposal-form.br(method="Post", action="/query", name="barcodeQuery" id="searchForm")
+    h2.sub SEARCH UPC
+    input(type="text", id="barcodeSearch", placeholder="BARCODE", size="40", name="barcode" )
+    button.btn(type="submit") Submit UPC
+
+  script.
+   $(document).ready(function() {
+   	$('input[name=barcode]').focus();
+   	});

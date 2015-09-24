@@ -1,9 +1,23 @@
 doctype html
 html
   head
-    title= title
+    link(rel="stylesheet", href="/stylesheets/style.css")
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src="//code.jquery.com/jquery-1.11.3.min.js")
+    script(src="/javascripts/jquery.sticky.js")
+    script(src="/javascripts/jquery.animsition.js")
   body
-   p hello
+    .nav-row
+        header.nav-row.sticky-nav#sticky
+            .grid-left
+                a.desc(href="/") Babe Inventory
+            .grid-right
+                nav
+                    a(href='/upc') Search Product
+                    a(href='/location') Search Location
+                    a(href='/qty') Input Quantity
+                    //- a(href='/login') Login
+                    //- a(href='/logout') Logout
+                    //- a(href='/userlist') Proposal List
     block content

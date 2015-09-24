@@ -2,20 +2,20 @@ extends layout
 
 block content
   
-  p(id="header") Welcome to Babe Inventory Scanner
+  h1(id="header") Welcome to Babe Inventory Scanner
 
 
 
+  //- .submit-content
+  //-  form.proposal-form.br(method="Post", action="/query", name="barcodeQuery" id="searchForm")
+  //-   h2.sub SEARCH UPC
+  //-   input(type="text", id="barcodeSearch", placeholder="BARCODE", size="40", name="barcode" )
+  //-   button.btn(type="submit") Submit UPC
 
-  form(method="Post", action="/query", name="barcodeQuery" id="searchForm")
-   h2 Find Location of a Product by UPC
-   input(type="text", id="barcodeSearch", placeholder="BARCODE", size="40", name="barcode" )
-   button(type="submit") Submit Barcode
-
-  form(method="Post", action="/queryLoc", name="LocationQuery" id="locationForm")
-   h2 Find all products in a current location
-   input(type="text", id="barcodeSearch", placeholder="LOCATION", size="40", name="locations" )
-   button(type="submit") Submit Location
+  //- form(method="Post", action="/queryLoc", name="LocationQuery" id="locationForm")
+  //-  h2 Find all products in a current location
+  //-  input(type="text", id="barcodeSearch", placeholder="LOCATION", size="40", name="locations" )
+  //-  button(type="submit") Submit Location
 
   form(method="Post", action="/add", name="ProductQuantity" id="add")
    h2 Scan Price and Input Quantity
