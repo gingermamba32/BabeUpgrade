@@ -68,6 +68,10 @@ router.get('/location', function(req, res, next) {
 	res.render('location');
 })
 
+router.get('/qty', function(req, res, next) {
+	res.render('qty');
+})
+
 // Query the database by UPC and return 
 router.post('/query', function( req, res, next ){
 	console.log(req.body.barcode);

@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  
+  h1(id="header") Update the Quantity of a UPC
+
+  .submit-content
+   form.proposal-form.br(method="Post", action="/add", name="ProductQuantity" id="add")
+    h2.sub Scan UPC and Input Quantity
+    input(type="text", placeholder="BARCODEUPC", size="30", name="barcodeupc" )
+    input(type="text", placeholder="QTY", size="30", name="quantity" )
+    button.btn#qtySub(type="submit") Submit Quantity for Product
+
+  script.
+   //- $('#btn')

@@ -6,9 +6,20 @@ block content
     .submit-content
 		form.proposal-form.br(method="Post", action="/queryLoc", name="LocationQuery" id="locationForm")
 			h2.sub  SEARCH LOCATION
-			input(type="text", id="barcodeSearch", placeholder="LOCATION", size="40", name="locations" )
+			input(type="text", id="barcodeSearchLoc", placeholder="LOCATION", size="40", name="locations" )
 			button.btn(type="submit") Submit Location
 	ul
 	 each product, i in products
 		li 
 			h1 #{product.quantity}
+
+
+	script.
+		$(document).ready(function() {
+			$('input[name=locations]').focus();
+			$("#barcodeSearchLoc").keyup(function() {
+				if ($(this).val().length === 6) {
+					$("#locationForm").submit();
+				}
+			});
+		});

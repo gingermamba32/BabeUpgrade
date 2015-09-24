@@ -4,9 +4,9 @@ block content
 	h1 Search by UPC
 
 	.submit-content
-		form.proposal-form.br(method="Post", action="/query", name="barcodeQuery" id="searchForm")
+		form.proposal-form.br(method="Post", action="/query", name="barcodeQuery", id="searchFormUPC")
 			h2.sub SEARCH UPC
-			input(type="text", id="barcodeSearch", placeholder="BARCODE", size="40", name="barcode" )
+			input(type="text", id="barcodeSearchUPC", placeholder="BARCODE", size="40", name="barcode" )
 			button.btn(type="submit") Submit UPC
 
 	h1 #{post.upc}:___#{post.location}___#{post.length}#{post.type}-#{post.color}__QTY:#{post.quantity}
@@ -14,3 +14,12 @@ block content
 	//- h1 #{post.color}
 	//- h1  Products
 	//- h1 location
+	script.
+		$(document).ready(function() {
+			$('input[name=barcode]').focus();
+			$("#barcodeSearchUPC").keyup(function() {
+				if ($(this).val().length === 6) {
+					$("#searchFormUPC").submit();
+				}
+			});
+		});

@@ -16,12 +16,12 @@ block content
   //-  h2 Find all products in a current location
   //-  input(type="text", id="barcodeSearch", placeholder="LOCATION", size="40", name="locations" )
   //-  button(type="submit") Submit Location
-
-  form(method="Post", action="/add", name="ProductQuantity" id="add")
-   h2 Scan Price and Input Quantity
-   input(type="text", placeholder="BARCODEUPC", size="30", name="barcodeupc" )
-   input(type="text", placeholder="QTY", size="30", name="quantity" )
-   button(type="submit") Submit Quantity for Product
+  .submit-content
+   form.proposal-form.br(method="Post", action="/add", name="ProductQuantity" id="add")
+    h2.sub Scan UPC and Input Quantity
+    input(type="text", placeholder="BARCODEUPC", size="30", name="barcodeupc" )
+    input(type="text", placeholder="QTY", size="30", name="quantity" )
+    button.btn(type="submit") Submit Quantity for Product
 
   form(method="Post", action="/locate", name="ProductQuantity")
    h2 Scan by Location and UPC, add quantity
