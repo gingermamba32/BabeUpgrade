@@ -53,13 +53,27 @@ block content
 
 
 
+  h2 Search by Features:
+  //- make these buttons for the search
+  h4 Location
+  h4 Color 
+  h4 Style
 
-
+   //- fix this as the next thing followed by the input button
   h1 Current Inventory
-   ul
-    each product, i in products
-     li 
-       h1 #{product.quantity}
+  table(style="width=100%")
+   tr
+    th Location
+    th Quantity
+    th UPC
+   //- 	td Location
+   //- 	td Quantity
+   //- 	td UPC
+    //- each product, i in products
+    //- tr
+    //-  td #{product.quantity}
+    //-  td #{product.location}
+     
 
   script.
     $(document).ready(function() {

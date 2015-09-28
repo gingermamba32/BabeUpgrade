@@ -106,6 +106,8 @@ a.desc:hover {
 
 nav{
   float: right;
+  font-size: 15px;
+  font-color: black;
 }
 
 nav a {
@@ -198,7 +200,7 @@ a.splashlink:hover{
   background-color: #f4f4f4;
 }
 
-
+/*TABLE*/
 
 
 /*SUBMIT FORM FORM STYLINGS*************/
