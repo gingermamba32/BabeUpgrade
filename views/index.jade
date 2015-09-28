@@ -16,40 +16,40 @@ block content
   //-  h2 Find all products in a current location
   //-  input(type="text", id="barcodeSearch", placeholder="LOCATION", size="40", name="locations" )
   //-  button(type="submit") Submit Location
-  .submit-content
-   form.proposal-form.br(method="Post", action="/add", name="ProductQuantity" id="add")
-    h2.sub Scan UPC and Input Quantity
-    input(type="text", placeholder="BARCODEUPC", size="30", name="barcodeupc" )
-    input(type="text", placeholder="QTY", size="30", name="quantity" )
+  //- .submit-content
+  //-  form.proposal-form.br(method="Post", action="/add", name="ProductQuantity" id="add")
+  //-   h2.sub Scan UPC and Input Quantity
+  //-   input(type="text", placeholder="BARCODEUPC", size="30", name="barcodeupc" )
+  //-   input(type="text", placeholder="QTY", size="30", name="quantity" )
+  //-   button.btn(type="submit") Submit Quantity for Product
+
+  //- form(method="Post", action="/locate", name="ProductQuantity")
+  //-  h2 Scan by Location and UPC, add quantity
+  //-  input(type="text", placeholder="SCAN LOCATION", size="30", name="bin" )
+  //-  input(type="text", placeholder="SCAN BARCODEUPC", size="30", name="productupc" )
+  //-  input(type="text", placeholder="INPUT QTY", size="30", name="qty" )
+  //-  button(type="submit") Submit Quantity for Product
+
+  //- form(method="Post", action="/locateMulti", name="ProductQuantity")
+  //-  h2 Scan by Location and UPC, add quantity
+  //-  input(type="text", placeholder="SCAN LOCATION", size="30", name="bin1" )
+  //-  input(type="text", placeholder="SCAN BARCODEUPC", size="30", name="productupc1" )
+  //-  input(type="text", placeholder="INPUT QTY", size="30", name="qty1" )
+  //-  input(type="text", placeholder="SCAN BARCODEUPC", size="30", name="productupc2" )
+  //-  input(type="text", placeholder="INPUT QTY", size="30", name="qty2" )
+  //-  button(type="submit") Submit Quantity for Product
+
+  .submit-content 
+   form.proposal-form.br(method="Post", action="/locateThree", name="ProductQuantity")
+    h2.sub IMPORT PRODUCTS
+    input(type="text", placeholder="SCAN LOCATION", size="30", name="bin11" )
+    input(type="text", placeholder="SCAN BARCODEUPC", size="30", name="productupc11" )
+    input(type="text", placeholder="INPUT QTY", size="30", name="qty11" )
+    input(type="text", placeholder="SCAN BARCODEUPC", size="30", name="productupc22" )
+    input(type="text", placeholder="INPUT QTY", size="30", name="qty22" )
+    input(type="text", placeholder="SCAN BARCODEUPC", size="30", name="productupc33" )
+    input(type="text", placeholder="INPUT QTY", size="30", name="qty33" )
     button.btn(type="submit") Submit Quantity for Product
-
-  form(method="Post", action="/locate", name="ProductQuantity")
-   h2 Scan by Location and UPC, add quantity
-   input(type="text", placeholder="SCAN LOCATION", size="30", name="bin" )
-   input(type="text", placeholder="SCAN BARCODEUPC", size="30", name="productupc" )
-   input(type="text", placeholder="INPUT QTY", size="30", name="qty" )
-   button(type="submit") Submit Quantity for Product
-
-  form(method="Post", action="/locateMulti", name="ProductQuantity")
-   h2 Scan by Location and UPC, add quantity
-   input(type="text", placeholder="SCAN LOCATION", size="30", name="bin1" )
-   input(type="text", placeholder="SCAN BARCODEUPC", size="30", name="productupc1" )
-   input(type="text", placeholder="INPUT QTY", size="30", name="qty1" )
-   input(type="text", placeholder="SCAN BARCODEUPC", size="30", name="productupc2" )
-   input(type="text", placeholder="INPUT QTY", size="30", name="qty2" )
-   button(type="submit") Submit Quantity for Product
-
-
-  form(method="Post", action="/locateThree", name="ProductQuantity")
-   h2 Scan by Location and UPC, add quantity
-   input(type="text", placeholder="SCAN LOCATION", size="30", name="bin11" )
-   input(type="text", placeholder="SCAN BARCODEUPC", size="30", name="productupc11" )
-   input(type="text", placeholder="INPUT QTY", size="30", name="qty11" )
-   input(type="text", placeholder="SCAN BARCODEUPC", size="30", name="productupc22" )
-   input(type="text", placeholder="INPUT QTY", size="30", name="qty22" )
-   input(type="text", placeholder="SCAN BARCODEUPC", size="30", name="productupc33" )
-   input(type="text", placeholder="INPUT QTY", size="30", name="qty33" )
-   button(type="submit") Submit Quantity for Product
 
 
 
