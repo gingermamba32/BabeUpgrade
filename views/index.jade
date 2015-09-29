@@ -61,11 +61,15 @@ block content
 
    //- fix this as the next thing followed by the input button
   h1 Current Inventory
-  table(style="width=100%")
+  table
    tr
     th Location
     th Quantity
     th UPC
+   tr
+   each product, i in products
+    td #{product.quantity}
+    td #{product.location}
    //- 	td Location
    //- 	td Quantity
    //- 	td UPC
