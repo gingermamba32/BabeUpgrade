@@ -55,21 +55,61 @@ block content
 
   h2 Search by Features:
   //- make these buttons for the search
-  h4 Location
+  button.btn(type="submit", formaction="/typeSort", formmethod="Post", name="sortPractice") Type Sort
   h4 Color 
   h4 Style
 
    //- fix this as the next thing followed by the input button
   h1 Current Inventory
-  table
-   tr
-    th Location
-    th Quantity
-    th UPC
-   tr
-   each product, i in products
-    td #{product.quantity}
-    td #{product.location}
+  div(style="text-align:center")
+   table(border="2", align="center", style="font-size: 18px; color: black;")
+    tr
+     th 
+      form(method="Post", action="/typeQuery", name="TypeQuery")
+       input(type="text", placeholder="Search Type", size="8", name="type")
+       button.btn(type="submit", position="absolute") Type
+     th
+      form(method="Post", action="/lengthQuery", name="LengthQuery")
+       input(type="text", placeholder="Search Length", size="8", name="length")
+       button.btn(type="submit") Length
+     th 
+      form(method="Post", action="/colorQuery", name="ColorQuery")
+       input(type="text", placeholder="Search Color", size="8", name="color")
+       button.btn(type="submit") Color
+     th 
+      form(method="Post", action="/locationQuery", name="LocationQuery")
+       input(type="text", placeholder="Search Location", size="8", name="type")
+       button.btn(type="submit") Location
+     th(align="center")
+      form(method="Post", action="/qtyQuery", name="QtyQuery")
+       input(type="text", placeholder="Search Quantity", size="8", name="qty")
+       button.btn(type="submit") Quantity
+     th 
+      form(method="Post", action="/upcQuery", name="upcQuery")
+       input(type="text", placeholder="Search UPC", size="8", name="upc")
+       button.btn(type="submit", style="margin:0 auto;") UPC
+     th 
+      form(method="Post", action="/POQuery", name="POQuery")
+       input(type="text", placeholder="Search PO#", size="8", name="type")
+       button.btn(type="submit") PO#
+    tr
+     th Type
+     th Length
+     th Color
+     th Location
+     th Quantity
+     th UPC
+     th PO#
+    if (products.length)
+     each product, i in products
+      tr
+       td= product.type
+       td= product.length
+       td= product.color
+       td= product.location
+       td= product.quantity
+       td= product.upc
+       td= product.shipment
    //- 	td Location
    //- 	td Quantity
    //- 	td UPC
