@@ -4,14 +4,8 @@ block content
   
   h1(id="header") Welcome to Babe Inventory Scanner
 
-  h3 Scan Location
-  h3
-   b +
-  h3 Scan UPC
-  h3
-   b +
-  h3 Insert Quantity
 
+  h3 Add instructions
   //- .submit-content
   //-  form.proposal-form.br(method="Post", action="/query", name="barcodeQuery" id="searchForm")
   //-   h2.sub SEARCH UPC
@@ -60,7 +54,6 @@ block content
 
 
   h2 Search by Features:
-  //- make these buttons for the search
    //- fix this as the next thing followed by the input button
   h1 Current Inventory
   div
@@ -72,7 +65,7 @@ block content
        button.btn(type="submit", position="absolute") Type
      th
       form(method="Post", action="/length", name="LengthQuery")
-       input(type="text", placeholder="Search Length", size="8", name="length1")
+       input(type="text", placeholder="Search Length", size="8", name="length")
        button.btn(type="submit") Length
      th 
       form(method="Post", action="/color", name="ColorQuery")
@@ -80,7 +73,7 @@ block content
        button.btn(type="submit") Color
      th 
       form(method="Post", action="/location", name="LocationQuery")
-       input(type="text", placeholder="Search Location", size="8", name="location")
+       input(type="text", placeholder="Search Location", size="8", name="type")
        button.btn(type="submit") Location
      th(align="center")
       form(method="Post", action="/qty", name="QtyQuery")
@@ -88,7 +81,7 @@ block content
        button.btn(type="submit") Quantity
      th 
       form(method="Post", action="/upc", name="upcQuery")
-       input(type="text", placeholder="Search UPC", size="8", name="barcode")
+       input(type="text", placeholder="Search UPC", size="8", name="upc")
        button.btn(type="submit", style="margin:0 auto;") UPC
      th 
       form(method="Post", action="/po", name="POQuery")
@@ -103,17 +96,17 @@ block content
      th UPC
      th PO#
      th Product ID
-    if (products.length)
-     each product, i in products
+    if (posts.length)
+     each post, i in posts
       tr
-       td= product.type
-       td= product.length
-       td= product.color
-       td= product.location
-       td= product.quantity
-       td= product.upc
-       td= product.shipment
-       td=product.type+product.length+'-'+product.color
+       td= post.type
+       td= post.length 
+       td= post.color
+       td= post.location
+       td= post.quantity
+       td= post.upc
+       td= post.shipment
+       td= post.type+post.length+'-'+post.color
 
      
 

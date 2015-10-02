@@ -242,13 +242,68 @@ router.post('/locateThree', function( req, res, next ){
 	}
 });
 
-// Sort by feature
+// Sort by features
+router.post('/type', function( req, res, next ){
+	console.log(req.body.type);
+	Locations.find({type: req.body.type}, function(err, docs) {
+			console.log( docs + ' good query');
+		res.render('type', { 'posts': docs });
+	 });
+})
 
+router.post('/length', function( req, res, next ){
+	console.log(req.body.length1);
+	Locations.find({length: req.body.length1}, function(err, docs) {
+			console.log( docs + 'good query');
+		res.render('length', { 'nums': docs });
+	 });
+})
 
+router.post('/color', function( req, res, next ){
+	console.log(req.body.color);
+	Locations.find({color: req.body.color}, function(err, docs) {
+			console.log( docs + 'good query');
+		res.render('color', { 'nums': docs });
+	 });
+})
 
+router.post('/location', function( req, res, next ){
+	console.log(req.body.location);
+	Locations.find({location: req.body.location}, function(err, docs) {
+			console.log( docs + 'good query');
+		res.render('location1', { 'nums': docs });
+	 });
+})
 
+router.post('/qty', function( req, res, next ){
+	console.log(req.body.qty);
+	Locations.find({quantity: req.body.qty}, function(err, docs) {
+			console.log( docs + 'good query');
+		res.render('qty1', { 'nums': docs });
+	 });
+})
+router.post('/upc', function( req, res, next ){
+	console.log(req.body.barcode);
+	Locations.findOne({upc: req.body.barcode}, function(err, docs) {
+			console.log( docs + ' good query');
+		res.render('upc1', {post:docs});
+	 });
+})
 
-
+router.post('/po', function( req, res, next ){
+	console.log(req.body.po);
+	Locations.find({shipment: req.body.po}, function(err, docs) {
+			console.log( docs + ' good query');
+		res.render('po', {'nums':docs});
+	 });
+})
+// router.post('/upc', function( req, res, next ){
+// 	console.log(req.body.upc);
+// 	Locations.findOne({upc: req.body.upc}, function(err, docs) {
+// 			console.log( docs + 'good query');
+// 		res.render('qty1', { post: docs });
+// 	 });
+// })
 
 
 // 	if (req.body.productupc22 != '' && req.body.qty22 != '' && req.body.productupc33 != '' && req.body.qty33 != ''){
