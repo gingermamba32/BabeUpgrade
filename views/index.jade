@@ -4,16 +4,35 @@ block content
   
   h1(id="header") Babe Inventory Scanner
 
-  h3 Scan Location &#x2192; Scan UPC &#x2192; Input Quantity
-  h3(style="margin-left: 12%")&#x2192; Scan UPC &#x2192; Input Quantity
-  h3(style="margin-left: 12%")&#x2192; Scan UPC &#x2192; Input Quantity
+  //- h3 Scan Location &#x2192; Scan UPC &#x2192; Input Quantity
+  //- h3 #[span(style="color:white;") Scan Location &#x2192;] Scan UPC &#x2192; Input Quantity
+  //- h3 #[span(style="color:white;") Scan Location &#x2192;] Scan UPC &#x2192; Input Quantity
 
-  h5(id="success", style="color:red; padding-top: 50px;") You have successfully added items to inventory
+  h5(id="success", style="color:red; padding-top: 50px; padding-top: 30px; text-align:center;") You have successfully updated inventory!
+
+  form.form-inline(role='form', style="max-width: 800px; text-align:center; margin: 0 auto; background: #D0D0D0; padding: 15px 10px 10px; border-radius: 10px;")
+      .form-group
+        input.form-control(placeholder="Location")
+      .form-group
+        input.form-control(placeholder="UPC #1")
+      .form-group
+        input.form-control(placeholder="Quantity #1")
+      button.btn.btn-default(type='submit') Submit
+      br
+      .form-group
+        input.form-control(placeholder="UPC #2")
+      .form-group
+        input.form-control(placeholder="Quantity #2")
+      br
+      .form-group
+        input.form-control(placeholder="UPC #3")
+      .form-group
+        input.form-control(placeholder="Quantity #3")
+
 
   div.submit-content
    form.proposal-form.br(method="Post", action="/locateThree", name="ProductQuantity")
-    h2.sub IMPORT PRODUCTS
-    h3(style="padding-bottom:15px;") Please Input the following:
+    h2.sub(style="padding-bottom: 15px;") Update Inventory
     input(type="text", id="loc", placeholder="SCAN LOCATION", size="30", name="bin11" )
     input(type="text", id="upc", placeholder="SCAN UPC", size="30", name="productupc11" )
     input(type="text", placeholder="INPUT QTY", size="30", name="qty11" )
@@ -23,15 +42,34 @@ block content
     input(type="text", id="upc3", placeholder="INPUT QTY #3", size="30", name="qty33" )
     button.btn(type="submit", id="invSub") Submit to Inventory
 
-  form.form-inline
-   .form-group
-     input.form-control(type='text', placeholder='Type', height="20px;", style="padding-top: 10px;")
-    button.btn.btn-default(type='submit', style="font-size: 15px;") Search
+  //- form.form-inline
+  //-  .form-group
+  //-    input.form-control(type='text', placeholder='Type', height="20px;", style="padding-top: 10px;")
+  //-   button.btn.btn-default(type='submit', style="font-size: 15px;") Search
+  //- form.form-style-9
+  //-     ul
+  //-       li
+  //-         input.field-style.field-split.align-left(type='text', name='field1', placeholder='Name')
+  //-         input.field-style.field-split.align-right(type='email', name='field2', placeholder='Email')
+  //-         input.field-style.field-split.align-left(type='log', name='log2', placeholder='login')
+  //-       li
+  //-         input.field-style.field-split.align-left(type='text', name='field3', placeholder='Phone')
+  //-         input.field-style.field-split.align-right(type='url', name='field4', placeholder='Website')
+  //-       li
+  //-         input.field-style.field-full.align-none(type='text', name='field3', placeholder='Subject')
+  //-       li
+  //-         textarea.field-style(name='field5', placeholder='Message')
+  //-       li
+  //-         input(type='submit', value='Send Message')
+
+
+
+
  
 
   h1 Current Inventory
   div
-   table(border="3", width="90%", align="center", style="font-size:18px; color:black;")
+   table.table-striped.table-bordered.table-responsive(width="90%", align="center", style="font-size:18px; color:black;")
     tr
      th
       form.proposal-form.br(method="Post", action="/type", name="TypeQuery")
@@ -65,7 +103,7 @@ block content
       form.form-inline
        .form-group
         input.form-control(type='text', placeholder='Type', height="20px;")
-       button.btn.btn-default(type='submit', style="font-size: 15px; text-align:center") Search
+       button.btn.btn-default(type='submit', style="font-size: 15px; text-align:center; margin: 0 auto;") Search
     tr(align="center")
      th Type
      th Length
@@ -125,22 +163,16 @@ block content
             $('input[name=qty22]').focus();
             }
         });
-       $('#success').hide(2000);
-       //-  $('#invSub').click( function () {
-       //-     $('#success').show().delay(1000).fadeOut();
-       //-     return false;
-       //-  });
-    	
+       $('#success').hide();
+       $('#invSub').bind('click', function(){
+           window.scrollTo(0,0);
+           $('#success').show(200).delay(4000).hide(200);
 
-    	//- //- Add form submit message to the page
+       }); 
 
 
-    	//- $("#add").submit(function(){
-    	//- 	$('<div class=header>' + value + '</div>').appendTo('#header');
-    	//- 	})    $("#searchForm").submit();
     });
-    //- Need to have all forms submit 
-    //- messages for all submit buttons
+
 
 
 
