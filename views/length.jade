@@ -2,100 +2,72 @@ extends layout
 
 block content
   
-  h1(id="header") Welcome to Babe Inventory Scanner
+  h1(id="header", style="padding-top: 50px;") Babe Inventory Scanner
+
+  h5.mess( style="color:red; padding-top: 50px; padding-top: 30px; text-align:center;") You have successfully updated inventory!
+
+  form.form-inline(role='form', method="Post", action="/locateThree", name="ProductQuantity", style="max-width: 800px; text-align:center; margin: 0 auto; background: #D0D0D0; padding: 15px 10px 10px; border-radius: 10px;")
+      .form-group
+        input.form-control.loc(type="text", id="loc", placeholder="LOCATION", name="bin11" )
+      .form-group
+        input.form-control.inv(type="text", id="upc", placeholder="UPC",  name="productupc11" )
+      .form-group
+        input.form-control.quan1(type="text", placeholder="Quantity",  name="qty11" )
+      button.btn.btn-default.invSub(type="submit") Submit
+      br
+      .form-group
+        input.form-control.inv2(type="text", id="loc2", placeholder="SCAN UPC #2",  name="productupc22" )
+      .form-group
+        input.form-control.quan2(type="text", id="upc2", placeholder="INPUT QTY #2", name="qty22" )
+      br
+      .form-group
+        input.form-control.inv3(type="text", id="loc3", placeholder="SCAN UPC #3",  name="productupc33" )
+      .form-group
+        input.form-control.quan3(type="text", id="upc3", placeholder="INPUT QTY #3",  name="qty33" )
 
 
-  h3 Add instructions
-  //- .submit-content
-  //-  form.proposal-form.br(method="Post", action="/query", name="barcodeQuery" id="searchForm")
-  //-   h2.sub SEARCH UPC
-  //-   input(type="text", id="barcodeSearch", placeholder="BARCODE", size="40", name="barcode" )
-  //-   button.btn(type="submit") Submit UPC
-
-  //- form(method="Post", action="/queryLoc", name="LocationQuery" id="locationForm")
-  //-  h2 Find all products in a current location
-  //-  input(type="text", id="barcodeSearch", placeholder="LOCATION", size="40", name="locations" )
-  //-  button(type="submit") Submit Location
-  //- .submit-content
-  //-  form.proposal-form.br(method="Post", action="/add", name="ProductQuantity" id="add")
-  //-   h2.sub Scan UPC and Input Quantity
-  //-   input(type="text", placeholder="BARCODEUPC", size="30", name="barcodeupc" )
-  //-   input(type="text", placeholder="QTY", size="30", name="quantity" )
-  //-   button.btn(type="submit") Submit Quantity for Product
-
-  //- form(method="Post", action="/locate", name="ProductQuantity")
-  //-  h2 Scan by Location and UPC, add quantity
-  //-  input(type="text", placeholder="SCAN LOCATION", size="30", name="bin" )
-  //-  input(type="text", placeholder="SCAN BARCODEUPC", size="30", name="productupc" )
-  //-  input(type="text", placeholder="INPUT QTY", size="30", name="qty" )
-  //-  button(type="submit") Submit Quantity for Product
-
-  //- form(method="Post", action="/locateMulti", name="ProductQuantity")
-  //-  h2 Scan by Location and UPC, add quantity
-  //-  input(type="text", placeholder="SCAN LOCATION", size="30", name="bin1" )
-  //-  input(type="text", placeholder="SCAN BARCODEUPC", size="30", name="productupc1" )
-  //-  input(type="text", placeholder="INPUT QTY", size="30", name="qty1" )
-  //-  input(type="text", placeholder="SCAN BARCODEUPC", size="30", name="productupc2" )
-  //-  input(type="text", placeholder="INPUT QTY", size="30", name="qty2" )
-  //-  button(type="submit") Submit Quantity for Product
-
-  .submit-content 
-   form.proposal-form.br(method="Post", action="/locateThree", name="ProductQuantity")
-    h2.sub IMPORT PRODUCTS
-    input(type="text", placeholder="SCAN LOCATION", size="30", name="bin11" )
-    input(type="text", placeholder="SCAN BARCODEUPC", size="30", name="productupc11" )
-    input(type="text", placeholder="INPUT QTY", size="30", name="qty11" )
-    input(type="text", placeholder="SCAN BARCODEUPC", size="30", name="productupc22" )
-    input(type="text", placeholder="INPUT QTY", size="30", name="qty22" )
-    input(type="text", placeholder="SCAN BARCODEUPC", size="30", name="productupc33" )
-    input(type="text", placeholder="INPUT QTY", size="30", name="qty33" )
-    button.btn(type="submit") Submit Quantity for Product
-
-
-
-  h2 Search by Features:
-   //- fix this as the next thing followed by the input button
-  h1 Current Inventory
+  h1(style="padding-top: 40px;") Search Current Inventory
   div
-   table(border="2", align="center", style="font-size: 18px; color: black;")
+   table.table-striped.table-bordered.table-responsive(width="90%", align="center", style="font-size:18px; color:black;")
+    tr(style="margin: 0 auto;")
+     td #[b Type]
+     td #[b Length]
+     td #[b Color]
+     td #[b Location]
+     td #[b Quantity]
+     td #[b UPC]
+     td #[b PO#]
+     td #[b SKU]
     tr
-     th
+     th(style="text-align:center;") 
       form(method="Post", action="/type", name="TypeQuery")
-       input(type="text", placeholder="Search Type", size="8", name="type")
-       button.btn(type="submit", position="absolute") Type
-     th
+       input.form-control.type( type="text", placeholder="Search", size="8", name="type", style="font-size: 13px;")
+       button.btn.typeSub( type="submit", style="font-size: 10px;display:inline-block; text-align:center;") Type
+     th(style="text-align:center;") 
       form(method="Post", action="/length", name="LengthQuery")
-       input(type="text", placeholder="Search Length", size="8", name="length")
-       button.btn(type="submit") Length
-     th 
+       input.form-control.length(type="text", placeholder="Search", size="8", name="length1", style="font-size: 13px;")
+       button.btn.lengthSub(type="submit", style="font-size: 10px;display:inline-block; text-align:center;") Length
+     th(style="text-align:center;")  
       form(method="Post", action="/color", name="ColorQuery")
-       input(type="text", placeholder="Search Color", size="8", name="color")
-       button.btn(type="submit") Color
-     th 
+       input.form-control.color(type="text",  placeholder="Search", size="8", name="color", style="font-size: 13px;")
+       button.btn.colorSub(type="submit", style="font-size: 10px;display:inline-block; text-align:center;") Color
+     th(style="text-align:center;")  
       form(method="Post", action="/location", name="LocationQuery")
-       input(type="text", placeholder="Search Location", size="8", name="location")
-       button.btn(type="submit") Location
-     th(align="center")
+       input.form-control.location(type="text", placeholder="Search", size="8", name="location", style="font-size: 13px;")
+       button.btn.locationSub(type="submit", style="font-size: 10px;display:inline-block; text-align:center;") Location
+     th(style="text-align:center;") 
       form(method="Post", action="/qty", name="QtyQuery")
-       input(type="text", placeholder="Search Quantity", size="8", name="qty")
-       button.btn(type="submit") Quantity
-     th 
+       input.form-control.quantity(type="text", placeholder="Search", size="8", name="qty", style="font-size: 13px;")
+       button.btn.quantitySub(type="submit", style="font-size: 10px;display:inline-block; text-align:center;") Quantity
+     th(style="text-align:center;") 
       form(method="Post", action="/upc", name="upcQuery")
-       input(type="text", placeholder="Search UPC", size="8", name="upc")
-       button.btn(type="submit", style="margin:0 auto;") UPC
-     th 
+       input.form-control.upc(type="text", placeholder="Search", size="8", name="barcode", style="font-size: 13px;")
+       button.btn.upcSub(type="submit", style="font-size: 10px;display:inline-block; text-align:center;") UPC
+     th(style="text-align:center;") 
       form(method="Post", action="/po", name="POQuery")
-       input(type="text", placeholder="Search PO#", size="8", name="po")
-       button.btn(type="submit") PO#
-    tr
-     th Type
-     th Length
-     th Color
-     th Location
-     th Quantity
-     th UPC
-     th PO#
-     th Product ID
+       input.form-control.poNum(type="text", placeholder="Search", size="8", name="po", style="font-size: 13px;")
+       button.btn.poNumSub(type="submit", style="font-size: 10px; display:inline-block; text-align:center;") PO#
+     td #[b Still need real SKUS]
     if (nums.length)
      each post, i in nums
       tr
@@ -112,22 +84,118 @@ block content
 
   script.
     $(document).ready(function() {
-    $("#barcodeSearch").keyup(function() {
-        if ($(this).val().length === 6) {
-            $("#searchForm").submit();
+      $('input[name=bin11]').focus();
+
+    $(".loc").keyup(function() {
+        if ($(this).val().length > 5) {
+            $('input[name=productupc11]').focus();
             }
         });
-    	$('input[name=barcode]').focus();
+    $(".inv").keyup(function() {
+        if ($(this).val().length === 6) {
+            $('input[name=qty11]').focus();
+            }
+        });
 
-    	//- Add form submit message to the page
-    	$("#add").submit(function(){
-    		$('<div class=header>' + value + '</div>').appendTo('#header');
-    		})
+    $(".inv2").keyup(function() {
+        if ($(this).val().length === 6) {
+            $('input[name=qty22]').focus();
+            }
+        });
+
+    $(".inv3").keyup(function() {
+        if ($(this).val().length === 6) {
+            $('input[name=qty33]').focus();
+            }
+        });
+
+      //- success message
+
+       $('.mess').hide();
+
+       $('.invSub').bind('click', function(){
+           window.scrollTo(0,0);
+           $('.mess').show(200).delay(4000).hide(200);
+       }); 
+
+
+          //- Press enter on quantities to submit to inventory
+        $('.quan1').keypress(function (e){
+         if(e.which == 13){
+         $('.invSub').focus().click();
+         //window.scrollTo(200,400);
+         return false;
+         }
+        })
+         $('.quan2').keypress(function (e){
+         if(e.which == 13){
+         $('.invSub').focus().click();
+         //window.scrollTo(200,400);
+         return false;
+         }
+        })
+         $('.quan3').keypress(function (e){
+         if(e.which == 13){
+         $('.invSub').focus().click();
+         //window.scrollTo(200,400);
+         return false;
+         }
+        })
+
+
+          //- Press enter to search attributes
+       $('.type').keypress(function (e){
+         if(e.which == 13){
+         $('.typeSub').focus().click();
+         //window.scrollTo(200,400);
+         return false;
+         }
+        })
+       $('.length').keypress(function (e){
+         if(e.which == 13){
+         $('.lengthSub').focus().click();
+         //window.scrollTo(200,400);
+         return false;
+         }
+        })
+       $('.color').keypress(function (e){
+         if(e.which == 13){
+         $('.colorSub').focus().click();
+         //window.scrollTo(200,400);
+         return false;
+         }
+        })
+       $('.location').keypress(function (e){
+         if(e.which == 13){
+         $('.locationSub').focus().click();
+         //window.scrollTo(200,400);
+         return false;
+         }
+        })
+       $('.quantity').keypress(function (e){
+         if(e.which == 13){
+         $('.quantitySub').focus().click();
+         //window.scrollTo(200,400);
+         return false;
+         }
+        })
+       $('.upc').keypress(function (e){
+         if(e.which == 13){
+         $('.upcSub').focus().click();
+         //window.scrollTo(200,400);
+         return false;
+         }
+        })
+       $('.poNum').keypress(function (e){
+         if(e.which == 13){
+         $('.poNumSub').focus().click();
+         //window.scrollTo(200,400);
+         return false;
+         }
+        })
+
+
     });
-    //- Need to have all forms submit 
-    //- messages for all submit buttons
-
-
 
 
 

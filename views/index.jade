@@ -4,10 +4,6 @@ block content
   
   h1(id="header", style="padding-top: 50px;") Babe Inventory Scanner
 
-  //- h3 Scan Location &#x2192; Scan UPC &#x2192; Input Quantity
-  //- h3 #[span(style="color:white;") Scan Location &#x2192;] Scan UPC &#x2192; Input Quantity
-  //- h3 #[span(style="color:white;") Scan Location &#x2192;] Scan UPC &#x2192; Input Quantity
-
   h5.mess( style="color:red; padding-top: 50px; padding-top: 30px; text-align:center;") You have successfully updated inventory!
 
   form.form-inline(role='form', method="Post", action="/locateThree", name="ProductQuantity", style="max-width: 800px; text-align:center; margin: 0 auto; background: #D0D0D0; padding: 15px 10px 10px; border-radius: 10px;")
@@ -30,89 +26,49 @@ block content
         input.form-control.quan3(type="text", id="upc3", placeholder="INPUT QTY #3",  name="qty33" )
 
 
-  //- div.submit-content
-  //-  form.proposal-form.br(method="Post", action="/locateThree", name="ProductQuantity")
-  //-   h2.sub(style="padding-bottom: 15px;") Update Inventory
-  //-   input(type="text", id="loc", placeholder="SCAN LOCATION", size="30", name="bin11" )
-  //-   input(type="text", id="upc", placeholder="SCAN UPC", size="30", name="productupc11" )
-  //-   input(type="text", placeholder="INPUT QTY", size="30", name="qty11" )
-  //-   input(type="text", id="loc2", placeholder="SCAN UPC #2", size="30", name="productupc22" )
-  //-   input(type="text", id="upc2", placeholder="INPUT QTY #2", size="30", name="qty22" )
-  //-   input(type="text", id="loc3", placeholder="SCAN UPC #3", size="30", name="productupc33" )
-  //-   input(type="text", id="upc3", placeholder="INPUT QTY #3", size="30", name="qty33" )
-  //-   button.btn(type="submit", id="invSub") Submit to Inventory
-
-  //- form.form-inline
-  //-  .form-group
-  //-    input.form-control(type='text', placeholder='Type', height="20px;", style="padding-top: 10px;")
-  //-   button.btn.btn-default(type='submit', style="font-size: 15px;") Search
-  //- form.form-style-9
-  //-     ul
-  //-       li
-  //-         input.field-style.field-split.align-left(type='text', name='field1', placeholder='Name')
-  //-         input.field-style.field-split.align-right(type='email', name='field2', placeholder='Email')
-  //-         input.field-style.field-split.align-left(type='log', name='log2', placeholder='login')
-  //-       li
-  //-         input.field-style.field-split.align-left(type='text', name='field3', placeholder='Phone')
-  //-         input.field-style.field-split.align-right(type='url', name='field4', placeholder='Website')
-  //-       li
-  //-         input.field-style.field-full.align-none(type='text', name='field3', placeholder='Subject')
-  //-       li
-  //-         textarea.field-style(name='field5', placeholder='Message')
-  //-       li
-  //-         input(type='submit', value='Send Message')
-
-
-
-
- 
-
-  h1(style="padding-top: 40px;") Current Inventory
+  h1(style="padding-top: 40px;") Search Current Inventory
   div
    table.table-striped.table-bordered.table-responsive(width="90%", align="center", style="font-size:18px; color:black;")
+    tr(style="margin: 0 auto;")
+     td #[b Type]
+     td #[b Length]
+     td #[b Color]
+     td #[b Location]
+     td #[b Quantity]
+     td #[b UPC]
+     td #[b PO#]
+     td #[b SKU]
     tr
-     th
-      form.proposal-form.br(method="Post", action="/type", name="TypeQuery")
-       input.type( type="text", placeholder="Search", size="8", name="type", style="font-size: 13px;")
-       button.btn.typeSub( type="submit", style="font-size: 15px;display:block; text-align:center;") Type
-     th
-      form.proposal-form.br(method="Post", action="/length", name="LengthQuery")
-       input.length(type="text", placeholder="Search", size="8", name="length1", style="font-size: 13px;")
-       button.btn.lengthSub(type="submit", style="font-size: 15px;display:block; text-align:center;") Length
-     th 
-      form.proposal-form.br(method="Post", action="/color", name="ColorQuery")
-       input.color(type="text",  placeholder="Search", size="8", name="color", style="font-size: 13px;")
-       button.btn.colorSub(type="submit", style="font-size: 15px;display:block; text-align:center;") Color
-     th 
-      form.proposal-form.br(method="Post", action="/location", name="LocationQuery")
-       input.location(type="text", placeholder="Search", size="8", name="location", style="font-size: 13px;")
-       button.btn.locationSub(type="submit", style="font-size: 15px;display:block; text-align:center;") Location
-     th(align="center")
-      form.proposal-form.br(method="Post", action="/qty", name="QtyQuery")
-       input.quantity(type="text", placeholder="Search", size="8", name="qty", style="font-size: 13px;")
-       button.btn.quantitySub(type="submit", style="font-size: 15px;display:block; text-align:center;") Quantity
-     th 
-      form.proposal-form.br(method="Post", action="/upc", name="upcQuery")
-       input.upc(type="text", placeholder="Search", size="8", name="barcode", style="font-size: 13px;")
-       button.btn.upcSub(type="submit", style="font-size: 15px;display:block; text-align:center;") UPC
      th(style="text-align:center;") 
-      form.proposal-form.br(method="Post", action="/po", name="POQuery")
-       input.poNum(type="text", placeholder="Search", size="8", name="po", style="font-size: 13px;")
-       button.btn.poNumSub(type="submit", style="font-size: 15px; display:block; text-align:center;") PO#
-     th
-      form.form-inline
-       .form-group
-        input.form-control(type='text', placeholder='Type', height="20px;")
-       button.btn.btn-default(type='submit', style="font-size: 15px; text-align:center; margin: 0 auto;") Search
-    tr(align="center")
-     th Type
-     th Length
-     th Color
-     th Location
-     th Quantity
-     th UPC
-     th PO#
-     th Product ID
+      form(method="Post", action="/type", name="TypeQuery")
+       input.form-control.type( type="text", placeholder="Search", size="8", name="type", style="font-size: 13px;")
+       button.btn.typeSub( type="submit", style="font-size: 10px;display:inline-block; text-align:center;") Type
+     th(style="text-align:center;") 
+      form(method="Post", action="/length", name="LengthQuery")
+       input.form-control.length(type="text", placeholder="Search", size="8", name="length1", style="font-size: 13px;")
+       button.btn.lengthSub(type="submit", style="font-size: 10px;display:inline-block; text-align:center;") Length
+     th(style="text-align:center;")  
+      form(method="Post", action="/color", name="ColorQuery")
+       input.form-control.color(type="text",  placeholder="Search", size="8", name="color", style="font-size: 13px;")
+       button.btn.colorSub(type="submit", style="font-size: 10px;display:inline-block; text-align:center;") Color
+     th(style="text-align:center;")  
+      form(method="Post", action="/location", name="LocationQuery")
+       input.form-control.location(type="text", placeholder="Search", size="8", name="location", style="font-size: 13px;")
+       button.btn.locationSub(type="submit", style="font-size: 10px;display:inline-block; text-align:center;") Location
+     th(style="text-align:center;") 
+      form(method="Post", action="/qty", name="QtyQuery")
+       input.form-control.quantity(type="text", placeholder="Search", size="8", name="qty", style="font-size: 13px;")
+       button.btn.quantitySub(type="submit", style="font-size: 10px;display:inline-block; text-align:center;") Quantity
+     th(style="text-align:center;") 
+      form(method="Post", action="/upc", name="upcQuery")
+       input.form-control.upc(type="text", placeholder="Search", size="8", name="barcode", style="font-size: 13px;")
+       button.btn.upcSub(type="submit", style="font-size: 10px;display:inline-block; text-align:center;") UPC
+     th(style="text-align:center;") 
+      form(method="Post", action="/po", name="POQuery")
+       input.form-control.poNum(type="text", placeholder="Search", size="8", name="po", style="font-size: 13px;")
+       button.btn.poNumSub(type="submit", style="font-size: 10px; display:inline-block; text-align:center;") PO#
+     td #[b Still need real SKUS]
+    
     if (products.length)
      each product, i in products
       tr
@@ -243,17 +199,6 @@ block content
 
 
     });
-
-
-
-
-//- $('.input').keypress(function (e) {
-//-   if (e.which == 13) {
-//-     $('form#login').submit();
-//-     return false;    //<---- Add this line
-//-   }
-//- });
-
 
 
 
