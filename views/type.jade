@@ -41,31 +41,31 @@ block content
     tr
      th(style="text-align:center;") 
       form(method="Post", action="/type", name="TypeQuery")
-       input.form-control.type( type="text", placeholder="Search", size="8", name="type", style="font-size: 13px;")
+       input.form-control.type( type="text", placeholder="Search", size="8", name="type", style="font-size: 13px; padding:0px; margin:0px;")
        button.btn.typeSub( type="submit", style="font-size: 10px;display:inline-block; text-align:center;") Type
      th(style="text-align:center;") 
       form(method="Post", action="/length", name="LengthQuery")
-       input.form-control.length(type="text", placeholder="Search", size="8", name="length1", style="font-size: 13px;")
+       input.form-control.length(type="text", placeholder="Search", size="8", name="length1", style="font-size: 13px;padding:0px; margin:0px;")
        button.btn.lengthSub(type="submit", style="font-size: 10px;display:inline-block; text-align:center;") Length
      th(style="text-align:center;")  
       form(method="Post", action="/color", name="ColorQuery")
-       input.form-control.color(type="text",  placeholder="Search", size="8", name="color", style="font-size: 13px;")
+       input.form-control.color(type="text",  placeholder="Search", size="8", name="color", style="font-size: 13px;padding:0px; margin:0px;")
        button.btn.colorSub(type="submit", style="font-size: 10px;display:inline-block; text-align:center;") Color
      th(style="text-align:center;")  
       form(method="Post", action="/location", name="LocationQuery")
-       input.form-control.location(type="text", placeholder="Search", size="8", name="location", style="font-size: 13px;")
+       input.form-control.location(type="text", placeholder="Search", size="8", name="location", style="font-size: 13px;padding:0px; margin:0px;")
        button.btn.locationSub(type="submit", style="font-size: 10px;display:inline-block; text-align:center;") Location
      th(style="text-align:center;") 
       form(method="Post", action="/qty", name="QtyQuery")
-       input.form-control.quantity(type="text", placeholder="Search", size="8", name="qty", style="font-size: 13px;")
+       input.form-control.quantity(type="text", placeholder="Search", size="8", name="qty", style="font-size: 13px;padding:0px; margin:0px;")
        button.btn.quantitySub(type="submit", style="font-size: 10px;display:inline-block; text-align:center;") Quantity
      th(style="text-align:center;") 
       form(method="Post", action="/upc", name="upcQuery")
-       input.form-control.upc(type="text", placeholder="Search", size="8", name="barcode", style="font-size: 13px;")
+       input.form-control.upc(type="text", placeholder="Search", size="8", name="barcode", style="font-size: 13px;padding:0px; margin:0px;")
        button.btn.upcSub(type="submit", style="font-size: 10px;display:inline-block; text-align:center;") UPC
      th(style="text-align:center;") 
       form(method="Post", action="/po", name="POQuery")
-       input.form-control.poNum(type="text", placeholder="Search", size="8", name="po", style="font-size: 13px;")
+       input.form-control.poNum(type="text", placeholder="Search", size="8", name="po", style="font-size: 13px;padding:0px; margin:0px;")
        button.btn.poNumSub(type="submit", style="font-size: 10px; display:inline-block; text-align:center;") PO#
      td #[b Still need real SKUS]
     if (posts.length)
