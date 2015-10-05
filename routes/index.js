@@ -73,7 +73,7 @@ router.get('/qty', function(req, res, next) {
 })
 
 // Query the database by UPC and return 
-router.post('/query', function( req, res, next ){
+router.post('/query1', function( req, res, next ){
 	console.log(req.body.barcode);
 	Locations.findOne({upc: req.body.barcode}, function(err, docs) {
 			console.log( docs + ' good query');
@@ -296,6 +296,59 @@ router.post('/po', function( req, res, next ){
 			console.log( docs + ' good query');
 		res.render('po', {'nums':docs});
 	 });
+})
+
+// Full search feature....upc is unique and can only have one search function
+router.post('/query', function(req,res,next){
+	console.log(req.body.type);
+	console.log(req.body.length1);
+	console.log(req.body.color);
+	console.log(req.body.location);
+	console.log(req.body.qty);
+	console.log(req.body.barcode);
+	console.log(req.body.po);
+	if (req.body.type != ''){
+	Locations.find({type: req.body.type}, function(err, docs) {
+			console.log( docs + ' good query');
+		res.render('query', { 'nums': docs });
+	 });
+	}
+	else if(req.body.length1 != ''){
+		Locations.find({length: req.body.length1}, function(err, docs) {
+			console.log( docs + 'good query');
+		res.render('query', { 'nums': docs });
+	 });
+	}
+	else if( req.body.color != ''){
+		Locations.find({color: req.body.color}, function(err, docs) {
+			console.log( docs + 'good query');
+		res.render('query', { 'nums': docs });
+	 });
+	}
+	else if (req.body.location != '') {
+		Locations.find({location: req.body.location}, function(err, docs) {
+			console.log( docs + 'good query');
+		res.render('query', { 'nums': docs });
+	 });
+	}
+	else if (req.body.qty != ''){
+		Locations.find({quantity: req.body.qty}, function(err, docs) {
+			console.log( docs + 'good query');
+		res.render('query', { 'nums': docs });
+	 });
+	}
+	else if (req.body.barcode != ''){
+		Locations.findOne({upc: req.body.barcode}, function(err, docs) {
+			console.log( docs + ' good query');
+		res.render('upc1', {post:docs});
+	 });
+	}
+	else if (req.body.po != ''){
+		Locations.find({shipment: req.body.po}, function(err, docs) {
+			console.log( docs + ' good query');
+		res.render('query', {'nums':docs});
+	 });
+	}
 })
 // router.post('/upc', function( req, res, next ){
 // 	console.log(req.body.upc);

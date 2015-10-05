@@ -28,7 +28,7 @@ block content
 
   h1(style="padding-top: 40px;") Search Current Inventory
   div
-   table.table-striped.table-bordered.table-responsive(width="90%", align="center", style="font-size:18px; color:black;")
+   table.table-striped.table-bordered.table-responsive(width="90%", align="center", style="font-size:18px; color:black; padding-bottom: 35px;")
     tr(style="margin: 0 auto;")
      td #[b Type]
      td #[b Length]
@@ -39,34 +39,34 @@ block content
      td #[b PO#]
      td #[b SKU]
     tr
-     th(style="text-align:center;") 
+     td(style="text-align:center; padding: 0px; margin:0px;") 
       form(method="Post", action="/type", name="TypeQuery")
        input.form-control.type( type="text", placeholder="Search", size="8", name="type", style="font-size: 13px; padding:0px; margin:0px;")
-       button.btn.typeSub( type="submit", style="font-size: 10px;display:inline-block; text-align:center;") Type
+       button.btn.typeSub( type="submit", style="font-size: 10px;display:inline-block; text-align:center; display: none;") Type
      th(style="text-align:center;") 
       form(method="Post", action="/length", name="LengthQuery")
        input.form-control.length(type="text", placeholder="Search", size="8", name="length1", style="font-size: 13px;padding:0px; margin:0px;")
-       button.btn.lengthSub(type="submit", style="font-size: 10px;display:inline-block; text-align:center;") Length
+       button.btn.lengthSub(type="submit", style="font-size: 10px;display:inline-block; text-align:center;display: none;") Length
      th(style="text-align:center;")  
       form(method="Post", action="/color", name="ColorQuery")
        input.form-control.color(type="text",  placeholder="Search", size="8", name="color", style="font-size: 13px;padding:0px; margin:0px;")
-       button.btn.colorSub(type="submit", style="font-size: 10px;display:inline-block; text-align:center;") Color
+       button.btn.colorSub(type="submit", style="font-size: 10px;display:inline-block; text-align:center;display: none;") Color
      th(style="text-align:center;")  
       form(method="Post", action="/location", name="LocationQuery")
        input.form-control.location(type="text", placeholder="Search", size="8", name="location", style="font-size: 13px;padding:0px; margin:0px;")
-       button.btn.locationSub(type="submit", style="font-size: 10px;display:inline-block; text-align:center;") Location
+       button.btn.locationSub(type="submit", style="font-size: 10px;display:inline-block; text-align:center;display: none;") Location
      th(style="text-align:center;") 
       form(method="Post", action="/qty", name="QtyQuery")
        input.form-control.quantity(type="text", placeholder="Search", size="8", name="qty", style="font-size: 13px;padding:0px; margin:0px;")
-       button.btn.quantitySub(type="submit", style="font-size: 10px;display:inline-block; text-align:center;") Quantity
+       button.btn.quantitySub(type="submit", style="font-size: 10px;display:inline-block; text-align:center;display: none;") Quantity
      th(style="text-align:center;") 
       form(method="Post", action="/upc", name="upcQuery")
        input.form-control.upc(type="text", placeholder="Search", size="8", name="barcode", style="font-size: 13px;padding:0px; margin:0px;")
-       button.btn.upcSub(type="submit", style="font-size: 10px;display:inline-block; text-align:center;") UPC
+       button.btn.upcSub(type="submit", style="font-size: 10px;display:inline-block; text-align:center;display: none;") UPC
      th(style="text-align:center;") 
       form(method="Post", action="/po", name="POQuery")
        input.form-control.poNum(type="text", placeholder="Search", size="8", name="po", style="font-size: 13px;padding:0px; margin:0px;")
-       button.btn.poNumSub(type="submit", style="font-size: 10px; display:inline-block; text-align:center;") PO#
+       button.btn.poNumSub(type="submit", style="font-size: 10px; display:inline-block; text-align:center;display: none;") PO#
      td #[b Still need real SKUS]
     
     if (nums.length)
