@@ -307,21 +307,15 @@ router.post('/query', function(req,res,next){
 	console.log(req.body.qty);
 	console.log(req.body.barcode);
 	console.log(req.body.po);
-	if (req.body.type != ''){
-	Locations.find({type: req.body.type}, function(err, docs) {
+	if (req.body.barcode != ''){
+    Locations.findOne({upc: req.body.barcode}, function(err, docs) {
 			console.log( docs + ' good query');
-		res.render('query', { 'nums': docs });
+		res.render('upc1', {post:docs});
 	 });
 	}
-	else if(req.body.length1 != ''){
-		Locations.find({length: req.body.length1}, function(err, docs) {
-			console.log( docs + 'good query');
-		res.render('query', { 'nums': docs });
-	 });
-	}
-	else if( req.body.color != ''){
-		Locations.find({color: req.body.color}, function(err, docs) {
-			console.log( docs + 'good query');
+	else if (req.body.type != ''){
+	Locations.find({description: req.body.description}, function(err, docs) {
+			console.log( docs + ' good query');
 		res.render('query', { 'nums': docs });
 	 });
 	}
@@ -337,12 +331,7 @@ router.post('/query', function(req,res,next){
 		res.render('query', { 'nums': docs });
 	 });
 	}
-	else if (req.body.barcode != ''){
-		Locations.findOne({upc: req.body.barcode}, function(err, docs) {
-			console.log( docs + ' good query');
-		res.render('upc1', {post:docs});
-	 });
-	}
+
 	else if (req.body.po != ''){
 		Locations.find({shipment: req.body.po}, function(err, docs) {
 			console.log( docs + ' good query');
