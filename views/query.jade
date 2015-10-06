@@ -55,12 +55,10 @@ block content
     if (nums.length)
      each post, i in nums
       tr
-       td= post.type
-       td= post.length 
-       td= post.color
-       td= post.location
-       td= post.quantity
        td= post.upc
+       td= post.description
+       td=post.location 
+       td= post.quantity
        td= post.shipment
        td= post.type+post.length+'-'+post.color
 
