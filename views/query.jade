@@ -26,36 +26,31 @@ block content
         input.form-control.quan3(type="text", id="upc3", placeholder="INPUT QTY #3",  name="qty33" )
 
 
-
+ 
   h1(style="padding-top: 40px;") Search Current Inventory
-  form(method="Post", action="/query", name="DBQuery", style="padding-bottom:50px;")
+  form(method="Post", action="/query", name="DBQuery")
    button.search.btn(type="submit", style="font-size:15px;") Search
    table.table-striped.table-bordered.table-responsive(width="90%", align="center", style="font-size:18px; color:black; padding-bottom: 35px;")
     tr(style="margin: 0 auto; background: #52bab3;")
-     td #[b Type]
-     td #[b Length]
-     td #[b Color]
-     td #[b Location]
-     td #[b Quantity]
      td #[b UPC]
+     td #[b DESCRIPTION]
+     td #[b LOCATION]
+     td #[b QUANTITY]
      td #[b PO#]
-     td #[b SKU]
+     td #[b Update]
+     td #[b Delete]
     tr
      td
-      input.form-control.type( type="text", placeholder="type", size="8", name="type", style="font-size: 13px; padding:0px; margin:0px;")
+      input.form-control.upc(type="text", placeholder="barcode", size="8", name="barcode", style="font-size: 13px;padding:0px; margin:0px;")
      td
-      input.form-control.length(type="text", placeholder="length1", size="8", name="length1", style="font-size: 13px;padding:0px; margin:0px;")
-     td
-      input.form-control.color(type="text",  placeholder="color", size="8", name="color", style="font-size: 13px;padding:0px; margin:0px;")
+      input.form-control.location(type="text", placeholder="description", size="8", name="description", style="font-size: 13px;padding:0px; margin:0px;")
      td
       input.form-control.location(type="text", placeholder="location", size="8", name="location", style="font-size: 13px;padding:0px; margin:0px;")
      td
       input.form-control.quantity(type="text", placeholder="qty", size="8", name="qty", style="font-size: 13px;padding:0px; margin:0px;")
      td
-      input.form-control.upc(type="text", placeholder="barcode", size="8", name="barcode", style="font-size: 13px;padding:0px; margin:0px;")
-     td
       input.form-control.poNum(type="text", placeholder="po", size="8", name="po", style="font-size: 13px;padding:0px; margin:0px;")
-     td #[b Still need real SKUS]
+     
 
     if (nums.length)
      each post, i in nums
