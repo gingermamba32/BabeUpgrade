@@ -20,19 +20,11 @@ var Locations = db.model('location', {
 		type: String,
 		default: ''
 	}	,
+	description: {
+		type: String,
+		default: ''
+	}	,
 	shipment: {
-        type: String,
-        default: ''
-        },
-    type: {
-        type: String,
-        default: ''
-        },
-    length: {
-        type: String,
-        default: ''
-        },
-    color: {
         type: String,
         default: ''
         },
@@ -300,9 +292,8 @@ router.post('/po', function( req, res, next ){
 
 // Full search feature....upc is unique and can only have one search function
 router.post('/query', function(req,res,next){
-	console.log(req.body.type);
-	console.log(req.body.length1);
-	console.log(req.body.color);
+	
+	
 	console.log(req.body.location);
 	console.log(req.body.qty);
 	console.log(req.body.barcode);
@@ -313,7 +304,7 @@ router.post('/query', function(req,res,next){
 		res.render('upc1', {post:docs});
 	 });
 	}
-	else if (req.body.type != ''){
+	else if (req.body.description != ''){
 	Locations.find({description: req.body.description}, function(err, docs) {
 			console.log( docs + ' good query');
 		res.render('query', { 'nums': docs });
