@@ -4,9 +4,11 @@ html
     link(rel="stylesheet", href="/stylesheets/style.css")
     link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css")
     script(src="//code.jquery.com/jquery-1.11.3.min.js")
     script(src="/javascripts/jquery.sticky.js")
     script(src="/javascripts/jquery.animsition.js")
+    script(src="//code.jquery.com/ui/1.11.4/jquery-ui.js")
   body
     .nav-row
         header.nav-row.sticky-nav#sticky
@@ -17,5 +19,9 @@ html
                     a(href='/upc') New Location
                     a(href='/location') Search Location
                     a(href='/qty') Input Quantity
+    script.
+        $(function() {
+            $( "#slider" ).slider();
+        });
 
     block content

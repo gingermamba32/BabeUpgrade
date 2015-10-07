@@ -12,7 +12,7 @@ block content
       .form-group
         input.form-control.inv(type="text", id="upc", placeholder="UPC",  name="productupc11" )
       .form-group
-        input.form-control.quan1.quan(type="text", placeholder="Quantity",  name="qty11", id="foo")
+        input.form-control.quan1.quan(type="number", placeholder="Quantity",  name="qty11", id="foo")
       button.btn.btn-default.invSub(type="submit") Submit
       br
       .form-group
@@ -51,6 +51,7 @@ block content
    button.search.btn(type="submit", style="font-size:15px;") Search
 
   div(class="keyboard", style="height: 0")&nbsp;
+  div(id="slider")
     
 
     
