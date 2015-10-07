@@ -2,7 +2,7 @@ extends layout
 
 block content
   
-  h1(id="header") Enter Product UPC
+  h1(id="header") Add Location to Inventory
 
   .submit-content
    form.proposal-form.br(method="Post", action="/location", name="locationAdd")
@@ -11,14 +11,14 @@ block content
     input(type="text", placeholder="Location", size="40", name="location" )
     input(type="text", placeholder="UPC", size="40", name="barcode" )
     input(type="text", placeholder="Quantity", size="40", name="quantity" )
-    button.btn(type="submit") Submit location
+    button.btn(type="submit", id="locationSearch") Submit location
 
-  //- script.
-  //-  //- $(document).ready(function() {
-  //-  //- 	$('input[name=barcode]').focus();
-  //-  //- 	$("#upcSearch").keyup(function() {
-  //-  //-      if ($(this).val().length === 6) {
-  //-  //-          $("#barcodeSearch").submit();
-  //-  //-          }
-  //-  //-      });
-  //-  //- 	});
+  script.
+   $(document).ready(function() {
+   	$('input[name=location]').focus();
+   	//- $("#upcSearch").keyup(function() {
+    //-     if ($(this).val().length === 6) {
+    //-         $("#locationSearch").submit();
+    //-         }
+    //-     });
+   	});

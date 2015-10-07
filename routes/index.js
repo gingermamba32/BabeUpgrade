@@ -64,25 +64,25 @@ router.get('/qty', function(req, res, next) {
 	res.render('qty');
 })
 
-// Query the database by UPC and return 
-router.post('/query1', function( req, res, next ){
-	console.log(req.body.barcode);
-	Locations.findOne({upc: req.body.barcode}, function(err, docs) {
-			console.log( docs + ' good query');
-		res.render('upcsearch', {post:docs});
-	 });
-})
+// // Query the database by UPC and return 
+// router.post('/query1', function( req, res, next ){
+// 	console.log(req.body.barcode);
+// 	Locations.findOne({upc: req.body.barcode}, function(err, docs) {
+// 			console.log( docs + ' good query');
+// 		res.render('upcsearch', {post:docs});
+// 	 });
+// })
 
 // Query the database by Location and return all products in that location
 
-// ********************************************
-router.post('/queryLoc', function( req, res, next ){
-	console.log(req.body.locations);
-	Locations.find({location: req.body.locations}, function(err, docs) {
-			console.log( docs + ' good query');
-		res.render('locsearch', { 'products': docs});
-	 });
-})
+// // ********************************************
+// router.post('/queryLoc', function( req, res, next ){
+// 	console.log(req.body.locations);
+// 	Locations.find({location: req.body.locations}, function(err, docs) {
+// 			console.log( docs + ' good query');
+// 		res.render('locsearch', { 'products': docs});
+// 	 });
+// })
 
 // adding quantity = add success message 
 router.post('/add', function(req, res, next ){
