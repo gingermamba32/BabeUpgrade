@@ -27,9 +27,9 @@ block content
 
 
  
-  h1(style="padding-top: 40px;") Search Current Inventory
-  form(method="Post", action="/query", name="DBQuery")
-   button.search.btn(type="submit", style="font-size:15px;") Search
+  h1(style="padding-top: 40px; padding-bottom:20px;") Save Current Inventory
+  form(method="Post", action="/update", name="update")
+   button.search.btn(type="submit", style="font-size:15px;") Save
    table.table-striped.table-bordered.table-responsive(width="90%", align="center", style="font-size:18px; color:black; padding-bottom: 35px;")
     tr(style="margin: 0 auto; background: #52bab3;")
      td #[b UPC]
@@ -37,31 +37,24 @@ block content
      td #[b LOCATION]
      td #[b QUANTITY]
      td #[b PO#]
-     td #[b Update]
-     td #[b Delete]
+
     tr
      td
-      input.form-control.upc(type="text", placeholder="barcode", size="8", name="barcode", style="font-size: 13px;padding:0px; margin:0px;")
+      input.form-control.upc(type="text", size="8", name="barcode", value="#{post[0].upc}", style="font-size: 13px;padding:0px; margin:0px;")
      td
-      input.form-control.location(type="text", placeholder="description", size="8", name="description", style="font-size: 13px;padding:0px; margin:0px;")
+      input.form-control.location(type="text", size="8", name="description", value="#{post[0].description}", style="font-size: 13px;padding:0px; margin:0px;")
      td
-      input.form-control.location(type="text", placeholder="location", size="8", name="location", style="font-size: 13px;padding:0px; margin:0px;")
+      input.form-control.location(type="text", size="8", name="location", value="#{post[0].location}", style="font-size: 13px;padding:0px; margin:0px;")
      td
-      input.form-control.quantity(type="text", placeholder="qty", size="8", name="qty", style="font-size: 13px;padding:0px; margin:0px;")
+      input.form-control.quantity(type="text", size="8", name="qty", value="#{post[0].quantity}", style="font-size: 13px;padding:0px; margin:0px;")
      td
-      input.form-control.poNum(type="text", placeholder="po", size="8", name="po", style="font-size: 13px;padding:0px; margin:0px;")
+      input.form-control.poNum(type="text", size="8", name="po", value="#{post[0].shipment}", style="font-size: 13px;padding:0px; margin:0px;")
+    tr(style="visibility:hidden;")
+     td
+      input.form-control.poNum(type="text", size="8", name="id", value="#{post[0]._id}", style="font-size: 13px;padding:0px; margin:0px;")
      
     
-    tr
-     td #{post.upc}
-     td #{post.description} 
-     td #{post.location}
-     td #{post.quantity}
-     td #{post.shipment}
-     td
-      a(href="/updateproduct/#{post.id}") Update
-     td 
-      a(href="/deleteuser/#{post.id}", onclick="return warningView();") Delete
+
 
      
 
