@@ -12,18 +12,18 @@ block content
       .form-group
         input.form-control.inv(type="text", id="upc", placeholder="UPC",  name="productupc11" )
       .form-group
-        input.form-control.quan1(type="text", placeholder="Quantity",  name="qty11", id="foo", onclick='$("#foo").focus();')
+        input.form-control.quan1.quan(type="text", placeholder="Quantity",  name="qty11", id="foo", onclick='$("#foo").focus();')
       button.btn.btn-default.invSub(type="submit") Submit
       br
       .form-group
         input.form-control.inv2(type="text", id="loc2", placeholder="SCAN UPC #2",  name="productupc22" )
       .form-group
-        input.form-control.quan2(type="text", id="upc2", placeholder="INPUT QTY #2", name="qty22" )
+        input.form-control.quan2.quan(type="text", id="upc2", placeholder="INPUT QTY #2", name="qty22" )
       br
       .form-group
         input.form-control.inv3(type="text", id="loc3", placeholder="SCAN UPC #3",  name="productupc33" )
       .form-group
-        input.form-control.quan3(type="text", id="upc3", placeholder="INPUT QTY #3",  name="qty33" )
+        input.form-control.quan3.quan(type="text", id="upc3", placeholder="INPUT QTY #3",  name="qty33" )
 
 
  
@@ -49,6 +49,8 @@ block content
      td
       input.form-control.poNum(type="text", placeholder="po", size="8", name="po", style="font-size: 13px;padding:0px; margin:0px;")
    button.search.btn(type="submit", style="font-size:15px;") Search
+
+  div(class="keyboard", style="height: 0")&nbsp;
     
 
     
@@ -179,6 +181,18 @@ block content
          return false;
          }
        	})
+
+       $(".quan").click(function () {
+           $("#" + this.id).focus();
+        });
+        $(".quan").focus(function () {
+        $(".keyboard").css("height", "300");// The height of your keyboard
+             window.scrollTo(0, 5000); // Scroll to the bottom of the page
+        });
+        $(".quan").blur(function () {
+        $(".keyboard").css("height", "0");
+          window.scrollTo(0, 0);
+         });
 
 
     });
