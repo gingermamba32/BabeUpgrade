@@ -56,9 +56,9 @@ router.get('/upc', function(req, res, next) {
 	res.render('upc');
 })
 
-router.get('/location', function(req, res, next) {
-	res.render('location');
-})
+// router.get('/location', function(req, res, next) {
+// 	res.render('location');
+// })
 
 router.get('/qty', function(req, res, next) {
 	res.render('qty');
@@ -259,13 +259,13 @@ router.post('/color', function( req, res, next ){
 	 });
 })
 
-router.post('/location', function( req, res, next ){
-	console.log(req.body.location);
-	Locations.find({location: req.body.location}, function(err, docs) {
-			console.log( docs + 'good query');
-		res.render('location1', { 'nums': docs });
-	 });
-})
+// router.post('/location', function( req, res, next ){
+// 	console.log(req.body.location);
+// 	Locations.find({location: req.body.location}, function(err, docs) {
+// 			console.log( docs + 'good query');
+// 		res.render('location1', { 'nums': docs });
+// 	 });
+// })
 
 router.post('/qty', function( req, res, next ){
 	console.log(req.body.qty);
@@ -361,6 +361,25 @@ router.post('/update', function(req, res){
             	console.log(docs + "Updated Document");
             	res.redirect('/');
             });          
+})
+
+
+router.post('/location', function( req, res, next ){
+	console.log(req.body.barcode);
+	Locations.findOne({upc: req.body.barcode}, function(err, docs) {
+			console.log( docs.upc + ' good upc');
+			var newLocation = new Locations({
+				location   : req.body.location,
+				upc        : req.body.barcode,
+				description: docs.description,
+				shipment   : docs.shipment,
+				quantity   : req.body.quantity
+			});
+				console.log(newLocation);
+				newLocation.save(function(err, callback){
+				res.redirect('/');
+				})
+	 });
 })
 
 module.exports = router;

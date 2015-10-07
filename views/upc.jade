@@ -5,17 +5,20 @@ block content
   h1(id="header") Enter Product UPC
 
   .submit-content
-   form.proposal-form.br(method="Post", action="/query", name="barcodeQuery", id="barcodeSearch")
-    h2.sub SEARCH UPC
-    input(type="text", id="upcSearch", placeholder="BARCODE", size="40", name="barcode" )
-    button.btn(type="submit") Submit UPC
+   form.proposal-form.br(method="Post", action="/location", name="locationAdd")
+    h2.sub Add Location
+    h4 Scan Location and start adding products
+    input(type="text", placeholder="Location", size="40", name="location" )
+    input(type="text", placeholder="UPC", size="40", name="barcode" )
+    input(type="text", placeholder="Quantity", size="40", name="quantity" )
+    button.btn(type="submit") Submit location
 
-  script.
-   $(document).ready(function() {
-   	$('input[name=barcode]').focus();
-   	$("#upcSearch").keyup(function() {
-        if ($(this).val().length === 6) {
-            $("#barcodeSearch").submit();
-            }
-        });
-   	});
+  //- script.
+  //-  //- $(document).ready(function() {
+  //-  //- 	$('input[name=barcode]').focus();
+  //-  //- 	$("#upcSearch").keyup(function() {
+  //-  //-      if ($(this).val().length === 6) {
+  //-  //-          $("#barcodeSearch").submit();
+  //-  //-          }
+  //-  //-      });
+  //-  //- 	});
