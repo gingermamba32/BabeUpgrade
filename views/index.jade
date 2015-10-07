@@ -12,7 +12,7 @@ block content
       .form-group
         input.form-control.inv(type="text", id="upc", placeholder="UPC",  name="productupc11" )
       .form-group
-        input.form-control.quan1.quan(type="text", placeholder="Quantity",  name="qty11", id="foo", onclick='$("#foo").focus();')
+        input.form-control.quan1.quan(type="text", placeholder="Quantity",  name="qty11", id="foo")
       button.btn.btn-default.invSub(type="submit") Submit
       br
       .form-group
@@ -182,17 +182,17 @@ block content
          }
        	})
 
-       $(".quan").click(function () {
-           $("#" + this.id).focus();
-        });
-        $(".quan").focus(function () {
-        $(".keyboard").css("height", "300");// The height of your keyboard
-             window.scrollTo(0, 5000); // Scroll to the bottom of the page
-        });
-        $(".quan").blur(function () {
-        $(".keyboard").css("height", "0");
-          window.scrollTo(0, 0);
-         });
+       //- $(".quan").click(function () {
+       //-     $("#" + this.id).focus();
+       //-  });
+       //-  $(".quan").focus(function () {
+       //-  $(".keyboard").css("height", "300");// The height of your keyboard
+       //-       window.scrollTo(0, 5000); // Scroll to the bottom of the page
+       //-  });
+       //-  $(".quan").blur(function () {
+       //-  $(".keyboard").css("height", "0");
+       //-    window.scrollTo(0, 0);
+       //-   });
 
 
     });
