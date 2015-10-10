@@ -106,7 +106,7 @@ a.desc:hover {
 
 nav{
   float: right;
-  font-size: 15px;
+  font-size: 20px;
   font-color: black;
 }
 
@@ -178,6 +178,7 @@ h1.sub{
   cursor: pointer;
   font-size: 38px;
   font-weight: 400;
+  color:white;
   background-color: #52bab3;
   text-transform: uppercase;
   text-align:center;

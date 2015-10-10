@@ -10,15 +10,18 @@ block content
     h4 Scan Location and start adding products
     input(type="text", placeholder="Location", size="40", name="location" )
     input(type="text", placeholder="UPC", size="40", name="barcode" )
-    input(type="text", placeholder="Quantity", size="40", name="quantity" )
-    button.btn(type="submit", id="locationSearch") Submit location
+    input.quan(type="text", placeholder="Quantity", size="40", name="quantity" )
+    button.btn.invSub(type="submit", id="locationSearch") Submit location
 
   script.
    $(document).ready(function() {
    	$('input[name=location]').focus();
-   	//- $("#upcSearch").keyup(function() {
-    //-     if ($(this).val().length === 6) {
-    //-         $("#locationSearch").submit();
-    //-         }
-    //-     });
+   	
+    $('.quan').keypress(function (e){
+         if(e.which == 13){
+         $('.invSub').focus().click();
+         //window.scrollTo(200,400);
+         return false;
+         }
+        })
    	});
