@@ -65,8 +65,8 @@ block content
        td= post.location 
        td= post.quantity
        td= post.shipment
-       td #[a(href="/updateproduct/#{post.id}") Edit]
-       td #[a(href="/deleteuser/#{post.id}") Delete]
+       td #[a(href="/updateproduct/#{post.id}") Update]
+       td #[a(href="/deleteuser/#{post.id}", onclick="return warningList();") Delete]
 
      
 
@@ -107,6 +107,17 @@ block content
            window.scrollTo(0,0);
            $('.mess').show(200).delay(4000).hide(200);
        }); 
+        
+        //- Delete are you sure message
+        function warningList() {
+          if(confirm("Please confirm you want to delete this proposal") == true){
+          return true;
+          } 
+        else{
+        return false;
+          }
+        }
+
 
 
         //-   //- Press enter on quantities to submit to inventory
@@ -173,6 +184,16 @@ block content
 
 
     });
+     
+     //- Delete are you sure message
+        function warningList() {
+          if(confirm("Please confirm you want to delete this UPC") == true){
+          return true;
+          } 
+        else{
+        return false;
+          }
+        }
 
 
 

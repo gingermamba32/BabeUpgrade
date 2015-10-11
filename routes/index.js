@@ -178,11 +178,33 @@ router.post('/locateThree', function( req, res, next ){
                 	quantity     	  : req.body.qty11
             }}, 
             {upsert: false} , function(err, docs) {
-            	console.log( docs + " Updated Document by searching bin and upc");
-            	res.redirect('/');
-		});
+            	// console.log(docs + 'xxxxxx');
+            	console.log(req.body.productupc11);
+            	if (docs === null) {
+            		Locations.findOne({upc: req.body.productupc11}, function(err, docss) {
+					console.log( docss.upc + ' good upc');
+							var newLocation = new Locations({
+								location   : req.body.bin11,
+								upc        : req.body.productupc11,
+								description: docss.description,
+								shipment   : docss.shipment,
+								quantity   : req.body.qty11
+							});
+						console.log(newLocation);
+						newLocation.save(function(err, callback){
+						res.redirect('/');
+						})
 
+            		});
+            	}
+            	else {
+            		console.log( docs + " Updated Document by searching bin and upc");
+            	res.redirect('/');
+            	}
+
+		});
 	}
+	// end of if statement
 	else if (req.body.productupc33 === '' && req.body.qty33 === ''){
 		Locations.findOneAndUpdate(
 		{location: req.body.bin11, upc: req.body.productupc11},  
@@ -276,6 +298,7 @@ router.post('/qty', function( req, res, next ){
 })
 router.post('/upc', function( req, res, next ){
 	console.log(req.body.barcode);
+
 	Locations.findOne({upc: req.body.barcode}, function(err, docs) {
 			console.log( docs + ' good query');
 		res.render('upc1', {post:docs});
@@ -293,15 +316,15 @@ router.post('/po', function( req, res, next ){
 // Full search feature....upc is unique and can only have one search function
 router.post('/query', function(req,res,next){
 	
-	
+	console.log(req.body.description);
 	console.log(req.body.location);
 	console.log(req.body.qty);
 	console.log(req.body.barcode);
 	console.log(req.body.po);
 	if (req.body.barcode != ''){
-    Locations.findOne({upc: req.body.barcode}, function(err, docs) {
+    Locations.find({upc: req.body.barcode}, function(err, docs) {
 			console.log( docs + ' good query');
-		res.render('upc1', {post:docs});
+		res.render('query', {'nums':docs});
 	 });
 	}
 	else if (req.body.description != ''){
@@ -329,7 +352,11 @@ router.post('/query', function(req,res,next){
 		res.render('query', {'nums':docs});
 	 });
 	}
-})
+});
+
+
+
+
 
 router.get('/deleteuser/:id', function(req, res){
 	console.log(req.params.id);
@@ -381,5 +408,42 @@ router.post('/location', function( req, res, next ){
 				})
 	 });
 })
+
+// search by multiple fields
+// router.post('/queryTest', function(req,res,next){
+// 		console.log(req.body.description);
+// 		console.log(req.body.location);
+// 		console.log(req.body.qty);
+// 		console.log(req.body.barcode.length);
+// 		console.log(req.body.po);
+// 		var upc;
+// 		var description;
+// 		var location;
+// 		var quantity;
+// 		var po;
+// 		if (req.body.barcode != ''){
+// 			var upc = req.body.barcode;
+// 		}
+// 		else {
+// 			var upc = null;
+// 		}
+
+// 		if (req.body.location != ''){
+// 			var location = req.body.location;
+// 		}
+// 		else {
+// 			var location = null;
+// 		}
+// 		console.log(upc);
+// 		//assign var declarations
+// 		Locations.find({$and: [ {upc: upc, location: location}, {upc: {$where: {upc:{$ne:null}}}}, {location: {$where: {location:{$ne:null}}}}]}, 
+// 		 function(err,docs){
+// 			console.log(docs+' TESTTTTTTT');
+
+// 			res.render('query', {'nums':docs})
+// 		})
+
+
+// });
 
 module.exports = router;

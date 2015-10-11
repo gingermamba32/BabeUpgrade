@@ -4,14 +4,27 @@ block content
   
   h1(id="header") Add Location to Inventory
 
-  .submit-content
-   form.proposal-form.br(method="Post", action="/location", name="locationAdd")
-    h2.sub Add Location
-    h4 Scan Location and start adding products
-    input(type="text", placeholder="Location", size="40", name="location" )
-    input(type="text", placeholder="UPC", size="40", name="barcode" )
-    input.quan(type="text", placeholder="Quantity", size="40", name="quantity" )
-    button.btn.invSub(type="submit", id="locationSearch") Submit location
+  //- .submit-content
+  //-  form.proposal-form.br(method="Post", action="/location", name="locationAdd")
+  //-   h2.sub Add Location
+  //-   h4 Scan Location and start adding products
+  //-   input(type="text", placeholder="Location", size="40", name="location" )
+  //-   input(type="text", placeholder="UPC", size="40", name="barcode" )
+  //-   input.quan(type="text", placeholder="Quantity", size="40", name="quantity" )
+  //-   button.btn.invSub(type="submit", id="locationSearch") Submit location
+
+  div(style="background:#D0D0D0; width:55%; margin:40px auto; padding-bottom:10px; border-radius: 8px;")
+   form(method="Post", action="/location", name="locationAdd")
+    h2(style="padding-top:10px;") Add Location to Inventory
+    table.table-striped.table-bordered.table-responsive(width="80%", align="center", style="font-size:18px;border-collapse:collapse;" )
+     tr
+      td
+       input.form-control(type="text", placeholder="Location", size="10", name="location", style="font-size: 13px;padding:0px; margin:0px;", required)
+      td
+       input.form-control(type="text", placeholder="UPC", name="barcode", size="10", style="font-size: 13px;padding:0px; margin:0px;", required)
+      td
+       input.form-control.quan(type="text", placeholder="Quantity", size="10", name="quantity" , style="font-size: 13px;padding:0px; margin:0px;", required)
+    button.btn.invSub(type="submit", style="font-size:25px;") Submit
 
   script.
    $(document).ready(function() {
