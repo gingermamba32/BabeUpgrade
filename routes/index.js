@@ -212,8 +212,30 @@ router.post('/locateThree', function( req, res, next ){
                 	quantity     	  : req.body.qty11
             }}, 
             {upsert: false} , function(err, docs) {
-            	console.log( docs + " Updated Document#1 by searching bin11 and upc11");
+            	//console.log( docs + " Updated Document#1 by searching bin11 and upc11");
             	// res.redirect('/');
+            	if (docs === null) {
+            		Locations.findOne({upc: req.body.productupc11}, function(err, docss) {
+					console.log( docss.upc + ' good upc');
+							var newLocation = new Locations({
+								location   : req.body.bin11,
+								upc        : req.body.productupc11,
+								description: docss.description,
+								shipment   : docss.shipment,
+								quantity   : req.body.qty11
+							});
+						console.log(newLocation);
+						newLocation.save(function(err, callback){
+						//res.redirect('/');
+						})
+
+            		});
+            	}
+            	else {
+            		console.log( docs + " Updated Document by searching bin and upc");
+            	//res.redirect('/');
+            	}
+
 			});
 	Locations.findOneAndUpdate(
 		{location: req.body.bin11, upc: req.body.productupc22},  
@@ -221,8 +243,29 @@ router.post('/locateThree', function( req, res, next ){
                 	quantity     	  : req.body.qty22
             }}, 
             {upsert: false} , function(err, docs) {
-            	console.log( docs + " Updated Document#2 by searching bin11 and upc22");
-            	res.redirect('/');
+            	//console.log( docs + " Updated Document#2 by searching bin11 and upc22");
+            	//res.redirect('/');
+            	if (docs === null) {
+            		Locations.findOne({upc: req.body.productupc22}, function(err, docss) {
+					console.log( docss.upc + ' good upc');
+							var newLocation = new Locations({
+								location   : req.body.bin11,
+								upc        : req.body.productupc22,
+								description: docss.description,
+								shipment   : docss.shipment,
+								quantity   : req.body.qty22
+							});
+						console.log(newLocation);
+						newLocation.save(function(err, callback){
+						res.redirect('/');
+						})
+
+            		});
+            	}
+            	else {
+            		console.log( docs + " Updated Document by searching bin and upc");
+            		res.redirect('/');
+            	}
 			});
 	}
 
@@ -233,8 +276,29 @@ router.post('/locateThree', function( req, res, next ){
                 	quantity     	  : req.body.qty11
             }}, 
             {upsert: false} , function(err, docs) {
-            	console.log( docs + " Updated Document#1 by searching bin1 and upc11");
+            	//console.log( docs + " Updated Document#1 by searching bin1 and upc11");
             	// res.redirect('/');
+            	if (docs === null) {
+            		Locations.findOne({upc: req.body.productupc11}, function(err, docss) {
+					console.log( docss.upc + ' good upc');
+							var newLocation = new Locations({
+								location   : req.body.bin11,
+								upc        : req.body.productupc11,
+								description: docss.description,
+								shipment   : docss.shipment,
+								quantity   : req.body.qty11
+							});
+						console.log(newLocation);
+						newLocation.save(function(err, callback){
+						//res.redirect('/');
+						})
+
+            		});
+            	}
+            	else {
+            		console.log( docs + " Updated Document by searching bin and upc");
+            	//res.redirect('/');
+            	}
 			});
 	Locations.findOneAndUpdate(
 		{location: req.body.bin11, upc: req.body.productupc22},  
@@ -242,7 +306,29 @@ router.post('/locateThree', function( req, res, next ){
                 	quantity     	  : req.body.qty22
             }}, 
             {upsert: false} , function(err, docs) {
-            	console.log( docs + " Updated Document#2 by searching bin1 and upc22");
+            	//console.log( docs + " Updated Document#2 by searching bin1 and upc22");
+            	if (docs === null) {
+            		Locations.findOne({upc: req.body.productupc11}, function(err, docss) {
+					console.log( docss.upc + ' good upc');
+							var newLocation = new Locations({
+								location   : req.body.bin11,
+								upc        : req.body.productupc22,
+								description: docss.description,
+								shipment   : docss.shipment,
+								quantity   : req.body.qty22
+							});
+						console.log(newLocation);
+						newLocation.save(function(err, callback){
+						//res.redirect('/');
+						console.log(callback)
+						})
+
+            		});
+            	}
+            	else {
+            		console.log( docs + " Updated Document by searching bin and upc");
+            	//res.redirect('/');
+            	}
 			});
 	Locations.findOneAndUpdate(
 		{location: req.body.bin11, upc: req.body.productupc33},  
@@ -250,8 +336,29 @@ router.post('/locateThree', function( req, res, next ){
                 	quantity     	  : req.body.qty33
             }}, 
             {upsert: false} , function(err, docs) {
-            	console.log( docs + " Updated Document#3 by searching bin11 and upc33");
-            	res.redirect('/');
+            	//console.log( docs + " Updated Document#3 by searching bin11 and upc33");
+            	//res.redirect('/');
+            	if (docs === null) {
+            		Locations.findOne({upc: req.body.productupc11}, function(err, docss) {
+					console.log( docss.upc + ' good upc');
+							var newLocation = new Locations({
+								location   : req.body.bin11,
+								upc        : req.body.productupc33,
+								description: docss.description,
+								shipment   : docss.shipment,
+								quantity   : req.body.qty33
+							});
+						console.log(newLocation);
+						newLocation.save(function(err, callback){
+						res.redirect('/');
+						})
+
+            		});
+            	}
+            	else {
+            		console.log( docs + " Updated Document by searching bin and upc");
+            		res.redirect('/');
+            	}
 			});
 	}
 });
