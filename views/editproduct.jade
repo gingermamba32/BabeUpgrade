@@ -2,39 +2,10 @@ extends layout
 
 block content
   
-  h1(id="header", style="padding-top: 50px;") Babe Inventory Scanner
 
-  h5.mess( style="color:red; padding-top: 50px; padding-top: 30px; text-align:center;") You have successfully updated inventory!
-
-  div(style="background:#D0D0D0; width:90%; margin:40px auto; padding-top:50px; padding-bottom:50px; border-radius: 8px;")
-   form(role='form', method="Post", action="/locateThree", name="ProductQuantity")
-    table.table-striped.table-bordered.table-responsive(width="80%", align="center", style="font-size:18px;border-collapse:collapse" )
-     tr
-      td
-       input.form-control(type="text", id="loc", placeholder="LOCATION", name="bin11", size="10", style="font-size: 13px;padding:0px; margin:0px;", required)
-      td
-       input.form-control(type="text", id="upc", placeholder="UPC #1",  name="productupc11", size="10", style="font-size: 13px;padding:0px; margin:0px;", required)
-      td
-       input.form-control.quan(type="text", placeholder="QUANTITY #1",  name="qty11", id="foo", size="10", style="font-size: 13px;padding:0px; margin:0px;", required)
-     tr
-      td
-      td
-       input.form-control(type="text", id="loc2", placeholder="UPC #2",  name="productupc22", size="8", style="font-size: 13px;padding:0px; margin:0px;")
-      td
-       input.form-control.quan(type="text", id="upc2", placeholder="QUANTITY #2", name="qty22", size="8", style="font-size: 13px;padding:0px; margin:0px;")
-     tr
-      td(style="background:#D0D0D0;")
-      td
-       input.form-control(type="text", id="loc3", placeholder="UPC #3",  name="productupc33", size="8", style="font-size: 13px;padding:0px; margin:0px;")
-      td
-       input.form-control.quan(type="text", id="upc3", placeholder="QUANTITY #3",  name="qty33", size="8", style="font-size: 13px;padding:0px; margin:0px;")
-    button.btn.invSub(type="submit", style="font-size:25px;") Submit
-
-
- 
-  h1(style="padding-top: 40px; padding-bottom:20px;") Save Current Inventory
+  h1(style="padding-top: 40px; padding-bottom:20px;") Update UPC
   form(method="Post", action="/update", name="update")
-   button.search.btn(type="submit", style="font-size:15px;") Save
+   button.search.btn(type="submit", style="font-size:15px;", onclick="return updateAlert();") Save
    table.table-striped.table-bordered.table-responsive(width="90%", align="center", style="font-size:18px; color:black; padding-bottom: 35px;")
     tr(style="margin: 0 auto; background: #52bab3;")
      td #[b UPC]
@@ -45,18 +16,18 @@ block content
 
     tr
      td
-      input.form-control.upc(type="text", size="8", name="barcode", value="#{post[0].upc}", style="font-size: 13px;padding:0px; margin:0px;")
+      input.form-control.upc(type="text", size="8", name="barcode", value="#{post[0].upc}", style="font-size: 13px;padding:0px; margin:0px;height:50px;text-align:center;")
      td
-      input.form-control.location(type="text", size="8", name="description", value="#{post[0].description}", style="font-size: 13px;padding:0px; margin:0px;")
+      input.form-control.location(type="text", size="8", name="description", value="#{post[0].description}", style="font-size: 13px;padding:0px; margin:0px;height:50px;text-align:center;")
      td
-      input.form-control.location(type="text", size="8", name="location", value="#{post[0].location}", style="font-size: 13px;padding:0px; margin:0px;")
+      input.form-control.location(type="text", size="8", name="location", value="#{post[0].location}", style="font-size: 13px;padding:0px; margin:0px;height:50px;text-align:center;")
      td
-      input.form-control.quantity(type="text", size="8", name="qty", value="#{post[0].quantity}", style="font-size: 13px;padding:0px; margin:0px;")
+      input.form-control.quantity(type="text", size="8", name="qty", value="#{post[0].quantity}", style="font-size: 13px;padding:0px; margin:0px;height:50px;text-align:center;")
      td
-      input.form-control.poNum(type="text", size="8", name="po", value="#{post[0].shipment}", style="font-size: 13px;padding:0px; margin:0px;")
+      input.form-control.poNum(type="text", size="8", name="po", value="#{post[0].shipment}", style="font-size: 13px;padding:0px; margin:0px;height:50px;text-align:center;")
     tr(style="visibility:hidden;")
      td
-      input.form-control.poNum(type="text", size="8", name="id", value="#{post[0]._id}", style="font-size: 13px;padding:0px; margin:0px;")
+      input.form-control.poNum(type="text", size="8", name="id", value="#{post[0]._id}", style="font-size: 13px;padding:0px; margin:0px;height:50px;text-align:center;")
      
     
 
@@ -189,7 +160,9 @@ block content
 
     });
 
-
+        function updateAlert() {
+        alert("#{post[0].description} has been updated")
+        };
 
 
 

@@ -43,26 +43,25 @@ var Locations = db.model('location', {
 });
 
 
+// buttons page
+router.get('/', function(req, res, next) {
+	res.render('home');
+})
 
 /* GET home page with All Database Products*/
-router.get('/', function(req, res, next) {
+router.get('/scan', function(req, res, next) {
 	Locations.find( {}, function(err, docs) {
 		docs.reverse();
 	res.render('index', { 'products': docs });
 	});
 })
 
-router.get('/upc', function(req, res, next) {
-	res.render('upc');
+router.get('/search', function(req, res, next) {
+	res.render('search');
 })
 
-// router.get('/location', function(req, res, next) {
-// 	res.render('location');
-// })
 
-router.get('/qty', function(req, res, next) {
-	res.render('qty');
-})
+
 
 // // Query the database by UPC and return 
 // router.post('/query1', function( req, res, next ){

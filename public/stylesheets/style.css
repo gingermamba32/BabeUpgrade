@@ -189,6 +189,50 @@ h1.sub{
   opacity: .65;
 }
 
+.scan {
+  background: #00497a;
+  background-image: -webkit-linear-gradient(top, #00497a, #2980b9);
+  background-image: -moz-linear-gradient(top, #00497a, #2980b9);
+  background-image: -ms-linear-gradient(top, #00497a, #2980b9);
+  background-image: -o-linear-gradient(top, #00497a, #2980b9);
+  background-image: linear-gradient(to bottom, #00497a, #2980b9);
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0px;
+  font-family: Courier New;
+  color: #ffffff;
+  font-size: 70px;
+  padding: 10px 20px 10px 20px;
+  border: solid #000000 2px;
+  text-decoration: none;
+}
+
+.scan:hover {
+  opacity: .65;
+}
+
+.searchInv {
+  background: #00497a;
+  background-image: -webkit-linear-gradient(top, #00497a, #2980b9);
+  background-image: -moz-linear-gradient(top, #00497a, #2980b9);
+  background-image: -ms-linear-gradient(top, #00497a, #2980b9);
+  background-image: -o-linear-gradient(top, #00497a, #2980b9);
+  background-image: linear-gradient(to bottom, #00497a, #2980b9);
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0px;
+  font-family: Courier New;
+  color: #ffffff;
+  font-size: 70px;
+  padding: 10px 20px 10px 20px;
+  border: solid #000000 2px;
+  text-decoration: none;
+}
+
+.searchInv:hover {
+  opacity: .65;
+}
+
 
 /***************FOOTER**********************************************/
 footer {
@@ -268,21 +312,6 @@ a.list:hover {
   /*font-weight: 400;*/
 }
 
-
-/*STICKY NAV STYLES**************/
-.sticky-nav {
-  transition: 1.5s;
-}
-
-.is-sticky .sticky-nav {
-  background-color: #fff;
-  opacity: 0.85;
-  z-index: 1000;
-}
-
-::-webkit-input-placeholder {
-   text-align: center;
-}
 
 /*New form attempt*/
 .form-style-9{

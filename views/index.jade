@@ -2,29 +2,9 @@ extends layout
 
 block content
   
-  h1(id="header", style="padding-top: 75px;") Babe Inventory Scanner
+  h1(id="header", style="padding-top: 75px;") Scan Inventory
 
   h5.mess( style="color:red; padding-top: 50px; padding-top: 30px; text-align:center;") You have successfully updated inventory!
-
-  //- form.form-inline(role='form', method="Post", action="/locateThree", name="ProductQuantity", style="max-width: 800px; text-align:center; margin: 0 auto; background: #D0D0D0; padding: 15px 10px 10px; border-radius: 10px;")
-  //-     .form-group
-  //-       input.form-control.loc(type="text", id="loc", placeholder="LOCATION", name="bin11" )
-  //-     .form-group
-  //-       input.form-control.inv(type="text", id="upc", placeholder="UPC",  name="productupc11" )
-  //-     .form-group
-  //-       input.form-control.quan1.quan(type="number", placeholder="Quantity",  name="qty11", id="foo")
-  //-     button.btn.btn-default.invSub(type="submit") Submit
-  //-     br
-  //-     .form-group
-  //-       input.form-control.inv2(type="text", id="loc2", placeholder="SCAN UPC #2",  name="productupc22" )
-  //-     .form-group
-  //-       input.form-control.quan2.quan(type="text", id="upc2", placeholder="INPUT QTY #2", name="qty22" )
-  //-     br
-  //-     .form-group
-  //-       input.form-control.inv3(type="text", id="loc3", placeholder="SCAN UPC #3",  name="productupc33" )
-  //-     .form-group
-  //-       input.form-control.quan3.quan(type="text", id="upc3", placeholder="INPUT QTY #3",  name="qty33" )
-
 
   div(style="background:#D0D0D0; width:90%; margin:40px auto; padding-top:50px; padding-bottom:50px; border-radius: 8px;")
    form(role='form', method="Post", action="/locateThree", name="ProductQuantity")
@@ -51,45 +31,47 @@ block content
     button.btn.invSub(type="submit", style="font-size:25px;") Submit
 
 
- 
-  h1(style="padding-top: 40px;") Search Current Inventory
-  form(method="Post", action="/query", name="DBQuery", style="padding-bottom:50px;")
-   button.search.btn(type="submit", style="font-size:15px;") Search
-   table.table-striped.table-bordered.table-responsive(width="90%", align="center", style="font-size:18px; color:black; padding-bottom: 35px;")
-    tr(style="margin: 0 auto; background: #52bab3;")
-     td #[b UPC]
-     td #[b DESCRIPTION]
-     td #[b LOCATION]
-     td #[b QUANTITY]
-     td #[b PO#]
+    //- Test Form
+
+  div.inputFields(style="background:#D0D0D0; width:90%; margin:40px auto; padding-top:50px; padding-bottom:50px; border-radius: 8px;")
+   form(role='form', method="Post", action="/locateThree", name="ProductQuantity")
+    table.table-striped.table-bordered.table-responsive(width="80%", align="center", style="font-size:18px;border-collapse:collapse" )
+     tr
+      td
+       input.form-control(type="text", id="loc", placeholder="LOCATION", name="bin11", size="10", style="font-size: 13px;padding:0px; margin:0px;", required)
+      td
+       input.form-control(type="text", id="upc", placeholder="UPC #1",  name="upcArray[]", size="10", style="font-size: 13px;padding:0px; margin:0px;", required)
+      td
+       input.form-control.quan(type="text", placeholder="QUANTITY #1",  name="quantityArray[]", id="foo", size="10", style="font-size: 13px;padding:0px; margin:0px;", required)
+     tr
+      td
+       button.addFields Add UPC
+      td
+       input.form-control(type="text", id="loc2", placeholder="UPC #2",  name="upcArray[]", size="8", style="font-size: 13px;padding:0px; margin:0px;")
+      td
+       input.form-control.quan(type="text", id="upc2", placeholder="QUANTITY #2", name="quantityArray[]", size="8", style="font-size: 13px;padding:0px; margin:0px;")
+     tr
+      td(style="background:#D0D0D0;")
+      td
+       input.form-control(type="text", id="loc3", placeholder="UPC #3",  name="upcArray[]", size="8", style="font-size: 13px;padding:0px; margin:0px;")
+      td
+       input.form-control.quan(type="text", id="upc3", placeholder="QUANTITY #3",  name="quantityArray[]", size="8", style="font-size: 13px;padding:0px; margin:0px;")
+    button.btn.invSub(type="submit", style="font-size:25px;") Submit
+
+  button(onclick='addRow();') Add
+  button(onclick='removeRow();') Remove
+  div(style="background:#D0D0D0; width:90%; margin:40px auto; padding-top:50px; padding-bottom:50px; border-radius: 8px;")
+   table.table-striped.table-bordered.table-responsive(width="80%", align="center", style="font-size:18px;border-collapse:collapse", id="ticketCreate")
     tr
-     td
-      input.form-control.upc(type="text", placeholder="barcode", size="12", name="barcode", style="font-size: 13px;padding:0px; margin:0px;")
-     td
-      input.form-control.location(type="text", placeholder="description", size="12", name="description", style="font-size: 13px;padding:0px; margin:0px;")
-     td
-      input.form-control.location(type="text", placeholder="location", size="12", name="location", style="font-size: 13px;padding:0px; margin:0px;")
-     td
-      input.form-control.quantity(type="text", placeholder="qty", size="12", name="qty", style="font-size: 13px;padding:0px; margin:0px;")
-     td
-      input.form-control.poNum(type="text", placeholder="po", size="12", name="po", style="font-size: 13px;padding:0px; margin:0px;")
-   
+     td ssdfsd
+     td sfsafsdf
+     td sfsdfsd
+    tr
+     td sfsdfsd
+     td sfdsfs
+     td sdfdsfs
 
-
-    
-
-    
-    //- if (products.length)
-    //-  each product, i in products
-    //-   tr
-    //-    td= product.type
-    //-    td= product.length
-    //-    td= product.color
-    //-    td= product.location
-    //-    td= product.quantity
-    //-    td= product.upc
-    //-    td= product.shipment
-    //-    td=product.type+product.length+'-'+product.color
+ 
 
      
 
@@ -97,33 +79,54 @@ block content
     $(document).ready(function() {
     	$('input[name=bin11]').focus();
 
+      //- add input fields button
+      function addRow() {
+    //debugger;
+     var tableID="ticketCreate";
+     var table = document.getElementById(tableID);
+     var rowCount = table.rows.length;
 
-    //- done by the scanner
-    //- $(".loc").keyup(function() {
-    //-     if ($(this).val().length === 8) {
-    //-         $('input[name=productupc11]').focus();
-    //-         }
-    //-     });
-    //- $(".inv").keyup(function() {
-    //-     if ($(this).val().length === 6) {
-    //-         $('input[name=qty11]').focus();
-    //-         }
-    //-     });
+    if(rowCount<7){
+   
+        var row = table.insertRow(rowCount);
+        var cell1 = row.insertCell(0);
+        var element1 = document.createElement('input');
+        element1.type="text";
+        cell1.appendChild(element1);
+        row.insertCell(1);
+        row.insertCell(2);
+           }
+       }
 
-    //- $(".inv2").keyup(function() {
-    //-     if ($(this).val().length === 6) {
-    //-         $('input[name=qty22]').focus();
-    //-         }
-    //-     });
+      function removeRow(){
+          var tableID="ticketCreate";
+          var table = document.getElementById(tableID);
+          var rowCount = table.rows.length;
 
-    //- $(".inv3").keyup(function() {
-    //-     if ($(this).val().length === 6) {
-    //-         $('input[name=qty33]').focus();
-    //-         }
-    //-     });
+          if(rowCount>1){            
+              table.deleteRow(-1);
+          }
+      }
+
+    //-   var max_fields      = 8; //maximum input boxes allowed
+    //-   var wrapper         = $(".inputFields"); //Fields wrapper
+    //-   var add_button      = $(".addFields"); //Add button ID
+    
+    //- var x = 1; //initlal text box count
+    //- $(add_button).click(function(e){ //on add input button click
+    //-     e.preventDefault();
+    //-     if(x < max_fields){ //max input box allowed
+    //-         x++; //text box increment
+    //-         $(wrapper).append('<div><input type="text" name="mytext[]"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
+    //-     }
+    //- });
+    
+    //- $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+    //-     e.preventDefault(); $(this).parent('div').remove(); x--;
+    //- })
 
 
-
+    
       //- success message
 
        $('.mess').hide();
