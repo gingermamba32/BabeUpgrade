@@ -38,15 +38,15 @@ block content
     table.table-striped.table-bordered.table-responsive#myTable(width="80%", align="center", style="font-size:18px;border-collapse:collapse" )
      tr
       td
-       input.form-control(type="text", id="loc", placeholder="LOCATION", name="bin11", size="10", style="font-size: 13px;padding:0px; margin:0px;", required)
+       input.form-control(type="text", id="loc", placeholder="LOCATION", name="bin11", size="10", style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;", required)
       td
-       input.form-control(type="text", id="upc", placeholder="UPC #1",  name="upcArray[]", size="10", style="font-size: 13px;padding:0px; margin:0px;", required)
+       input.form-control(type="text", id="upc", placeholder="UPC #1",  name="upcArray[]", size="10", style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;", required)
       td
-       input.form-control.quan(type="text", placeholder="QUANTITY #1",  name="quantityArray[]", id="foo", size="10", style="font-size: 13px;padding:0px; margin:0px;", required)
+       input.form-control.quan(type="text", placeholder="QUANTITY #1",  name="quantityArray[]", id="foo", size="10", style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;", required)
      tr
       td
-       button(onclick="myCreateFunction()") Add
-       button(onclick="myDeleteFunction()") Remove
+       button(onclick="myCreateFunction()") +
+       button(onclick="myDeleteFunction()") -
       td
        input.form-control(type="text", id="loc2", placeholder="UPC #2",  name="upcArray[]", size="8", style="font-size: 13px;padding:0px; margin:0px;")
       td
@@ -58,21 +58,6 @@ block content
       td
        input.form-control.quan(type="text", id="upc3", placeholder="QUANTITY #3",  name="quantityArray[]", size="8", style="font-size: 13px;padding:0px; margin:0px;")
     button.btn.invSub(type="submit", style="font-size:25px;") Submit
-
-  
-  div(style="background:#D0D0D0; width:90%; margin:40px auto; padding-top:50px; padding-bottom:50px; border-radius: 8px;")
-   table.table-striped.table-bordered.table-responsive#myTable(width="80%", align="center", style="font-size:18px;border-collapse:collapse")
-    tr
-     td ssdfsd
-     td sfsafsdf
-     td sfsdfsd
-    tr
-     td 
-      button(onclick="myCreateFunction()") Add
-      button(onclick="myDeleteFunction()") Remove
-     td sfdsfs
-     td sdfdsfs
-
  
 
      
@@ -217,9 +202,9 @@ block content
       var cell1 = row.insertCell(0);
       var cell2 = row.insertCell(1);
       var cell3 = row.insertCell(2);
-      cell1.innerHTML = "Add to same location";
-      cell2.innerHTML = '<input class="form-control quan" type="text" placeholder="UPC" size="8" name="upcArray[]" style="font-size: 13px;padding:0px; margin:0px; text-align:center" />';
-      cell3.innerHTML = '<input class="form-control quan" type="text" placeholder="QUANTITY" size="8" name="quantityArray[]" style="font-size: 13px;padding:0px; margin:0px; text-align:center" />';
+      cell1.style.backgroundColor = '#D0D0D0'
+      cell2.innerHTML = '<input class="form-control quan" type="text" placeholder="UPC" size="10" name="upcArray[]" style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;" />';
+      cell3.innerHTML = '<input class="form-control quan" type="text" placeholder="QUANTITY" size="10" name="quantityArray[]" style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;" />';
       }
 
       function myDeleteFunction() {
