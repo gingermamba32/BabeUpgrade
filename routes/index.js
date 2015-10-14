@@ -164,12 +164,12 @@ router.post('/locateMulti', function( req, res, next ){
 router.post('/locateThree', function( req, res, next ){
 	console.log(req.body);
 	console.log(req.body.bin11);
-	console.log(req.body.productupc11);
-	console.log(req.body.qty11);
-	console.log(req.body.productupc22);
-	console.log(req.body.qty22);
-	console.log(req.body.productupc33);
-	console.log(req.body.qty33);
+	console.log(req.body.upcArray[1]);  //productupc11
+	console.log(req.body.quantityArray[0]); //qty11
+	console.log(req.body.upcArray[1]); //productupc22
+	console.log(req.body.quantityArray[1]); //qty22
+	console.log(req.body.upcArray[2]);   //productupc33
+	console.log(req.body.quantityArray[2]); //qty33
 	if ( req.body.productupc33 === '' && req.body.qty33 === '' && req.body.productupc22 === '' && req.body.qty22 === ''){
 		Locations.findOneAndUpdate(
 		{location: req.body.bin11, upc: req.body.productupc11},  
