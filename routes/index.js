@@ -77,11 +77,34 @@ router.post('/radioSearch', function(req,res,next){
 	console.log(req.body.type);
 	console.log(req.body.color);
 	//new RegExp("^"
+	if (req.body.type == '' && req.body.color == ''){
+		Locations.find({description: new RegExp("^" + req.body.length)}, function(err,docs){
+			res.render('test', {'nums':docs});
+		})
 
+	}
+	else if (req.body.length == '' && req.body.color == ''){
+		Locations.find({description: new RegExp("/" + req.body.type + "/")}, function(err,docs){
+			res.render('test', {'nums': docs});
+		})
+	}
+
+	else if (req.body.length == '' && req.body.type == ''){
+		Locations.find({description: new RegExp("/" + req.body.color + "/")}, function(err, docs){
+			res.render('test', {'nums': docs});
+		})
+	}
+	else if (req.body.color == ''){
+		Locations.find({description: new RegExp("^" + req.body.length + "." + req.body.type)}, function(err,docs){
+			res.render('test', {'nums':docs});
+		})
+	}
+	else {
 	Locations.find({description: req.body.length + "." + req.body.type + "." + req.body.color + "."}, function(err,docs){
 		console.log( docs + ' good query');
 		res.render('test', {'nums':docs});	
 		});
+	}
 })
 
 router.post('/addUpc', function(req, res,next){

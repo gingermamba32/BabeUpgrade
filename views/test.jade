@@ -2,11 +2,11 @@ extends layout
 
 block content
 
-    form(role='form', method="Post", action="/radioSearch", name="Length18", style="width:50%; margin: 0 auto; padding-bottom: 50px;")
-     p step 1 - length
+    form(role='form', method="Post", action="/radioSearch", name="Length18", style="width:90%; margin: 0 auto; padding-bottom: 50px;")
+     p(style="padding-top:0px; padding-bottom: 0px;") step 1 - length
      label.radio-inline 
-      input(type="radio", value="16", name="length", checked)
-      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") 16"
+      input(type="radio", value="14", name="length", checked)
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") 14"
      label.radio-inline 
       input(type="radio", value="18", name="length" )
       p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") 18"
@@ -18,69 +18,192 @@ block content
      br
      br
      p Step 2 - type
-     label S-TAPE
-     input(type="radio", value="S-TAPE", name="type" )
-     label SI
-     input(type="radio", value="SI", name="type" )
-     label IBODY
-     input(type="radio", value="IBODY", name="type" )
+     label.radio-inline 
+      input(type="radio", value="S-TAPE", name="type" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") S-TAPE
+     label.radio-inline 
+      input(type="radio", value="SI", name="type" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") SI
+     label.radio-inline 
+      input(type="radio", value="IBODY", name="type" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 22px;") IBODY
+     label.radio-inline 
+      input(type="radio", value="ICURLY", name="type" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 22px;") ICURLY
+     label.radio-inline 
+      input(type="radio", value="KLS", name="type" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") KLS
+     label.radio-inline 
+      input(type="radio", value="KBODY", name="type" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 22px;") KBODY
+     label.radio-inline 
+      input(type="radio", value="KCURLY", name="type" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 22px;") KCULRY
+     label.radio-inline 
+      input(type="radio", value="other", name="type" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") OTHER
      br
      br
      br
      br
-     p Step 2 - color
-     label 60
-     input(type="radio", value="60", name="color" )
-     label SI
-     input(type="radio", value="SI", name="color" )
-     label IBODY
-     input(type="radio", value="IBODY", name="color" )
+     p Step 3 - color
+     label.radio-inline 
+      input(type="radio", value="1", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") 1
+     label.radio-inline 
+      input(type="radio", value="10", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") 10
+     label.radio-inline 
+      input(type="radio", value="1001", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") 1001
+     label.radio-inline 
+      input(type="radio", value="12/600", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") 12/600
+     label.radio-inline 
+      input(type="radio", value="1B", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") 1B
+     label.radio-inline 
+      input(type="radio", value="2", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") 2
+     br
+     br
+     br
+     label.radio-inline 
+      input(type="radio", value="24", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") 24
+     label.radio-inline 
+      input(type="radio", value="27", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") 27
+     label.radio-inline 
+      input(type="radio", value="27/613", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") 27/613
+     label.radio-inline 
+      input(type="radio", value="27A", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") 27A
+     label.radio-inline 
+      input(type="radio", value="30/33", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") 30/33
+     label.radio-inline 
+      input(type="radio", value="3R", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") 3R
+     br
+     br
+     br
+     label.radio-inline 
+      input(type="radio", value="4", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") 4
+     label.radio-inline 
+      input(type="radio", value="5B", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") 5B
+     label.radio-inline 
+      input(type="radio", value="5R", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") 5R
+     label.radio-inline 
+      input(type="radio", value="6", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") 6
+     label.radio-inline 
+      input(type="radio", value="60", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") 60
+     label.radio-inline 
+      input(type="radio", value="600", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") 600
+     br
+     br
+     br
+     label.radio-inline 
+      input(type="radio", value="613", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") 613
+     label.radio-inline 
+      input(type="radio", value="8", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") 8
+     label.radio-inline 
+      input(type="radio", value="BLUE", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") BLUE
+     label.radio-inline 
+      input(type="radio", value="BURG", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") BURG
+     label.radio-inline 
+      input(type="radio", value="DKFXA", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") DKFXA
+     label.radio-inline 
+      input(type="radio", value="DKPURP", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") DKPURP
+     br
+     br
+     br
+     label.radio-inline 
+      input(type="radio", value="FUNKY", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") FUNKY
+     label.radio-inline 
+      input(type="radio", value="O-12_600", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") O-12_600
+     label.radio-inline 
+      input(type="radio", value="O-1B_6", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") O-1B_6
+     label.radio-inline 
+      input(type="radio", value="O-4_613", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") O-4_613
+     label.radio-inline 
+      input(type="radio", value="PINK", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") PINK
+     label.radio-inline 
+      input(type="radio", value="PURP", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") PURP
+     br
+     br
+     br
+     label.radio-inline 
+      input(type="radio", value="RED", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") RED
+     label.radio-inline 
+      input(type="radio", value="TEAL", name="color" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") TEAL
 
 
 
      button(type="submit", style="font-size:35px;") Search ProductID
 
-    form
-      .row
-        .col-sm-3 Test 1 - Bootstrap
-        .col-sm-9
-          .btn-group(data-toggle='buttons')
-            label.btn.btn-default
-              input#q156(type='radio', name='quality[25]', value='1')
-              |  1
-            label.btn.btn-default
-              input#q157(type='radio', name='quality[25]', value='2')
-              |  2
-            label.btn.btn-default
-              input#q158(type='radio', name='quality[25]', value='3')
-              |  3
-            label.btn.btn-default
-              input#q159(type='radio', name='quality[25]', value='4')
-              |  4
-            label.btn.btn-default.active
-              input#q160(type='radio', name='quality[25]', checked='checked', value='5')
-              |  5
-      .row
-        .col-sm-3 Test 2 - No Bootstrap
-        .col-sm-9
-          div
-            label
-              input#q128(type='radio', name='quality[21]', value='1')
-              |  1
-            label
-              input#q129(type='radio', name='quality[21]', checked='checked', value='2')
-              |  2
-            label
-              input#q130(type='radio', name='quality[21]', value='3')
-              |  3
-            label
-              input#q131(type='radio', name='quality[21]', value='4')
-              |  4
-            label
-              input#q132(type='radio', name='quality[21]', value='5')
-              |  5
-      br
-      input.btn.btn-primary(type='submit', value='Post Form to Console')
+    //- form
+    //-   .row
+    //-     .col-sm-3 Test 1 - Bootstrap
+    //-     .col-sm-9
+    //-       .btn-group(data-toggle='buttons')
+    //-         label.btn.btn-default
+    //-           input#q156(type='radio', name='quality[25]', value='1')
+    //-           |  1
+    //-         label.btn.btn-default
+    //-           input#q157(type='radio', name='quality[25]', value='2')
+    //-           |  2
+    //-         label.btn.btn-default
+    //-           input#q158(type='radio', name='quality[25]', value='3')
+    //-           |  3
+    //-         label.btn.btn-default
+    //-           input#q159(type='radio', name='quality[25]', value='4')
+    //-           |  4
+    //-         label.btn.btn-default.active
+    //-           input#q160(type='radio', name='quality[25]', checked='checked', value='5')
+    //-           |  5
+    //-   .row
+    //-     .col-sm-3 Test 2 - No Bootstrap
+    //-     .col-sm-9
+    //-       div
+    //-         label
+    //-           input#q128(type='radio', name='quality[21]', value='1')
+    //-           |  1
+    //-         label
+    //-           input#q129(type='radio', name='quality[21]', checked='checked', value='2')
+    //-           |  2
+    //-         label
+    //-           input#q130(type='radio', name='quality[21]', value='3')
+    //-           |  3
+    //-         label
+    //-           input#q131(type='radio', name='quality[21]', value='4')
+    //-           |  4
+    //-         label
+    //-           input#q132(type='radio', name='quality[21]', value='5')
+    //-           |  5
+    //-   br
+    //-   input.btn.btn-primary(type='submit', value='Post Form to Console')
 
     //- table
     //-  if (nums.length)
