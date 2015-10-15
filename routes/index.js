@@ -69,6 +69,27 @@ router.get('/invalidInventory', function(req, res, next) {
 })
 
 
+router.post('/addUpc', function(req, res,next){
+	console.log(req.body.quantity);
+	Locations.findOne({upc: req.body.barcode}, function(err, docs) {
+		if (docs != null) {
+			res.redirect('/invalidInventory');
+		}
+		else {
+			var newUpc = new Locations({
+			upc        : req.body.upc,
+			description: req.body.description,
+			location   : req.body.location,
+			shipment   : req.body.po,
+			quantity   : req.body.quantity
+			});
+							console.log(newUpc);
+							newUpc.save(function(err, callback){
+								res.redirect('/addUpc');
+							})
+		}
+	});
+});
 
 
 // // Query the database by UPC and return 
