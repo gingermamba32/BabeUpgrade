@@ -68,6 +68,17 @@ router.get('/invalidInventory', function(req, res, next) {
 	res.render('invalid');
 })
 
+router.get('/test', function(req, res, next) {
+	res.render('test');
+})
+
+router.post('/radioSearch', function(req,res,next){
+	console.log(req.body.length18);
+	Locations.find({description: new RegExp("^" + req.body.length)}, function(err,docs){
+		console.log( docs + ' good query');
+		res.render('test', {'nums':docs});	
+		});
+})
 
 router.post('/addUpc', function(req, res,next){
 	console.log(req.body.quantity);

@@ -1,0 +1,39 @@
+extends layout
+
+block content
+
+    form(role='form', method="Post", action="/radioSearch", name="Length18")
+     p step 1
+     label 16
+     input(type="radio", value="16", name="length", checked)
+     label 18
+     input(type="radio", value="18", name="length" )
+     label 22
+     input(type="radio", value="22", name="length" )
+     br
+     br
+     br
+     br
+     p Step 2
+     label S-TAPE
+     input(type="radio", value="S-TAPE", name="type" )
+     label SI
+     input(type="radio", value="SI", name="type" )
+     label IBODY
+     input(type="radio", value="IBODY", name="type" )
+
+
+
+     button(type="submit", style="font-size:35px;") Search ProductID
+
+    //- table
+    //-  if (nums.length)
+    //-   each post, i in nums
+    //-    tr
+    //-     td= post.upc
+    //-     td= post.description
+    //-     td= post.location 
+    //-     td= post.quantity
+    //-     td= post.shipment
+    //-     td #[a(href="/updateproduct/#{post.id}") Update]
+    //-     td #[a(href="/deleteuser/#{post.id}", onclick="return warningList();") Delete]
