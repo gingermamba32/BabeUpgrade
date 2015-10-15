@@ -2,29 +2,85 @@ extends layout
 
 block content
 
-    form(role='form', method="Post", action="/radioSearch", name="Length18")
-     p step 1
-     label 16
-     input(type="radio", value="16", name="length", checked)
-     label 18
-     input(type="radio", value="18", name="length" )
-     label 22
-     input(type="radio", value="22", name="length" )
+    form(role='form', method="Post", action="/radioSearch", name="Length18", style="width:50%; margin: 0 auto; padding-bottom: 50px;")
+     p step 1 - length
+     label.radio-inline 
+      input(type="radio", value="16", name="length", checked)
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") 16"
+     label.radio-inline 
+      input(type="radio", value="18", name="length" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") 18"
+     label.radio-inline 
+      input(type="radio", value="22", name="length" )
+      p(style="padding-left: 23px; padding-top: 0px; font-size: 17px;") 22"
      br
      br
      br
      br
-     p Step 2
+     p Step 2 - type
      label S-TAPE
      input(type="radio", value="S-TAPE", name="type" )
      label SI
      input(type="radio", value="SI", name="type" )
      label IBODY
      input(type="radio", value="IBODY", name="type" )
+     br
+     br
+     br
+     br
+     p Step 2 - color
+     label 60
+     input(type="radio", value="60", name="color" )
+     label SI
+     input(type="radio", value="SI", name="color" )
+     label IBODY
+     input(type="radio", value="IBODY", name="color" )
 
 
 
      button(type="submit", style="font-size:35px;") Search ProductID
+
+    form
+      .row
+        .col-sm-3 Test 1 - Bootstrap
+        .col-sm-9
+          .btn-group(data-toggle='buttons')
+            label.btn.btn-default
+              input#q156(type='radio', name='quality[25]', value='1')
+              |  1
+            label.btn.btn-default
+              input#q157(type='radio', name='quality[25]', value='2')
+              |  2
+            label.btn.btn-default
+              input#q158(type='radio', name='quality[25]', value='3')
+              |  3
+            label.btn.btn-default
+              input#q159(type='radio', name='quality[25]', value='4')
+              |  4
+            label.btn.btn-default.active
+              input#q160(type='radio', name='quality[25]', checked='checked', value='5')
+              |  5
+      .row
+        .col-sm-3 Test 2 - No Bootstrap
+        .col-sm-9
+          div
+            label
+              input#q128(type='radio', name='quality[21]', value='1')
+              |  1
+            label
+              input#q129(type='radio', name='quality[21]', checked='checked', value='2')
+              |  2
+            label
+              input#q130(type='radio', name='quality[21]', value='3')
+              |  3
+            label
+              input#q131(type='radio', name='quality[21]', value='4')
+              |  4
+            label
+              input#q132(type='radio', name='quality[21]', value='5')
+              |  5
+      br
+      input.btn.btn-primary(type='submit', value='Post Form to Console')
 
     //- table
     //-  if (nums.length)

@@ -73,8 +73,12 @@ router.get('/test', function(req, res, next) {
 })
 
 router.post('/radioSearch', function(req,res,next){
-	console.log(req.body.length18);
-	Locations.find({description: new RegExp("^" + req.body.length)}, function(err,docs){
+	console.log(req.body.length);
+	console.log(req.body.type);
+	console.log(req.body.color);
+	//new RegExp("^"
+
+	Locations.find({description: req.body.length + "." + req.body.type + "." + req.body.color + "."}, function(err,docs){
 		console.log( docs + ' good query');
 		res.render('test', {'nums':docs});	
 		});
