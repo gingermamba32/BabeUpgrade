@@ -33,9 +33,12 @@ block content
 
     //- Test Form
 
-  div.inputFields(style="background:#D0D0D0; width:90%; margin:40px auto; padding-top:50px; padding-bottom:50px; border-radius: 8px;")
-   button(onclick="myCreateFunction()") +
-   button(onclick="myDeleteFunction()") -
+
+  div.inputFields(style="background:#D0D0D0; width:90%; margin:80px auto; padding-top:50px; padding-bottom:50px; border-radius: 8px;")
+   h2(style="text-align:center")=error
+   div(style="float:right; margin-top: 0.45%; padding-right: 20px;")
+    button.btn.btn-warning(onclick="myCreateFunction()", style="font-size: 20px; background-color:green; color: white;") +
+    button.btn.btn-warning(onclick="myDeleteFunction()", style="font-size: 20px; background-color:red; color:white;") -
    form(role='form', method="Post", action="/locateThree", name="ProductQuantity")
     table.table-striped.table-bordered.table-responsive#myTable(width="80%", align="center", style="font-size:18px;border-collapse:collapse" )
      tr

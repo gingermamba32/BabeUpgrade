@@ -1,6 +1,11 @@
 extends layout
 
 block content
+ div(style="text-align: center")
+  h1 Your product did not get updated
+  h3 Please go back to the beginning
+  a(href="/")
+   button.btn.btn-primary Go Back 
   h1= message
   h2= error.status
   pre #{error.stack}
