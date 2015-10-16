@@ -163,6 +163,22 @@ block content
 
      button(type="submit", style="font-size:35px;") Search ProductID
 
+
+    form(role='form', method="Post", action="/radioSearch", name="SearchRadio", style="width:50%; margin: 0 auto; padding-bottom: 50px;")
+     .btn-group(data-toggle='buttons')
+      h6 Choose Type
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio')
+        |  16"
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio')
+        |  18"
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio')
+        |  22"
+     br
+     button(type="submit", style="font-size:35px;") Search ProductID
+
     //- form
     //-   .row
     //-     .col-sm-3 Test 1 - Bootstrap
