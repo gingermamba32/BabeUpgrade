@@ -14,8 +14,11 @@ block content
    form(role='form', method="Post", action="/locateThree", name="ProductQuantity")
     table.table-striped.table-bordered.table-responsive#myTable(width="80%", align="center", style="font-size:18px;border-collapse:collapse" )
      tr
+      td(style="width:50%;")
+       input.form-control(type="text", id="loc", placeholder="LOCATION", name="bin11", size="18", style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;", required)
       td
-       input.form-control(type="text", id="loc", placeholder="LOCATION", name="bin11", size="10", style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;", required)
+       input.form-control(type="text", id="loc", placeholder="PO", name="shipment", size="10", style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;", required)
+     tr
       td
        input.form-control(type="text", id="upc", placeholder="UPC #1",  name="upcArray", size="10", style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;", required)
       td
@@ -167,10 +170,9 @@ block content
           var row = table.insertRow(-1);
           var cell1 = row.insertCell(0);
           var cell2 = row.insertCell(1);
-          var cell3 = row.insertCell(2);
           cell1.style.backgroundColor = '#D0D0D0'
-          cell2.innerHTML = '<input class="form-control" type="text" placeholder="UPC" size="10" name="upcArray" style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;" />';
-          cell3.innerHTML = '<input class="form-control quan" type="number" placeholder="QUANTITY" size="10" name="quantityArray" style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;" />';
+          cell1.innerHTML = '<input class="form-control" type="text" placeholder="UPC" size="10" name="upcArray" style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;" />';
+          cell2.innerHTML = '<input class="form-control quan" type="number" placeholder="QUANTITY" size="10" name="quantityArray" style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;" />';
           $('input[name="upcArray"]').focus();
         }
       }
