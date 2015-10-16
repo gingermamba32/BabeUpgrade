@@ -80,46 +80,46 @@ router.post('/radioSearch', function(req,res,next){
 	if (req.body.type == undefined && req.body.color == undefined){
 		Locations.find({description: new RegExp("^" + req.body.length)}, function(err,docs){
 			console.log( docs + ' good query');
-			res.render('test', {'nums':docs});
+			res.render('query', {'nums':docs});
 		})
 
 	}
 	else if (req.body.length == undefined && req.body.color == undefined){
 		Locations.find({description: new RegExp("/" + req.body.type + "/")}, function(err,docs){
 			console.log( docs + ' good query');
-			res.render('test', {'nums': docs});
+			res.render('query', {'nums': docs});
 		})
 	}
 
 	else if (req.body.length == undefined && req.body.type == undefined){
 		Locations.find({description: new RegExp("/" + req.body.color + "/")}, function(err, docs){
 			console.log( docs + ' good query');
-			res.render('test', {'nums': docs});
+			res.render('query', {'nums': docs});
 		})
 	}
 	else if (req.body.color == undefined){
 		Locations.find({description: new RegExp("^" + req.body.length + "." + req.body.type)}, function(err,docs){
 			console.log( docs + ' good query');
-			res.render('test', {'nums':docs});
+			res.render('query', {'nums':docs});
 		})
 	}
 	else if (req.body.length == undefined){
 		Locations.find({description: new RegExp("/" + req.body.type + "." + req.body.color + "/")}, function(err,docs){
 			console.log( docs + ' good query');
-			res.render('test', {'nums':docs});
+			res.render('query', {'nums':docs});
 		})
 	}
 
 	else if (req.body.type == undefined){
 		Locations.find({description: new RegExp("^" + req.body.length + "/" + req.body.color + "/")}, function(err, docs){
 			console.log( docs + ' good query');
-			res.render('test', {'nums': docs});
+			res.render('query', {'nums': docs});
 		})
 	}
 	else {
 	Locations.find({description: req.body.length + "." + req.body.type + "." + req.body.color + "."}, function(err,docs){
 		console.log( docs + ' good query');
-		res.render('test', {'nums':docs});	
+		res.render('query', {'nums':docs});	
 		});
 	}
 })

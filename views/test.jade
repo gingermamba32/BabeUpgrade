@@ -165,61 +165,119 @@ block content
 
 
     form(role='form', method="Post", action="/radioSearch", name="SearchRadio", style="width:50%; margin: 0 auto; padding-bottom: 50px;")
-     .btn-group(data-toggle='buttons')
-      h6 Choose Type
+     .btn-group(data-toggle='buttons-radio', style="margin: 0 auto; text-align: center")
+      h6 Choose Length
       label.btn.btn-primary(style="font-size:20px;")
-        input(type='radio')
-        |  16"
+        input(type='radio', value="14", name="length", style="display:none;")
+        |  14"
       label.btn.btn-primary(style="font-size:20px;")
-        input(type='radio')
+        input(type='radio', value="18", name="length", style="display:none;")
         |  18"
       label.btn.btn-primary(style="font-size:20px;")
-        input(type='radio')
+        input(type='radio', value="22", name="length", style="display:none;")
         |  22"
-     br
-     button(type="submit", style="font-size:35px;") Search ProductID
+      br
+      br
+      h6 Choose Type
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio', value="S-TAPE", name="type", style="display:none;")
+        |  S-TAPE
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio', value="SI", name="type", style="display:none;")
+        |  SI
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio', value="IBODY", name="type", style="display:none;")
+        |  IBODY
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio', value="ICURLY", name="type", style="display:none;")
+        |  ICURLY
+      br
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio', value="KLS", name="type", style="display:none;")
+        |  KLS
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio', value="KBODY", name="type", style="display:none;")
+        |  KBODY
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio', value="KCURLY", name="type", style="display:none;")
+        |  KCURLY
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio', value="OTHER", name="type", style="display:none;")
+        |  OTHER
+      br
+      br
+      h6 Choose Color
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio', value="1", name="color", style="display:none;")
+        |  1
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio', value="10", name="color", style="display:none;")
+        |  10
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio', value="1001", name="color", style="display:none;")
+        |  1001
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio', value="12/600", name="color", style="display:none;")
+        |  12/600
+      br
+      br
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio', value="1B", name="color", style="display:none;")
+        |  1B
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio', value="2", name="color", style="display:none;")
+        |  2
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio', value="24", name="color", style="display:none;")
+        |  24
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio', value="27", name="color", style="display:none;")
+        |  27
+      br
+      br
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio', value="S-TAPE", name="type", style="display:none;")
+        |  S-TAPE
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio', value="SI", name="type", style="display:none;")
+        |  SI
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio', value="IBODY", name="type", style="display:none;")
+        |  IBODY
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio', value="ICURLY", name="type", style="display:none;")
+        |  ICURLY
+      br
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio', value="KLS", name="type", style="display:none;")
+        |  KLS
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio', value="KBODY", name="type", style="display:none;")
+        |  KBODY
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio', value="KCURLY", name="type", style="display:none;")
+        |  KCURLY
+      label.btn.btn-primary(style="font-size:20px;")
+        input(type='radio', value="OTHER", name="type", style="display:none;")
+        |  OTHER
+
+     button(type="submit", style="font-size:25px;") Search ProductID
 
     //- form
-    //-   .row
-    //-     .col-sm-3 Test 1 - Bootstrap
-    //-     .col-sm-9
-    //-       .btn-group(data-toggle='buttons')
-    //-         label.btn.btn-default
-    //-           input#q156(type='radio', name='quality[25]', value='1')
-    //-           |  1
-    //-         label.btn.btn-default
-    //-           input#q157(type='radio', name='quality[25]', value='2')
-    //-           |  2
-    //-         label.btn.btn-default
-    //-           input#q158(type='radio', name='quality[25]', value='3')
-    //-           |  3
-    //-         label.btn.btn-default
-    //-           input#q159(type='radio', name='quality[25]', value='4')
-    //-           |  4
-    //-         label.btn.btn-default.active
-    //-           input#q160(type='radio', name='quality[25]', checked='checked', value='5')
-    //-           |  5
-    //-   .row
-    //-     .col-sm-3 Test 2 - No Bootstrap
-    //-     .col-sm-9
-    //-       div
-    //-         label
-    //-           input#q128(type='radio', name='quality[21]', value='1')
-    //-           |  1
-    //-         label
-    //-           input#q129(type='radio', name='quality[21]', checked='checked', value='2')
-    //-           |  2
-    //-         label
-    //-           input#q130(type='radio', name='quality[21]', value='3')
-    //-           |  3
-    //-         label
-    //-           input#q131(type='radio', name='quality[21]', value='4')
-    //-           |  4
-    //-         label
-    //-           input#q132(type='radio', name='quality[21]', value='5')
-    //-           |  5
+    //-   label Radius
+    //-   .btn-group(data-toggle-name='radius_options', data-toggle='buttons-radio')
+    //-     button.btn(type='button', value='5', data-toggle='button', style="font-size: 10px;") 5 Miles
+    //-     button.btn(type='button', value='10', data-toggle='button', style="font-size: 10px;") 10 Miles
+    //-     button.btn(type='button', value='15', data-toggle='button', style="font-size: 10px;") 15 Miles
+    //-     button.btn(type='button', value='20', data-toggle='button') 20 Miles
+    //-   input(type='hidden', name='radius_options', value='20')
+    //-   label Sort
+    //-   .btn-group(data-toggle-name='sort_options', data-toggle='buttons-radio')
+    //-     button.btn.active(type='button', value='default', data-toggle='button') Default
+    //-     button.btn(type='button', value='distance', data-toggle='button') Distance
+    //-   input(type='hidden', name='sort_options', value='default')
     //-   br
-    //-   input.btn.btn-primary(type='submit', value='Post Form to Console')
+    //-   input.btn.btn-warning.pull-right(type='submit', value='Search')
 
     //- table
     //-  if (nums.length)
