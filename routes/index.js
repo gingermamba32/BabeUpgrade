@@ -77,26 +77,43 @@ router.post('/radioSearch', function(req,res,next){
 	console.log(req.body.type);
 	console.log(req.body.color);
 	//new RegExp("^"
-	if (req.body.type == '' && req.body.color == ''){
+	if (req.body.type == undefined && req.body.color == undefined){
 		Locations.find({description: new RegExp("^" + req.body.length)}, function(err,docs){
+			console.log( docs + ' good query');
 			res.render('test', {'nums':docs});
 		})
 
 	}
-	else if (req.body.length == '' && req.body.color == ''){
+	else if (req.body.length == undefined && req.body.color == undefined){
 		Locations.find({description: new RegExp("/" + req.body.type + "/")}, function(err,docs){
+			console.log( docs + ' good query');
 			res.render('test', {'nums': docs});
 		})
 	}
 
-	else if (req.body.length == '' && req.body.type == ''){
+	else if (req.body.length == undefined && req.body.type == undefined){
 		Locations.find({description: new RegExp("/" + req.body.color + "/")}, function(err, docs){
+			console.log( docs + ' good query');
 			res.render('test', {'nums': docs});
 		})
 	}
-	else if (req.body.color == ''){
+	else if (req.body.color == undefined){
 		Locations.find({description: new RegExp("^" + req.body.length + "." + req.body.type)}, function(err,docs){
+			console.log( docs + ' good query');
 			res.render('test', {'nums':docs});
+		})
+	}
+	else if (req.body.length == undefined){
+		Locations.find({description: new RegExp("/" + req.body.type + "." + req.body.color + "/")}, function(err,docs){
+			console.log( docs + ' good query');
+			res.render('test', {'nums':docs});
+		})
+	}
+
+	else if (req.body.type == undefined){
+		Locations.find({description: new RegExp("^" + req.body.length + "/" + req.body.color + "/")}, function(err, docs){
+			console.log( docs + ' good query');
+			res.render('test', {'nums': docs});
 		})
 	}
 	else {
