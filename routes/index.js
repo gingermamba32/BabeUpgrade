@@ -78,46 +78,46 @@ router.post('/radioSearch', function(req,res,next){
 	console.log(req.body.color);
 	//new RegExp("^"
 	if (req.body.type == undefined && req.body.color == undefined){
-		Locations.find({description: new RegExp("^" + req.body.length)}, function(err,docs){
+		Locations.find({description: new RegExp("^" + req.body.length)}).sort({shipment: 1}).exec(function(err,docs){
 			console.log( docs + ' good query');
 			res.render('query', {'nums':docs});
 		})
 
 	}
 	else if (req.body.length == undefined && req.body.color == undefined){
-		Locations.find({description: new RegExp("/" + req.body.type + "/")}, function(err,docs){
+		Locations.find({description: new RegExp("/" + req.body.type + "/")}).sort({shipment: 1}).exec(function(err,docs){
 			console.log( docs + ' good query');
 			res.render('query', {'nums': docs});
 		})
 	}
 
 	else if (req.body.length == undefined && req.body.type == undefined){
-		Locations.find({description: new RegExp("/" + req.body.color + "/")}, function(err, docs){
+		Locations.find({description: new RegExp("/" + req.body.color + "/")}).sort({shipment: 1}).exec(function(err, docs){
 			console.log( docs + ' good query');
 			res.render('query', {'nums': docs});
 		})
 	}
 	else if (req.body.color == undefined){
-		Locations.find({description: new RegExp("^" + req.body.length + "." + req.body.type)}, function(err,docs){
+		Locations.find({description: new RegExp("^" + req.body.length + "." + req.body.type)}).sort({shipment: 1}).exec(function(err,docs){
 			console.log( docs + ' good query');
 			res.render('query', {'nums':docs});
 		})
 	}
 	else if (req.body.length == undefined){
-		Locations.find({description: new RegExp("/" + req.body.type + "." + req.body.color + "/")}, function(err,docs){
+		Locations.find({description: new RegExp("/" + req.body.type + "." + req.body.color + "/")}).sort({shipment: 1}).exec(function(err,docs){
 			console.log( docs + ' good query');
 			res.render('query', {'nums':docs});
 		})
 	}
 
 	else if (req.body.type == undefined){
-		Locations.find({description: new RegExp("^" + req.body.length + "/" + req.body.color + "/")}, function(err, docs){
+		Locations.find({description: new RegExp("^" + req.body.length + "/" + req.body.color + "/")}).sort({shipment: 1}).exec(function(err, docs){
 			console.log( docs + ' good query');
 			res.render('query', {'nums': docs});
 		})
 	}
 	else {
-	Locations.find({description: req.body.length + "." + req.body.type + "." + req.body.color + "."}, function(err,docs){
+	Locations.find({description: req.body.length + "." + req.body.type + "." + req.body.color + "."}).sort({shipment: 1}).exec(function(err,docs){
 		console.log( docs + ' good query');
 		res.render('query', {'nums':docs});	
 		});
@@ -534,70 +534,70 @@ router.post('/query', function(req,res,next){
 	console.log(req.body.barcode);
 	console.log(req.body.po);
 	if (req.body.barcode != '' && req.body.location != ''){
-		Locations.find({upc: req.body.barcode, location: req.body.location}, function(err,docs){
+		Locations.find({upc: req.body.barcode, location: req.body.location}).sort({shipment: 1}).exec(function(err,docs){
 		console.log( docs + ' good query');
 		res.render('query', {'nums':docs});	
 		})
 	}	
 
 	else if (req.body.barcode != '' && req.body.description != ''){
-		Locations.find({upc: req.body.barcode, description: req.body.description}, function(err,docs){
+		Locations.find({upc: req.body.barcode, description: req.body.description}).sort({shipment: 1}).exec(function(err,docs){
 		console.log( docs + ' good query');
 		res.render('query', {'nums':docs});	
 		})
 	}
 
 	else if (req.body.barcode != '' && req.body.qty != ''){
-		Locations.find({upc: req.body.barcode, quantity: req.body.qty}, function(err,docs){
+		Locations.find({upc: req.body.barcode, quantity: req.body.qty}).sort({shipment: 1}).exec(function(err,docs){
 		console.log( docs + ' good query');
 		res.render('query', {'nums':docs});	
 		})
 	}	
 
 	else if (req.body.barcode != '' && req.body.po != ''){
-		Locations.find({upc: req.body.barcode, shipment: req.body.po}, function(err,docs){
+		Locations.find({upc: req.body.barcode, shipment: req.body.po}).sort({shipment: 1}).exec(function(err,docs){
 		console.log( docs + ' good query');
 		res.render('query', {'nums':docs});	
 		})
 	}	
 
 	else if (req.body.description != '' && req.body.location != ''){
-		Locations.find({description: req.body.description, location: req.body.location}, function(err,docs){
+		Locations.find({description: req.body.description, location: req.body.location}).sort({shipment: 1}).exec(function(err,docs){
 		console.log( docs + ' good query');
 		res.render('query', {'nums':docs});	
 		})
 	}	
 
 	else if (req.body.description != '' && req.body.qty != ''){
-		Locations.find({description: req.body.description, quantity: req.body.qty}, function(err,docs){
+		Locations.find({description: req.body.description, quantity: req.body.qty}).sort({shipment: 1}).exec(function(err,docs){
 		console.log( docs + ' good query');
 		res.render('query', {'nums':docs});	
 		})
 	}	
 
 	else if (req.body.description != '' && req.body.po != ''){
-		Locations.find({description: req.body.description, shipment: req.body.po}, function(err,docs){
+		Locations.find({description: req.body.description, shipment: req.body.po}).sort({shipment: 1}).exec(function(err,docs){
 		console.log( docs + ' good query');
 		res.render('query', {'nums':docs});	
 		})
 	}	
 
 	else if (req.body.location != '' && req.body.qty != ''){
-		Locations.find({location: req.body.location, quantity: req.body.qty}, function(err,docs){
+		Locations.find({location: req.body.location, quantity: req.body.qty}).sort({shipment: 1}).exec(function(err,docs){
 		console.log( docs + ' good query');
 		res.render('query', {'nums':docs});	
 		})
 	}	
 
 	else if (req.body.location != '' && req.body.po != ''){
-		Locations.find({location: req.body.location, shipment: req.body.po}, function(err,docs){
+		Locations.find({location: req.body.location, shipment: req.body.po}).sort({shipment: 1}).exec(function(err,docs){
 		console.log( docs + ' good query');
 		res.render('query', {'nums':docs});	
 		})
 	}	
 
 	else if (req.body.qty != '' && req.body.po != ''){
-		Locations.find({quantity: req.body.qty, shipment: req.body.po}, function(err,docs){
+		Locations.find({quantity: req.body.qty, shipment: req.body.po}).sort({shipment: 1}).exec(function(err,docs){
 		console.log( docs + ' good query');
 		res.render('query', {'nums':docs});	
 		})
@@ -605,35 +605,35 @@ router.post('/query', function(req,res,next){
 
 
 	else if (req.body.barcode != ''){
-    Locations.find({upc: req.body.barcode}, function(err, docs) {
+    Locations.find({upc: req.body.barcode}).sort({shipment: 1}).exec(function(err, docs) {
 			console.log( docs + ' good query');
 		res.render('query', {'nums':docs});
 	 });
 	}
 
 	else if (req.body.description != ''){
-	Locations.find({description: req.body.description}, function(err, docs) {
+	Locations.find({description: req.body.description}).sort({shipment: 1}).exec(function(err, docs) {
 			console.log( docs + ' good query');
 		res.render('query', { 'nums': docs });
 	 });
 	}
 
 	else if (req.body.location != '') {
-		Locations.find({location: req.body.location}, function(err, docs) {
+		Locations.find({location: req.body.location}).sort({shipment: 1}).exec(function(err, docs) {
 			console.log( docs + 'good query');
 		res.render('query', { 'nums': docs });
 	 });
 	}
 
 	else if (req.body.qty != ''){
-		Locations.find({quantity: req.body.qty}, function(err, docs) {
+		Locations.find({quantity: req.body.qty}).sort({shipment: 1}).exec(function(err, docs) {
 			console.log( docs + 'good query');
 		res.render('query', { 'nums': docs });
 	 });
 	}
 
 	else if (req.body.po != ''){
-		Locations.find({shipment: req.body.po}, function(err, docs) {
+		Locations.find({shipment: req.body.po}).sort({quantity: 1}).exec(function(err, docs) {
 			console.log( docs + ' good query');
 		res.render('query', {'nums':docs});
 	 });
