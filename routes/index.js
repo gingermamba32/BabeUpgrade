@@ -247,6 +247,7 @@ router.post('/addUpc', function(req, res,next){
 
 router.post('/locateThree', function( req, res, next ){
 	console.log(req.body);
+	console.log(req.body.shipment)
 	console.log(req.body.bin11);
 	console.log(req.body.upcArray[0]);  //productupc11
 	console.log(req.body.quantityArray[0]); //qty11
@@ -258,7 +259,7 @@ router.post('/locateThree', function( req, res, next ){
 	// if it is a string, there is only one entry and thus not an array
 	if ( typeof(req.body.upcArray) === 'string' ){
 		Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upcArray},  
+		{location: req.body.bin11, upc: req.body.upcArray, shipment: req.body.shipment},  
 		{$inc: {
                 	quantity     	  : req.body.quantityArray
             }}, 
@@ -275,7 +276,7 @@ router.post('/locateThree', function( req, res, next ){
 								location   : req.body.bin11,
 								upc        : req.body.upcArray,
 								description: docss.description,
-								shipment   : docss.shipment,
+								shipment   : req.body.shipment,
 								quantity   : req.body.quantityArray
 							});
 							console.log(newLocation);
@@ -287,7 +288,7 @@ router.post('/locateThree', function( req, res, next ){
             		});
             	}
             	else {
-            		console.log( docs + " Updated Document by searching bin and upc");
+            		console.log( docs + " Updated Document by searching bin upc and shipment");
             	res.redirect('/scan');
             	}
 
