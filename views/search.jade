@@ -28,21 +28,76 @@ block content
 
 
   #myModal.modal.fade(role='dialog')
-      .modal-dialog
+      .modal-dialog.modal-lg
         
         .modal-content
           .modal-header
             button.close(type='button', data-dismiss='modal') ×
             h4.modal-title Search Product IDs
           .modal-body
+            form(style="margin: 0 auto; width: 400px;")
+             h7(style="float: left; padding-right:5px;font-size: 15px;") Length
+             label(for='option1')
+              input#option1(type='radio', name='radiotest', value='option1', style="vertical-align: middle")
+              | Option 1
+             label(for='option2')
+              input#option2(type='radio', name='radiotest', value='option2', style="vertical-align: middle")
+              | Option 2
+             label(for='option3')
+              input#option3(type='radio', name='radiotest', value='option3', style="vertical-align: middle")
+              | Option 3
+             label(for='option4')
+              input#option4(type='radio', name='radiotest', value='option4', style="vertical-align: middle")
+              | Option 4
+             br
+             br
+             br
+             h7(style="float: left; padding-right:5px;font-size: 15px;") Type
+             label(for='option1')
+              input#option1(type='radio', name='radiotest', value='option1', style="vertical-align: middle")
+              | Option 1
+             label(for='option2')
+              input#option2(type='radio', name='radiotest', value='option2', style="vertical-align: middle")
+              | Option 2
+             label(for='option3')
+              input#option3(type='radio', name='radiotest', value='option3', style="vertical-align: middle")
+              | Option 3
+             label(for='option4')
+              input#option4(type='radio', name='radiotest', value='option4', style="vertical-align: middle")
+              | Option 4
+             br
+             br
+             br
+             h7(style="float: left; padding-right:5px;font-size: 15px;") Color
+             label(for='option1')
+              input#option1(type='radio', name='radiotest', value='option1', style="vertical-align: middle")
+              | Option 1
+             label(for='option2')
+              input#option2(type='radio', name='radiotest', value='option2', style="vertical-align: middle")
+              | Option 2
+             label(for='option3')
+              input#option3(type='radio', name='radiotest', value='option3', style="vertical-align: middle")
+              | Option 3
+             label(for='option4')
+              input#option4(type='radio', name='radiotest', value='option4', style="vertical-align: middle")
+              | Option 4
+            br 
+            br
+            br
+            br
+            br
+            br
+            br
+            br
+            br
+            br  
 
 
 
 
-
-            p Some text in the modal.
+            //- p Some text in the modal.
           .modal-footer
-            button.btn.btn-default(type='button', data-dismiss='modal', style="float:left;") Submit
+            //- button.btn.btn-default(type='button', data-dismiss='modal', style="float:left;") Submit
             button.btn.btn-default(type='button', data-dismiss='modal') Close
   script.
     $(document).ready(function() {

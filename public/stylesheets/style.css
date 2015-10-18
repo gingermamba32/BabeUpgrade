@@ -385,3 +385,17 @@ a.list:hover {
     background-color: #28739E;
 }
 
+input[type="checkbox"], 
+input[type="radio"],
+input.radio,
+input.checkbox {
+    vertical-align:text-top;
+    width:16px;
+    height:16px;
+    padding:0;
+    margin:0;
+    position:relative;
+    overflow:hidden;
+    
+}
+
