@@ -297,7 +297,7 @@ router.post('/locateThree', function( req, res, next ){
 	// end of if statement
 	else if (req.body.upcArray[2] === undefined && req.body.quantityArray[2] === undefined){
 		Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upcArray[0]},  
+		{location: req.body.bin11, upc: req.body.upcArray[0], shipment: req.body.shipment},  
 		{$inc: {
                 	quantity     	  : req.body.quantityArray[0]
             }}, 
@@ -314,7 +314,7 @@ router.post('/locateThree', function( req, res, next ){
 								location   : req.body.bin11,
 								upc        : req.body.upcArray[0],
 								description: docss.description,
-								shipment   : docss.shipment,
+								shipment   : req.body.shipment,
 								quantity   : req.body.quantityArray[0]
 								});
 								console.log(newLocation);
@@ -331,7 +331,7 @@ router.post('/locateThree', function( req, res, next ){
 
 			});
 	Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upcArray[1]},  
+		{location: req.body.bin11, upc: req.body.upcArray[1], shipment: req.body.shipment},  
 		{$inc: {
                 	quantity     	  : req.body.quantityArray[1]
             }}, 
@@ -348,7 +348,7 @@ router.post('/locateThree', function( req, res, next ){
 								location   : req.body.bin11,
 								upc        : req.body.upcArray[1],
 								description: docss.description,
-								shipment   : docss.shipment,
+								shipment   : req.body.shipment,
 								quantity   : req.body.quantityArray[1]
 							});
 						console.log(newLocation);
@@ -367,7 +367,7 @@ router.post('/locateThree', function( req, res, next ){
 
 	else {
 		Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upcArray[0]},  
+		{location: req.body.bin11, upc: req.body.upcArray[0], shipment: req.body.shipment},  
 		{$inc: {
                 	quantity     	  : req.body.quantityArray[0]
             }}, 
@@ -385,7 +385,7 @@ router.post('/locateThree', function( req, res, next ){
 								location   : req.body.bin11,
 								upc        : req.body.upcArray[0],
 								description: docss.description,
-								shipment   : docss.shipment,
+								shipment   : req.body.shipment,
 								quantity   : req.body.quantityArray[0]
 							});
 						console.log(newLocation);
@@ -401,7 +401,7 @@ router.post('/locateThree', function( req, res, next ){
             	}
 			});
 	Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upcArray[1]},  
+		{location: req.body.bin11, upc: req.body.upcArray[1], shipment: req.body.shipment},  
 		{$inc: {
                 	quantity     	  : req.body.quantityArray[1]
             }}, 
@@ -417,7 +417,7 @@ router.post('/locateThree', function( req, res, next ){
 								location   : req.body.bin11,
 								upc        : req.body.upcArray[1],
 								description: docss.description,
-								shipment   : docss.shipment,
+								shipment   : req.body.shipment,
 								quantity   : req.body.quantityArray[1]
 							});
 						console.log(newLocation);
@@ -434,7 +434,7 @@ router.post('/locateThree', function( req, res, next ){
             	}
 			});
 	Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upcArray[2]},  
+		{location: req.body.bin11, upc: req.body.upcArray[2], shipment: req.body.shipment},  
 		{$inc: {
                 	quantity     	  : req.body.quantityArray[2]
             }}, 
@@ -451,7 +451,7 @@ router.post('/locateThree', function( req, res, next ){
 								location   : req.body.bin11,
 								upc        : req.body.upcArray[2],
 								description: docss.description,
-								shipment   : docss.shipment,
+								shipment   : req.body.shipment,
 								quantity   : req.body.quantityArray[2]
 							});
 						console.log(newLocation);

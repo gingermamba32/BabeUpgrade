@@ -44,8 +44,10 @@ block content
           .modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal', style="float:left;") Submit
             button.btn.btn-default(type='button', data-dismiss='modal') Close
-
-
+  script.
+    $(document).ready(function() {
+      $('input[name=barcode]').focus();
+      });
 
 
 
