@@ -295,7 +295,7 @@ router.post('/locateThree', function( req, res, next ){
 		});
 	}
 	// end of if statement
-	else if (req.body.upcArray[2] === undefined && req.body.quantityArray[2] === undefined){
+	else if (req.body.upcArray[4] === undefined && req.body.quantityArray[4] === undefined && req.body.upcArray[3] === undefined && req.body.quantityArray[3] === undefined && req.body.upcArray[2] === undefined && req.body.quantityArray[2] === undefined){
 		Locations.findOneAndUpdate(
 		{location: req.body.bin11, upc: req.body.upcArray[0], shipment: req.body.shipment},  
 		{$inc: {
@@ -365,7 +365,7 @@ router.post('/locateThree', function( req, res, next ){
 			});
 	}
 
-	else {
+	else if (req.body.upcArray[4] === undefined && req.body.quantityArray[4] === undefined && req.body.upcArray[3] === undefined && req.body.quantityArray[3] === undefined){
 		Locations.findOneAndUpdate(
 		{location: req.body.bin11, upc: req.body.upcArray[0], shipment: req.body.shipment},  
 		{$inc: {
@@ -467,7 +467,316 @@ router.post('/locateThree', function( req, res, next ){
             	}
 			});
 	}
-});
+
+
+	else if (req.body.upcArray[4] === undefined && req.body.quantityArray[4] === undefined) {
+		Locations.findOneAndUpdate(
+		{location: req.body.bin11, upc: req.body.upcArray[0], shipment: req.body.shipment},  
+		{$inc: {
+                	quantity     	  : req.body.quantityArray[0]
+            }}, 
+            {upsert: false} , function(err, docs) {
+            	//console.log( docs + " Updated Document#1 by searching bin1 and upc11");
+            	// res.redirect('/');
+            	if (docs === null) {
+            		Locations.findOne({upc: req.body.upcArray[0]}, function(err, docss) {
+            				if (docss === null){
+            				res.redirect('/invalidInventory');
+            				}
+					    	else { 
+							
+							var newLocation = new Locations({
+								location   : req.body.bin11,
+								upc        : req.body.upcArray[0],
+								description: docss.description,
+								shipment   : req.body.shipment,
+								quantity   : req.body.quantityArray[0]
+							});
+						console.log(newLocation);
+						newLocation.save(function(err, callback){
+						//res.redirect('/');
+						})
+						}
+            		});
+            	}
+            	else {
+            		console.log( docs + " Updated Document by searching bin and upc");
+            	//res.redirect('/');
+            	}
+			});
+	Locations.findOneAndUpdate(
+		{location: req.body.bin11, upc: req.body.upcArray[1], shipment: req.body.shipment},  
+		{$inc: {
+                	quantity     	  : req.body.quantityArray[1]
+            }}, 
+            {upsert: false} , function(err, docs) {
+            	//console.log( docs + " Updated Document#2 by searching bin1 and upc22");
+            	if (docs === null) {
+            		Locations.findOne({upc: req.body.upcArray[1]}, function(err, docss) {
+							if (docss === null){
+            				res.redirect('/invalidInventory');
+            				}
+					    	else { 
+							var newLocation = new Locations({
+								location   : req.body.bin11,
+								upc        : req.body.upcArray[1],
+								description: docss.description,
+								shipment   : req.body.shipment,
+								quantity   : req.body.quantityArray[1]
+							});
+						console.log(newLocation);
+						newLocation.save(function(err, callback){
+						//res.redirect('/');
+						console.log(callback)
+						})
+						}
+            		});
+            	}
+            	else {
+            		console.log( docs + " Updated Document by searching bin and upc");
+            	//res.redirect('/');
+            	}
+			});
+	Locations.findOneAndUpdate(
+		{location: req.body.bin11, upc: req.body.upcArray[2], shipment: req.body.shipment},  
+		{$inc: {
+                	quantity     	  : req.body.quantityArray[2]
+            }}, 
+            {upsert: false} , function(err, docs) {
+            	//console.log( docs + " Updated Document#3 by searching bin11 and upc33");
+            	//res.redirect('/');
+            	if (docs === null) {
+            		Locations.findOne({upc: req.body.upcArray[2]}, function(err, docss) {
+							if (docss === null){
+            				res.redirect('/invalidInventory');
+            				}
+					    	else { 
+							var newLocation = new Locations({
+								location   : req.body.bin11,
+								upc        : req.body.upcArray[2],
+								description: docss.description,
+								shipment   : req.body.shipment,
+								quantity   : req.body.quantityArray[2]
+							});
+						console.log(newLocation);
+						newLocation.save(function(err, callback){
+						//res.redirect('/scan');
+						})
+						}
+            		});
+            	}
+            	else {
+            		console.log( docs + " Updated Document by searching bin and upc");
+            		//res.redirect('/scan');
+            	}
+			});
+		Locations.findOneAndUpdate(
+		{location: req.body.bin11, upc: req.body.upcArray[3], shipment: req.body.shipment},  
+		{$inc: {
+                	quantity     	  : req.body.quantityArray[3]
+            }}, 
+            {upsert: false} , function(err, docs) {
+            	//console.log( docs + " Updated Document#3 by searching bin11 and upc33");
+            	//res.redirect('/');
+            	if (docs === null) {
+            		Locations.findOne({upc: req.body.upcArray[3]}, function(err, docss) {
+							if (docss === null){
+            				res.redirect('/invalidInventory');
+            				}
+					    	else { 
+							var newLocation = new Locations({
+								location   : req.body.bin11,
+								upc        : req.body.upcArray[3],
+								description: docss.description,
+								shipment   : req.body.shipment,
+								quantity   : req.body.quantityArray[3]
+							});
+						console.log(newLocation);
+						newLocation.save(function(err, callback){
+						res.redirect('/scan');
+						})
+						}
+            		});
+            	}
+            	else {
+            		console.log( docs + " Updated Document by searching bin and upc");
+            		res.redirect('/scan');
+            	}
+			});
+		} //close else
+
+		else {
+			Locations.findOneAndUpdate(
+		{location: req.body.bin11, upc: req.body.upcArray[0], shipment: req.body.shipment},  
+		{$inc: {
+                	quantity     	  : req.body.quantityArray[0]
+            }}, 
+            {upsert: false} , function(err, docs) {
+            	//console.log( docs + " Updated Document#1 by searching bin1 and upc11");
+            	// res.redirect('/');
+            	if (docs === null) {
+            		Locations.findOne({upc: req.body.upcArray[0]}, function(err, docss) {
+            				if (docss === null){
+            				res.redirect('/invalidInventory');
+            				}
+					    	else { 
+							
+							var newLocation = new Locations({
+								location   : req.body.bin11,
+								upc        : req.body.upcArray[0],
+								description: docss.description,
+								shipment   : req.body.shipment,
+								quantity   : req.body.quantityArray[0]
+							});
+						console.log(newLocation);
+						newLocation.save(function(err, callback){
+						//res.redirect('/');
+						})
+						}
+            		});
+            	}
+            	else {
+            		console.log( docs + " Updated Document by searching bin and upc");
+            	//res.redirect('/');
+            	}
+			});
+	Locations.findOneAndUpdate(
+		{location: req.body.bin11, upc: req.body.upcArray[1], shipment: req.body.shipment},  
+		{$inc: {
+                	quantity     	  : req.body.quantityArray[1]
+            }}, 
+            {upsert: false} , function(err, docs) {
+            	//console.log( docs + " Updated Document#2 by searching bin1 and upc22");
+            	if (docs === null) {
+            		Locations.findOne({upc: req.body.upcArray[1]}, function(err, docss) {
+							if (docss === null){
+            				res.redirect('/invalidInventory');
+            				}
+					    	else { 
+							var newLocation = new Locations({
+								location   : req.body.bin11,
+								upc        : req.body.upcArray[1],
+								description: docss.description,
+								shipment   : req.body.shipment,
+								quantity   : req.body.quantityArray[1]
+							});
+						console.log(newLocation);
+						newLocation.save(function(err, callback){
+						//res.redirect('/');
+						console.log(callback)
+						})
+						}
+            		});
+            	}
+            	else {
+            		console.log( docs + " Updated Document by searching bin and upc");
+            	//res.redirect('/');
+            	}
+			});
+	Locations.findOneAndUpdate(
+		{location: req.body.bin11, upc: req.body.upcArray[2], shipment: req.body.shipment},  
+		{$inc: {
+                	quantity     	  : req.body.quantityArray[2]
+            }}, 
+            {upsert: false} , function(err, docs) {
+            	//console.log( docs + " Updated Document#3 by searching bin11 and upc33");
+            	//res.redirect('/');
+            	if (docs === null) {
+            		Locations.findOne({upc: req.body.upcArray[2]}, function(err, docss) {
+							if (docss === null){
+            				res.redirect('/invalidInventory');
+            				}
+					    	else { 
+							var newLocation = new Locations({
+								location   : req.body.bin11,
+								upc        : req.body.upcArray[2],
+								description: docss.description,
+								shipment   : req.body.shipment,
+								quantity   : req.body.quantityArray[2]
+							});
+						console.log(newLocation);
+						newLocation.save(function(err, callback){
+						//res.redirect('/scan');
+						})
+						}
+            		});
+            	}
+            	else {
+            		console.log( docs + " Updated Document by searching bin and upc");
+            		//res.redirect('/scan');
+            	}
+			});
+		Locations.findOneAndUpdate(
+		{location: req.body.bin11, upc: req.body.upcArray[3], shipment: req.body.shipment},  
+		{$inc: {
+                	quantity     	  : req.body.quantityArray[3]
+            }}, 
+            {upsert: false} , function(err, docs) {
+            	//console.log( docs + " Updated Document#3 by searching bin11 and upc33");
+            	//res.redirect('/');
+            	if (docs === null) {
+            		Locations.findOne({upc: req.body.upcArray[3]}, function(err, docss) {
+							if (docss === null){
+            				res.redirect('/invalidInventory');
+            				}
+					    	else { 
+							var newLocation = new Locations({
+								location   : req.body.bin11,
+								upc        : req.body.upcArray[3],
+								description: docss.description,
+								shipment   : req.body.shipment,
+								quantity   : req.body.quantityArray[3]
+							});
+						console.log(newLocation);
+						newLocation.save(function(err, callback){
+						//res.redirect('/scan');
+						})
+						}
+            		});
+            	}
+            	else {
+            		console.log( docs + " Updated Document by searching bin and upc");
+            		//res.redirect('/scan');
+            	}
+			});
+
+		Locations.findOneAndUpdate(
+		{location: req.body.bin11, upc: req.body.upcArray[4], shipment: req.body.shipment},  
+		{$inc: {
+                	quantity     	  : req.body.quantityArray[4]
+            }}, 
+            {upsert: false} , function(err, docs) {
+            	//console.log( docs + " Updated Document#3 by searching bin11 and upc33");
+            	//res.redirect('/');
+            	if (docs === null) {
+            		Locations.findOne({upc: req.body.upcArray[4]}, function(err, docss) {
+							if (docss === null){
+            				res.redirect('/invalidInventory');
+            				}
+					    	else { 
+							var newLocation = new Locations({
+								location   : req.body.bin11,
+								upc        : req.body.upcArray[4],
+								description: docss.description,
+								shipment   : req.body.shipment,
+								quantity   : req.body.quantityArray[4]
+							});
+						console.log(newLocation);
+						newLocation.save(function(err, callback){
+						res.redirect('/scan');
+						})
+						}
+            		});
+            	}
+            	else {
+            		console.log( docs + " Updated Document by searching bin and upc");
+            		res.redirect('/scan');
+            	}
+			});
+		} //close of else
+
+
+});  //close of POST
 
 // // Sort by features
 // router.post('/type', function( req, res, next ){
