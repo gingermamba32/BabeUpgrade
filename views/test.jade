@@ -2,26 +2,7 @@ extends layout
 
 block content
 
-   form(method="Post", action="/query", name="DBQuery", style="padding-bottom:50px;")
-    button.search.btn(type="submit", style="font-size:25px;") Search
-    table.table-striped.table-bordered.table-responsive(width="90%", align="center", style="font-size:18px; color:black; padding-bottom: 35px;")
-      tr(style="margin: 0 auto; background: #52bab3;")
-       td #[b UPC]
-       td #[a(data-toggle="modal" data-target="#myModal", style="text-decoration:none; cursor: pointer; color:black; font-weight: 600;") DESCRIPTION]
-       td #[b LOCATION]
-       td #[b QUANTITY]
-       td #[b PO#]
-      tr
-       td
-        input.form-control.upc(type="radio", placeholder="barcode", size="12", name="barcode", style="font-size: 13px;padding:0px; margin:0px; height:50px;text-align:center;")
-       td
-        input.form-control.location(type="radio", placeholder="description", size="12", name="description", style="font-size: 13px;padding:0px; margin:0px;height:50px;text-align:center;")
-       td
-        input.form-control.location(type="radio", placeholder="location", size="12", name="location", style="font-size: 13px;padding:0px; margin:0px;height:50px;text-align:center;")
-       td
-        input.form-control.quantity(type="radio", placeholder="qty", size="12", name="qty", style="font-size: 13px;padding:0px; margin:0px;height:50px;text-align:center;")
-       td
-        input.form-control.poNum(type="radio", placeholder="po", size="12", name="po", style="font-size: 13px;padding:0px; margin:0px;height:50px; text-align:center;")
+
 
 
 

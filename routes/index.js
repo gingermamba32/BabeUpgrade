@@ -85,14 +85,14 @@ router.post('/radioSearch', function(req,res,next){
 
 	}
 	else if (req.body.length == undefined && req.body.color == undefined){
-		Locations.find({description: new RegExp("/" + req.body.type + "/")}).sort({shipment: 1}).exec(function(err,docs){
+		Locations.find({description: new RegExp(req.body.type)}).sort({shipment: 1}).exec(function(err,docs){
 			console.log( docs + ' good query');
 			res.render('query', {'nums': docs});
 		})
 	}
 
 	else if (req.body.length == undefined && req.body.type == undefined){
-		Locations.find({description: new RegExp("/" + req.body.color + "/")}).sort({shipment: 1}).exec(function(err, docs){
+		Locations.find({description: new RegExp(req.body.color)}).sort({shipment: 1}).exec(function(err, docs){
 			console.log( docs + ' good query');
 			res.render('query', {'nums': docs});
 		})
@@ -104,14 +104,14 @@ router.post('/radioSearch', function(req,res,next){
 		})
 	}
 	else if (req.body.length == undefined){
-		Locations.find({description: new RegExp("/" + req.body.type + "." + req.body.color + "/")}).sort({shipment: 1}).exec(function(err,docs){
+		Locations.find({description: new RegExp(req.body.type + "." + req.body.color + "\.$")}).sort({shipment: 1}).exec(function(err,docs){
 			console.log( docs + ' good query');
 			res.render('query', {'nums':docs});
 		})
 	}
 
 	else if (req.body.type == undefined){
-		Locations.find({description: new RegExp("^" + req.body.length + "/" + req.body.color + "/")}).sort({shipment: 1}).exec(function(err, docs){
+		Locations.find({description: new RegExp("^"+req.body.length+ ".*" + req.body.color + "\.$")}).sort({shipment: 1}).exec(function(err, docs){
 			console.log( docs + ' good query');
 			res.render('query', {'nums': docs});
 		})
