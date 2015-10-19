@@ -8,7 +8,7 @@ block content
    table.table-striped.table-bordered.table-responsive(width="90%", align="center", style="font-size:18px; color:black;")
     tr(style="margin: 0 auto; background: #52bab3;")
      td #[b UPC]
-     td #[b DESCRIPTION]
+     td #[a(data-toggle="modal" data-target="#myModal", style="text-decoration:none; cursor: pointer; color:black; font-weight: 600;") DESCRIPTION]
      td #[b LOCATION]
      td #[b QUANTITY]
      td #[b PO#]
@@ -39,7 +39,185 @@ block content
        td #[a(href="/deleteuser/#{post.id}", onclick="return warningList();") Delete]
 
      
+    #myModal.modal.fade(role='dialog')
+      .modal-dialog.modal-lg
+        
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal') ×
+            h4.modal-title Search Product IDs
+          .modal-body
+            form(role='form', method="Post", action="/radioSearch", name="Radio",style="margin: 0 auto; width: 600px;")
+             h7(style="float: left; padding-right:5px;font-size: 15px;") Length:
+             label(style="vertical-align: middle; font-size:10px;")
+              input(type='radio', name='length', value='14', style="vertical-align: middle; padding-top:5px;")
+              | 14"
+             label
+              input(type='radio', name='length', value='18', style="vertical-align: middle;padding-top:5px;")
+              | 18"
+             label
+              input(type='radio', name='length', value='22', style="vertical-align: middle;padding-top:5px;")
+              | 22"
+             br
+             br
+             br
+             br
+             br
+             h7(style="float: left; padding-right:5px;font-size: 15px;") Type:
+             label
+              input(type='radio', name='type', value='S-TAPE', style="vertical-align: middle")
+              | S-TAPE
+             label
+              input(type='radio', name='type', value='SI', style="vertical-align: middle")
+              | SI
+             label
+              input(type='radio', name='type', value='IBODY', style="vertical-align: middle")
+              | IBODY
+             label
+              input(type='radio', name='type', value='ICURLY', style="vertical-align: middle")
+              | ICURLY
+             label
+              input(type='radio', name='type', value='KLS', style="vertical-align: middle")
+              | KLS
+             label
+              input(type='radio', name='type', value='KBODY', style="vertical-align: middle")
+              | KBODY
+             label
+              input(type='radio', name='type', value='KBODY', style="vertical-align: middle")
+              | KCULRY
+             label
+              input(type='radio', name='type', value='OTHER', style="vertical-align: middle")
+              | OTHER 
+             br
+             br
+             br
+             br
+             br
+             h7(style="float: left; padding-right:5px;font-size: 15px;") Color:
+             label
+              input(type='radio', name='color', value='1', style="vertical-align: middle")
+              | 1
+             label
+              input(type='radio', name='color', value='10', style="vertical-align: middle")
+              | 10
+             label
+              input(type='radio', name='color', value='1001', style="vertical-align: middle")
+              | 1001
+             label
+              input(type='radio', name='color', value='12/600', style="vertical-align: middle")
+              | 12/600
+             label
+              input(type='radio', name='color', value='1B', style="vertical-align: middle")
+              | 1B
+             label
+              input(type='radio', name='color', value='2', style="vertical-align: middle")
+              | 2
+             br 
+             br
+             br
+             label
+              input(type='radio', name='color', value='24', style="vertical-align: middle")
+              | 24
+             label
+              input(type='radio', name='color', value='27', style="vertical-align: middle")
+              | 27
+             label
+              input(type='radio', name='color', value='27/613', style="vertical-align: middle")
+              | 27/613
+             label
+              input(type='radio', name='color', value='27A', style="vertical-align: middle")
+              | 27A
+             label
+              input(type='radio', name='color', value='30/33', style="vertical-align: middle")
+              | 30/33
+             label
+              input(type='radio', name='color', value='3R', style="vertical-align: middle")
+              | 3R
+             br
+             br
+             br
+             label
+              input(type='radio', name='color', value='4', style="vertical-align: middle")
+              | 4
+             label
+              input(type='radio', name='color', value='5B', style="vertical-align: middle")
+              | 5B
+             label
+              input(type='radio', name='color', value='5R', style="vertical-align: middle")
+              | 5R
+             label
+              input(type='radio', name='color', value='6', style="vertical-align: middle")
+              | 6
+             label
+              input(type='radio', name='color', value='60', style="vertical-align: middle")
+              | 60
+             label
+              input(type='radio', name='color', value='600', style="vertical-align: middle")
+              | 600
+             br
+             br
+             br
+             label
+              input(type='radio', name='color', value='613', style="vertical-align: middle")
+              | 613
+             label
+              input(type='radio', name='color', value='8', style="vertical-align: middle")
+              | 8
+             label
+              input(type='radio', name='color', value='BLUE', style="vertical-align: middle")
+              | BLUE
+             label
+              input(type='radio', name='color', value='BURG', style="vertical-align: middle")
+              | BURG
+             label
+              input(type='radio', name='color', value='DKFXA', style="vertical-align: middle")
+              | DKFXA
+             label
+              input(type='radio', name='color', value='DKPURP', style="vertical-align: middle")
+              | DKPURP
+             br
+             br
+             br
+             label
+              input(type='radio', name='color', value='FUNKY', style="vertical-align: middle")
+              | FUNKY
+             label
+              input(type='radio', name='color', value='O-12_600', style="vertical-align: middle")
+              | O-12_600
+             label
+              input(type='radio', name='color', value='O-1B_6', style="vertical-align: middle")
+              | O-1B_6
+             label
+              input(type='radio', name='color', value='O-4_613', style="vertical-align: middle")
+              | O-4_613
+             label
+              input(type='radio', name='color', value='PINK', style="vertical-align: middle")
+              | PINK
+             label
+              input(type='radio', name='color', value='PURP', style="vertical-align: middle")
+              | PURP
+             br
+             br
+             br
+             label
+              input(type='radio', name='color', value='RED', style="vertical-align: middle")
+              | RED
+             label
+              input(type='radio', name='color', value='TEAL', style="vertical-align: middle")
+              | TEAL
+             br
+             br
+             br
+             button(type="submit", style="font-size:30px;") Search ProductID
 
+
+
+
+
+            //- p Some text in the modal.
+          .modal-footer
+            //- button.btn.btn-default(type='button', data-dismiss='modal', style="float:left;") Submit
+            button.btn.btn-default(type='button', data-dismiss='modal', style="font-size: 20px;") Close
   script.
     $(document).ready(function() {
       $('input[name=bin11]').focus();
