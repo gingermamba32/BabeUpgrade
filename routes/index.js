@@ -2311,7 +2311,7 @@ router.post('/query', function(req,res,next){
 router.get('/deleteuser/:id', function(req, res){
 	console.log(req.params.id);
 	Locations.remove({ _id: req.params.id }, function(){
-		res.redirect('/');
+		res.redirect('/search');
 	});
 });
 
@@ -2336,30 +2336,30 @@ router.post('/update', function(req, res){
             }}, 
             {upsert: false} , function(err, docs) {
             	console.log(docs + "Updated Document");
-            	res.redirect('/');
+            	res.redirect('/search');
             });          
 })
 
 
-router.post('/location', function( req, res, next ){
-	console.log(req.body.barcode);
-	Locations.findOne({upc: req.body.barcode}, function(err, docs) {
-			console.log( docs.upc + ' good upc');
-			var newLocation = new Locations({
-				location   : req.body.location,
-				upc        : req.body.barcode,
-				description: docs.description,
-				shipment   : docs.shipment,
-				quantity   : req.body.quantity
-			});
-				console.log(newLocation);
-				newLocation.save(function(err, callback){
-				res.redirect('/');
-				})
-	 });
-})
+// router.post('/location', function( req, res, next ){
+// 	console.log(req.body.barcode);
+// 	Locations.findOne({upc: req.body.barcode}, function(err, docs) {
+// 			console.log( docs.upc + ' good upc');
+// 			var newLocation = new Locations({
+// 				location   : req.body.location,
+// 				upc        : req.body.barcode,
+// 				description: docs.description,
+// 				shipment   : docs.shipment,
+// 				quantity   : req.body.quantity
+// 			});
+// 				console.log(newLocation);
+// 				newLocation.save(function(err, callback){
+// 				res.redirect('/');
+// 				})
+// 	 });
+// })
 
-// search by multiple fields
+// search by multiple fields practice = need to create function to push into object for find
 // router.post('/queryTest', function(req,res,next){
 // 		console.log(req.body.description);
 // 		console.log(req.body.location);
