@@ -33,28 +33,6 @@ block content
 
     	$('input[name=bin11]').click().focus();
 
-      //- add input fields button
-      
-
-    //-   var max_fields      = 8; //maximum input boxes allowed
-    //-   var wrapper         = $(".inputFields"); //Fields wrapper
-    //-   var add_button      = $(".addFields"); //Add button ID
-    
-    //- var x = 1; //initlal text box count
-    //- $(add_button).click(function(e){ //on add input button click
-    //-     e.preventDefault();
-    //-     if(x < max_fields){ //max input box allowed
-    //-         x++; //text box increment
-    //-         $(wrapper).append('<div><input type="text" name="mytext[]"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
-    //-     }
-    //- });
-    
-    //- $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-    //-     e.preventDefault(); $(this).parent('div').remove(); x--;
-    //- })
-
-
-    
       //- success message
 
        $('.mess').hide();
@@ -69,57 +47,6 @@ block content
         $('.quan').keypress(function (e){
        	 if(e.which == 13){
          $('.invSub').focus().click();
-         //window.scrollTo(200,400);
-         return false;
-         }
-       	})
-       	
-          //- Press enter to search attributes
-       $('.type').keypress(function (e){
-       	 if(e.which == 13){
-         $('.search').focus().click();
-         //window.scrollTo(200,400);
-         return false;
-         }
-       	})
-       $('.length').keypress(function (e){
-       	 if(e.which == 13){
-         $('.search').focus().click();
-         //window.scrollTo(200,400);
-         return false;
-         }
-       	})
-       $('.color').keypress(function (e){
-       	 if(e.which == 13){
-         $('.search').focus().click();
-         //window.scrollTo(200,400);
-         return false;
-         }
-       	})
-       $('.location').keypress(function (e){
-       	 if(e.which == 13){
-         $('.search').focus().click();
-         //window.scrollTo(200,400);
-         return false;
-         }
-       	})
-       $('.quantity').keypress(function (e){
-       	 if(e.which == 13){
-         $('.search').focus().click();
-         //window.scrollTo(200,400);
-         return false;
-         }
-       	})
-       $('.upc').keypress(function (e){
-       	 if(e.which == 13){
-         $('.search').focus().click();
-         //window.scrollTo(200,400);
-         return false;
-         }
-       	})
-       $('.poNum').keypress(function (e){
-       	 if(e.which == 13){
-         $('.search').focus().click();
          //window.scrollTo(200,400);
          return false;
          }
