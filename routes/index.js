@@ -2311,7 +2311,7 @@ router.post('/query', function(req,res,next){
 router.get('/deleteuser/:id', function(req, res){
 	console.log(req.params.id);
 	Locations.remove({ _id: req.params.id }, function(){
-
+		res.status(201);
 	});
 });
 
