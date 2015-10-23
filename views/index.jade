@@ -5,13 +5,23 @@ block content
   h1(id="header", style="padding-top: 75px;") Scan Inventory
 
   h5.mess( style="color:red; padding-top: 30px; padding-top: 30px; text-align:center;") You have successfully updated inventory!
+  h5 799861392897
+  h5 799861392668
+  h5 799861392972
+  h5 799861392835
+  h5 799861392897
+  h5 799861392736
+  h5 799861394051
+  h5 799861393504
+  h5 799861393924
+  h5 799861393689
 
   div.inputFields(style="background:#D0D0D0; width:90%; margin:80px auto; padding-top:50px; padding-bottom:50px; border-radius: 8px;")
    h2(style="text-align:center")=error
    div(style="float:right; margin-top: 0.35%; padding-right: 10px;")
-    button.btn.btn-warning(onclick="myDeleteFunction()", style="font-size: 40px; background-color:red; color:white; border: 1px solid;") &#8593;
-    br
-    button.btn.btn-warning(onclick="myCreateFunction()", style="font-size: 40px; background-color:green; color: white; border: 1px solid #ddd;") &#8595;
+    //- button.btn.btn-warning(onclick="myDeleteFunction()", style="font-size: 40px; background-color:red; color:white; border: 1px solid;") &#8593;
+    //- br
+    //- button.btn.btn-warning(onclick="myCreateFunction()", style="font-size: 40px; background-color:green; color: white; border: 1px solid #ddd;") &#8595;
 
    form(role='form', method="Post", action="/locateThree", name="ProductQuantity")
     table.table-striped.table-bordered.table-responsive#myTable(width="80%", align="center", style="font-size:18px;border-collapse:collapse" )
@@ -22,9 +32,34 @@ block content
        input.form-control(type="text", id="loc", placeholder="PO", name="shipment", size="10", style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;", required)
      tr
       td
-       input.form-control(type="text", id="upc", placeholder="UPC #1",  name="upcArray", size="10", style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;", required)
+       input.form-control(type="text", id="upc", placeholder="UPC #1",  name="upc1", size="10", style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;", required)
       td
-       input.form-control.quan(type="number", placeholder="QUANTITY #1",  name="quantityArray", id="foo", size="10", style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;", required)
+       input.form-control.quan(type="number", placeholder="QUANTITY #1",  name="quantity1", id="foo", size="10", style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;", required)
+     tr
+      td
+       input.form-control(type="text", id="upc", placeholder="UPC #2",  name="upc2", size="10", style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;")
+      td
+       input.form-control.quan(type="number", placeholder="QUANTITY #2",  name="quantity2", id="foo", size="10", style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;")
+     tr
+      td
+       input.form-control(type="text", id="upc", placeholder="UPC #3",  name="upc3", size="10", style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;")
+      td
+       input.form-control.quan(type="number", placeholder="QUANTITY #3",  name="quantity3", id="foo", size="10", style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;")
+     tr
+      td
+       input.form-control(type="text", id="upc", placeholder="UPC #4",  name="upc4", size="10", style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;")
+      td
+       input.form-control.quan(type="number", placeholder="QUANTITY #4",  name="quantity4", id="foo", size="10", style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;")
+     tr
+      td
+       input.form-control(type="text", id="upc", placeholder="UPC #5",  name="upc5", size="10", style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;")
+      td
+       input.form-control.quan(type="number", placeholder="QUANTITY #5",  name="quantity5", id="foo", size="10", style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;")
+     tr
+      td
+       input.form-control(type="text", id="upc", placeholder="UPC #6",  name="upc6", size="10", style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;")
+      td
+       input.form-control.quan(type="number", placeholder="QUANTITY #6",  name="quantity6", id="foo", size="10", style="font-size: 13px;padding:0px; margin:0px; text-align:center; height:50px;")
     button.btn.invSub(type="submit", style="font-size:35px;") Submit
  
 
