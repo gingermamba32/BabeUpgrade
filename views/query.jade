@@ -3,12 +3,13 @@ extends layout
 block content
   
   h1(style="padding-top: 40px;") Search Inventory
+  a(data-toggle="modal" data-target="#myModal", style="text-decoration:none; cursor: pointer; color:black; font-weight: 600;") DESCRIPTION
   form(method="Post", action="/query", name="DBQuery", style="padding-bottom: 50px; padding-top: 50px;")
    button.search.btn(type="submit", style="font-size:15px;") Search
    table.table-striped.table-bordered.table-responsive(width="90%", align="center", style="font-size:18px; color:black;")
     tr(style="margin: 0 auto; background: #52bab3;")
      td #[b UPC]
-     td #[a(data-toggle="modal" data-target="#myModal", style="text-decoration:none; cursor: pointer; color:black; font-weight: 600;") DESCRIPTION]
+     td #[a(data-toggle="modal" data-target="#myModal3", style="text-decoration:none; cursor: pointer; color:black; font-weight: 600;") DESCRIPTION]
      td #[b LOCATION]
      td #[b QUANTITY]
      td #[b PO#]
@@ -39,7 +40,7 @@ block content
        td #[a(href="/deleteuser/#{post.id}", onclick="return warningList();") Delete]
 
      
-    #myModal.modal.fade(role='dialog')
+  #myModal.modal.fade(role='dialog')
       .modal-dialog.modal-lg
         
         .modal-content
@@ -47,16 +48,16 @@ block content
             button.close(type='button', data-dismiss='modal') ×
             h4.modal-title Search Product IDs
           .modal-body
-            form(role='form', method="Post", action="/radioSearch", name="Radio",style="margin: 0 auto; width: 600px;")
+           form(role='form', id="radio", method="Post", action="/radioSearch", name="Radio", style="margin: 0 auto; width: 600px;", autocomplete="off")
              h7(style="float: left; padding-right:5px;font-size: 15px;") Length:
              label(style="vertical-align: middle; font-size:10px;")
-              input(type='radio', name='length', value='14', style="vertical-align: middle; padding-top:5px;")
+              input(type='checkbox', name='length', value='14', style="vertical-align: middle; padding-top:5px;")
               | 14"
              label
-              input(type='radio', name='length', value='18', style="vertical-align: middle;padding-top:5px;")
+              input(type='checkbox', name='length', value='18', style="vertical-align: middle;padding-top:5px;")
               | 18"
              label
-              input(type='radio', name='length', value='22', style="vertical-align: middle;padding-top:5px;")
+              input(type='checkbox', name='length', value='22', style="vertical-align: middle;padding-top:5px;")
               | 22"
              br
              br
@@ -205,10 +206,17 @@ block content
              label
               input(type='radio', name='color', value='TEAL', style="vertical-align: middle")
               | TEAL
+             label
+              input(type='radio', name='color', value='12', style="vertical-align: middle")
+              | 12
+             label
+              input(type='radio', name='color', value='6/10', style="vertical-align: middle")
+              | 6/10
              br
              br
              br
              button(type="submit", style="font-size:30px;") Search ProductID
+             input( type="button", value="Reset Form", onClick="this.form.reset()")
 
 
 
@@ -221,6 +229,8 @@ block content
   script.
     $(document).ready(function() {
       $('input[name=bin11]').focus();
+
+      $("#radio").trigger('reset');
 
     //- $(".loc").keyup(function() {
     //-     if ($(this).val().length === 8) {
@@ -277,30 +287,14 @@ block content
          }
         })
 
+         $('input:checked').removeAttr('checked');
+        $('input:checked').removeAttr('checked');
+        $('input:checked').removeAttr('checked');
+
 
 
           //- Press enter to search attributes
-       $('.type').keypress(function (e){
-         if(e.which == 13){
-         $('.search').focus().click();
-         //window.scrollTo(200,400);
-         return false;
-         }
-        })
-       $('.length').keypress(function (e){
-         if(e.which == 13){
-         $('.search').focus().click();
-         //window.scrollTo(200,400);
-         return false;
-         }
-        })
-       $('.color').keypress(function (e){
-         if(e.which == 13){
-         $('.search').focus().click();
-         //window.scrollTo(200,400);
-         return false;
-         }
-        })
+ 
        $('.location').keypress(function (e){
          if(e.which == 13){
          $('.search').focus().click();
@@ -342,6 +336,10 @@ block content
         return false;
           }
         }
+
+        $('input:checked').removeAttr('checked');
+              $('input:checked').removeAttr('checked');
+              $('input:checked').removeAttr('checked');
 
 
 

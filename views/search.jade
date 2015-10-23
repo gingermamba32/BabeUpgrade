@@ -35,16 +35,16 @@ block content
             button.close(type='button', data-dismiss='modal') ×
             h4.modal-title Search Product IDs
           .modal-body
-            form(role='form', method="Post", action="/radioSearch", name="Radio",style="margin: 0 auto; width: 600px;")
+            form(role='form', id='radio1', method="Post", action="/radioSearch", name="Radio",style="margin: 0 auto; width: 600px;")
              h7(style="float: left; padding-right:5px;font-size: 15px;") Length:
              label(style="vertical-align: middle; font-size:10px;")
-              input(type='radio', name='length', value='14', style="vertical-align: middle; padding-top:5px;")
+              input(type='checkbox', name='length', value='14', style="vertical-align: middle; padding-top:5px;")
               | 14"
              label
-              input(type='radio', name='length', value='18', style="vertical-align: middle;padding-top:5px;")
+              input(type='checkbox', name='length', value='18', style="vertical-align: middle;padding-top:5px;")
               | 18"
              label
-              input(type='radio', name='length', value='22', style="vertical-align: middle;padding-top:5px;")
+              input(type='checkbox', name='length', value='22', style="vertical-align: middle;padding-top:5px;")
               | 22"
              br
              br
@@ -193,10 +193,17 @@ block content
              label
               input(type='radio', name='color', value='TEAL', style="vertical-align: middle")
               | TEAL
+             label
+              input(type='radio', name='color', value='12', style="vertical-align: middle")
+              | 12
+             label
+              input(type='radio', name='color', value='6/10', style="vertical-align: middle")
+              | 6/10
              br
              br
              br
              button(type="submit", style="font-size:30px;") Search ProductID
+             input( type="button", value="Reset Form", onClick="this.form.reset()")
 
 
 
@@ -209,8 +216,13 @@ block content
   script.
     $(document).ready(function() {
       $('input[name=barcode]').focus();
-      });
 
+      $("#radio1").trigger('reset');
+        
+      });
+      $('input:checked').removeAttr('checked');
+              $('input:checked').removeAttr('checked');
+              $('input:checked').removeAttr('checked');
 
 
    
