@@ -3,13 +3,13 @@ extends layout
 block content
   
   h1(style="padding-top: 40px;") Search Inventory
-  a(data-toggle="modal" data-target="#myModal", style="text-decoration:none; cursor: pointer; color:black; font-weight: 600;") DESCRIPTION
+  
   form(method="Post", action="/query", name="DBQuery", style="padding-bottom: 50px; padding-top: 50px;")
    button.search.btn(type="submit", style="font-size:15px;") Search
    table.table-striped.table-bordered.table-responsive(width="90%", align="center", style="font-size:18px; color:black;")
     tr(style="margin: 0 auto; background: #52bab3;")
      td #[b UPC]
-     td #[a(data-toggle="modal" data-target="#myModal3", style="text-decoration:none; cursor: pointer; color:black; font-weight: 600;") DESCRIPTION]
+     td #[a(data-toggle="modal" data-target="#myModal", style="text-decoration:none; cursor: pointer; color:black; font-weight: 600;") DESCRIPTION]
      td #[b LOCATION]
      td #[b QUANTITY]
      td #[b PO#]
