@@ -38,13 +38,13 @@ block content
             form(role='form', id='radio1', method="Post", action="/radioSearch", name="Radio",style="margin: 0 auto; width: 600px;")
              h7(style="float: left; padding-right:5px;font-size: 15px;") Length:
              label(style="vertical-align: middle; font-size:10px;")
-              input(type='checkbox', name='length', value='14', style="vertical-align: middle; padding-top:5px;")
+              input(type='radio', name='length', value='14', style="vertical-align: middle; padding-top:5px;")
               | 14"
              label
-              input(type='checkbox', name='length', value='18', style="vertical-align: middle;padding-top:5px;")
+              input(type='radio', name='length', value='18', style="vertical-align: middle;padding-top:5px;")
               | 18"
              label
-              input(type='checkbox', name='length', value='22', style="vertical-align: middle;padding-top:5px;")
+              input(type='radio', name='length', value='22', style="vertical-align: middle;padding-top:5px;")
               | 22"
              br
              br
@@ -73,18 +73,19 @@ block content
              label
               input(type='radio', name='type', value='KBODY', style="vertical-align: middle")
               | KCULRY
-             label
-              input(type='radio', name='type', value='SIPRACTICE', style="vertical-align: middle")
-              | SIPRACTICE 
+
              label
               input(type='radio', name='type', value='VA16-HUMAN', style="vertical-align: middle")
               | VA16-HUMAN 
              label
               input(type='radio', name='type', value='SWATCH', style="vertical-align: middle")
-              | SWATCH 
+              | SWATCH (only search by this)            
              label
-              input(type='radio', name='type', value='OTHER', style="vertical-align: middle")
-              | OTHER 
+              input(type='radio', name='type', value='PRACTICE', style="vertical-align: middle")
+              | PRACTICE (only search by this)
+             //- label
+             //-  input(type='radio', name='type', value='OTHER', style="vertical-align: middle")
+             //-  | OTHER 
              br
              br
              br
