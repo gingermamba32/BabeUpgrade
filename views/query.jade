@@ -37,7 +37,7 @@ block content
        td= post.quantity
        td= post.shipment
        td #[a(href="/updateproduct/#{post.id}") Update]
-       td #[a(href="/deleteuser/#{post.id}") Delete]
+       td #[a(href="/deleteuser/#{post.id}", onclick="return warningList();") Delete]
 
      
   #myModal.modal.fade(role='dialog')
