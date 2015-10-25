@@ -385,6 +385,15 @@ a.list:hover {
     background-color: #28739E;
 }
 
+.scanner {
+
+  font-size: 13px;
+  padding:0px; 
+  margin:0px; 
+  text-align: center; 
+  height:50px;
+}
+
 input[type="checkbox"], 
 input[type="radio"],
 input.radio,
