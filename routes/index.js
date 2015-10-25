@@ -652,9 +652,180 @@ router.post('/locateThree', function( req, res, next ){
             		res.redirect('/scan');
             	}
 			});
-		} //close else
+	} 
 
-	else if (req.body.upc6 === '' && req.body.quantity6 === ''){
+	else if (req.body.upc6 === '' && req.body.quantity6 === '')  {
+		Locations.findOneAndUpdate(
+		{location: req.body.bin11, upc: req.body.upc1, shipment: req.body.shipment},  
+		{$inc: {
+                	quantity     	  : req.body.quantity1
+            }}, 
+            {upsert: false} , function(err, docs) {
+            	//console.log( docs + " Updated Document#1 by searching bin1 and upc11");
+            	// res.redirect('/');
+            	if (docs === null) {
+            		Locations.findOne({upc: req.body.upc1}, function(err, docss) {
+            				if (docss === null){
+            				res.render('invalid', {message: req.body.upc1 + ' does not exist. Please add it!'});
+            				}
+					    	else { 
+							
+							var newLocation = new Locations({
+								location   : req.body.bin11,
+								upc        : req.body.upc1,
+								description: docss.description,
+								shipment   : req.body.shipment,
+								quantity   : req.body.quantity1
+							});
+							console.log(newLocation);
+							newLocation.save(function(err, callback){
+							//res.redirect('/');
+							})
+						}
+            		});
+            		}
+
+            	else {
+            		console.log( docs + " Updated Document by searching bin and upc");
+            	//res.redirect('/');
+            	}
+			});
+	Locations.findOneAndUpdate(
+		{location: req.body.bin11, upc: req.body.upc2, shipment: req.body.shipment},  
+		{$inc: {
+                	quantity     	  : req.body.quantity2
+            }}, 
+            {upsert: false} , function(err, docs) {
+            	//console.log( docs + " Updated Document#2 by searching bin1 and upc22");
+            	if (docs === null) {
+            		Locations.findOne({upc: req.body.upc2}, function(err, docss) {
+							if (docss === null){
+            				res.render('invalid', {message: req.body.upc2 + ' does not exist. Only '+ req.body.upc1 + ' was added. Please add it!'});
+            				}
+					    	else { 
+							var newLocation = new Locations({
+								location   : req.body.bin11,
+								upc        : req.body.upc2,
+								description: docss.description,
+								shipment   : req.body.shipment,
+								quantity   : req.body.quantity2
+							});
+						console.log(newLocation);
+						newLocation.save(function(err, callback){
+						//res.redirect('/');
+						console.log(callback)
+						})
+						}
+            		});
+            	}
+            	else {
+            		console.log( docs + " Updated Document by searching bin and upc");
+            	//res.redirect('/');
+            	}
+			});
+	Locations.findOneAndUpdate(
+		{location: req.body.bin11, upc: req.body.upc3, shipment: req.body.shipment},  
+		{$inc: {
+                	quantity     	  : req.body.quantity3
+            }}, 
+            {upsert: false} , function(err, docs) {
+            	//console.log( docs + " Updated Document#3 by searching bin11 and upc33");
+            	//res.redirect('/');
+            	if (docs === null) {
+            		Locations.findOne({upc: req.body.upc3}, function(err, docss) {
+							if (docss === null){
+            				res.render('invalid', {message: req.body.upc3 + ' does not exist. Only '+ req.body.upc1 +' and ' +req.body.upc2+ ' were added. Please add it!'});
+            				}
+					    	else { 
+							var newLocation = new Locations({
+								location   : req.body.bin11,
+								upc        : req.body.upc3,
+								description: docss.description,
+								shipment   : req.body.shipment,
+								quantity   : req.body.quantity3
+							});
+						console.log(newLocation);
+						newLocation.save(function(err, callback){
+						//res.redirect('/scan');
+						})
+						}
+            		});
+            	}
+            	else {
+            		console.log( docs + " Updated Document by searching bin and upc");
+            		//res.redirect('/scan');
+            	}
+			});
+		Locations.findOneAndUpdate(
+		{location: req.body.bin11, upc: req.body.upc4, shipment: req.body.shipment},  
+		{$inc: {
+                	quantity     	  : req.body.quantity4
+            }}, 
+            {upsert: false} , function(err, docs) {
+            	//console.log( docs + " Updated Document#3 by searching bin11 and upc33");
+            	//res.redirect('/');
+            	if (docs === null) {
+            		Locations.findOne({upc: req.body.upc4}, function(err, docss) {
+							if (docss === null){
+            				res.render('invalid', {message: req.body.upc4 + ' does not exist. Only '+ req.body.upc1 +' and ' + req.body.upc2 + ' and ' + req.body.upc3+' were added. Please add it!'});
+            				}
+					    	else { 
+							var newLocation = new Locations({
+								location   : req.body.bin11,
+								upc        : req.body.upc4,
+								description: docss.description,
+								shipment   : req.body.shipment,
+								quantity   : req.body.quantity4
+							});
+						console.log(newLocation);
+						newLocation.save(function(err, callback){
+						//res.redirect('/scan');
+						})
+						}
+            		});
+            	}
+            	else {
+            		console.log( docs + " Updated Document by searching bin and upc");
+            		//res.redirect('/scan');
+            	}
+			});
+
+		Locations.findOneAndUpdate(
+		{location: req.body.bin11, upc: req.body.upc5, shipment: req.body.shipment},  
+		{$inc: {
+                	quantity     	  : req.body.quantity5
+            }}, 
+            {upsert: false} , function(err, docs) {
+            	//console.log( docs + " Updated Document#3 by searching bin11 and upc33");
+            	//res.redirect('/');
+            	if (docs === null) {
+            		Locations.findOne({upc: req.body.upc5}, function(err, docss) {
+							if (docss === null){
+            				res.render('invalid', {message: req.body.upc5 + ' does not exist. Only '+ req.body.upc1 +' and ' +req.body.upc2 + ' and '+ req.body.upc3 + ' and ' +req.body.upc4 +' were added. Please add it!'});
+            				}
+					    	else { 
+							var newLocation = new Locations({
+								location   : req.body.bin11,
+								upc        : req.body.upc5,
+								description: docss.description,
+								shipment   : req.body.shipment,
+								quantity   : req.body.quantity5
+							});
+							console.log(newLocation);
+							newLocation.save(function(err, callback){
+							res.redirect('/scan');
+							})
+						}
+            		});
+            	}
+            	else {
+            		console.log( docs + " Updated Document by searching bin and upc");
+            		res.redirect('/scan');
+            	}
+			});
+	} //close of else
+
+		else {
 		Locations.findOneAndUpdate(
 		{location: req.body.bin11, upc: req.body.upc1, shipment: req.body.shipment},  
 		{$inc: {
@@ -812,6 +983,40 @@ router.post('/locateThree', function( req, res, next ){
 							});
 						console.log(newLocation);
 						newLocation.save(function(err, callback){
+						//res.redirect('/scan');
+						})
+						}
+            		});
+            	}
+            	else {
+            		console.log( docs + " Updated Document by searching bin and upc");
+            		//res.redirect('/scan');
+            	}
+			});
+
+		Locations.findOneAndUpdate(
+		{location: req.body.bin11, upc: req.body.upc6, shipment: req.body.shipment},  
+		{$inc: {
+                	quantity     	  : req.body.quantity6
+            }}, 
+            {upsert: false} , function(err, docs) {
+            	//console.log( docs + " Updated Document#3 by searching bin11 and upc33");
+            	//res.redirect('/');
+            	if (docs === null) {
+            		Locations.findOne({upc: req.body.upc6}, function(err, docss) {
+							if (docss === null){
+            				res.render('invalid', {message: req.body.upc6 + ' does not exist. Only '+ req.body.upc1 +' and ' +req.body.upc2 + ' and '+ req.body.upc3 + ' and ' +req.body.upc4 + ' and ' + req.body.upc5 +' were added. Please add it!'});
+            				}
+					    	else { 
+							var newLocation = new Locations({
+								location   : req.body.bin11,
+								upc        : req.body.upc6,
+								description: docss.description,
+								shipment   : req.body.shipment,
+								quantity   : req.body.quantity6
+							});
+						console.log(newLocation);
+						newLocation.save(function(err, callback){
 						res.redirect('/scan');
 						})
 						}
@@ -822,10 +1027,9 @@ router.post('/locateThree', function( req, res, next ){
             		res.redirect('/scan');
             	}
 			});
-		} //close of else
-		else{
-			// 6 inputs
-		}
+		} //end of else
+
+		
 	// else if (req.body.upcArray[9] === undefined && req.body.quantityArray[9] && req.body.upcArray[8] === undefined && req.body.quantityArray[8] && req.body.upcArray[7] === undefined && req.body.quantityArray[7] && req.body.upcArray[6] === undefined && req.body.quantityArray[6] ) {
 	// 	Locations.findOneAndUpdate(
 	// 	{location: req.body.bin11, upc: req.body.upcArray[0], shipment: req.body.shipment},  
@@ -2574,9 +2778,162 @@ router.post('/update', function(req, res){
                     shipment 	       : req.body.po 
             }}, 
             {upsert: false} , function(err, docs) {
-            	console.log(docs + "Updated Document");
-            	res.redirect('/search');
-            });          
+				console.log(docs + " Updated Document");
+		if (globalLength != undefined && globalColor != undefined && globalType != undefined) {
+			Locations.find({description: globalLength + "." + globalType + "." + globalColor + "."}).sort({shipment: 1}).exec(function(err,docs){
+			console.log( docs + ' good query all three modal');
+			res.render('query', {'nums':docs});	
+			});
+		}	
+		else if (globalUpc != '' && globalLoc != ''){
+			Locations.find({upc: globalUpc, location: globalLoc}).sort({shipment: 1}).exec(function(err,docs){
+			console.log( docs + ' good query loc + upc');
+			res.render('query', {'nums':docs});	
+			})
+		}	
+
+		else if (globalUpc != '' && globalDesc != ''){
+			Locations.find({upc: globalUpc, description: globalDesc}).sort({shipment: 1}).exec(function(err,docs){
+			console.log( docs + ' good query upc + description');
+			res.render('query', {'nums':docs});	
+			})
+		}
+
+		else if (globalUpc != '' && globalQty != ''){
+			Locations.find({upc: globalUpc, quantity: globalQty}).sort({shipment: 1}).exec(function(err,docs){
+			console.log( docs + ' good query upc + qty');
+			res.render('query', {'nums':docs});	
+			})
+		}	
+
+		else if (globalUpc != '' && globalPo != ''){
+			Locations.find({upc: globalUpc, shipment: globalPo}).sort({shipment: 1}).exec(function(err,docs){
+			console.log( docs + ' good query upc + po');
+			res.render('query', {'nums':docs});	
+			})
+		}	
+
+		else if (globalDesc != '' && globalLoc != ''){
+			Locations.find({description: globalDesc, location: globalLoc}).sort({shipment: 1}).exec(function(err,docs){
+			console.log( docs + ' good query desc + loc');
+			res.render('query', {'nums':docs});	
+			})
+		}	
+
+		else if (globalDesc != '' && globalQty != ''){
+			Locations.find({description: globalDesc, quantity: globalQty}).sort({shipment: 1}).exec(function(err,docs){
+			console.log( docs + ' good query desc + qty');
+			res.render('query', {'nums':docs});	
+			})
+		}	
+
+		else if (globalDesc != '' && globalPo != ''){
+			Locations.find({description: globalDesc, shipment: globalPo}).sort({shipment: 1}).exec(function(err,docs){
+			console.log( docs + ' good query desc + po');
+			res.render('query', {'nums':docs});	
+			})
+		}	
+
+		else if (globalLoc != '' && globalQty != ''){
+			Locations.find({location: globalLoc, quantity: globalQty}).sort({shipment: 1}).exec(function(err,docs){
+			console.log( docs + ' good query loc + qty');
+			res.render('query', {'nums':docs});	
+			})
+		}	
+
+		else if (globalLoc != '' && globalPo != ''){
+			Locations.find({location: globalLoc, shipment: globalPo}).sort({shipment: 1}).exec(function(err,docs){
+			console.log( docs + ' good query loc + po');
+			res.render('query', {'nums':docs});	
+			})
+		}	
+
+		else if (globalQty != '' && globalPo != ''){
+			Locations.find({quantity: globalQty, shipment: globalPo}).sort({shipment: 1}).exec(function(err,docs){
+			console.log( docs + ' good query + qty + po');
+			res.render('query', {'nums':docs});	
+			})
+		}	
+
+
+		else if (globalUpc != ''){
+	    Locations.find({upc: globalUpc}).sort({shipment: 1}).exec(function(err, docs) {
+				console.log( docs + ' good query upc');
+			res.render('query', {'nums':docs});
+		 });
+		}
+
+		else if (globalDesc != ''){
+		Locations.find({description: globalDesc}).sort({shipment: 1}).exec(function(err, docs) {
+				console.log( docs + ' good query desc');
+			res.render('query', { 'nums': docs });
+		 });
+		}
+
+		else if (globalLoc != '') {
+			Locations.find({location: globalLoc}).sort({shipment: 1}).exec(function(err, docs) {
+				console.log( docs + 'good query loc');
+			res.render('query', { 'nums': docs });
+		 });
+		}
+
+		else if (globalQty != ''){
+			Locations.find({quantity: globalQty}).sort({shipment: 1}).exec(function(err, docs) {
+				console.log( docs + 'good query qty');
+			res.render('query', { 'nums': docs });
+		 });
+		}
+
+		else if (globalPo != ''){
+			Locations.find({shipment: globalPo}).sort({quantity: 1}).exec(function(err, docs) {
+				console.log( docs + ' good query po');
+			res.render('query', {'nums':docs});
+		 });
+		}
+
+		else if (globalLength != undefined && globalType != undefined){
+			Locations.find({description: new RegExp("^" + globalLength + "." + globalType)}).sort({shipment: 1}).exec(function(err,docs){
+				console.log( docs + ' good query length type');
+				res.render('query', {'nums':docs});
+			})
+		}
+		else if (globalType != undefined && globalColor != undefined) {
+			Locations.find({description: new RegExp(globalType + "\." + globalColor + "\.$")}).sort({shipment: 1}).exec(function(err,docs){
+				console.log( docs + ' good query type + color');
+				res.render('query', {'nums':docs});
+			})
+		}
+
+		else if (globalLength != undefined && globalColor != undefined){
+			Locations.find({description: new RegExp("^"+globalLength + ".*" + globalColor + "\.$")}).sort({shipment: 1}).exec(function(err, docs){
+				console.log( docs + ' good query length color');
+				res.render('query', {'nums': docs});
+			})
+		}
+		else if (globalLength != undefined){
+			Locations.find({description: new RegExp("^" + globalLength)}).sort({shipment: 1}).exec(function(err,docs){
+				console.log( docs + ' good query length');
+				res.render('query', {'nums':docs});
+			})
+
+		}
+		else if (globalType != undefined){
+			Locations.find({description: new RegExp(globalType)}).sort({shipment: 1}).exec(function(err,docs){
+				console.log( docs + ' good query type');
+				res.render('query', {'nums': docs});
+			})
+		}
+
+		else if (globalColor != undefined){
+			Locations.find({description: new RegExp(globalColor)}).sort({shipment: 1}).exec(function(err, docs){
+				console.log( docs + ' good query color');
+				res.render('query', {'nums': docs});
+			})
+		}
+
+
+
+    });          
 })
 
 
