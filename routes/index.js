@@ -89,37 +89,7 @@ router.post('/radioSearch', function(req,res,next){
 	console.log(req.body.length);
 	console.log(req.body.type);
 	console.log(req.body.color);
-	// if (req.body.length == undefined){
-	// 	globalLength = '';
-	// }
-	// else {
-	// 	globalLength = req.body.length;
-	// }
 
-	// if (req.body.type == undefined){
-	// 	globalType = '';
-	// }
-	// else{
-	// 	globalType = req.body.type;
-	// }
-
-	// if (req.body.color == undefined){
-	// 	globalColor = '';
-	// }
-	// else{
-	// 	globalColor = req.body.color;
-	// }
-
-
-	// hand write it
-
-	// if ( globalType != undefined || globalColor =! undefined  || globalLength != undefined ){
-	// 	globalUpc = '';
-	// 	globalDesc = '';
-	// 	globalLoc = '';
-	// 	globalQty = '';
-	// 	gloablPo = '';
-	// }
 
 	
 	//new RegExp("^"
