@@ -4,10 +4,10 @@ block content
   
   h1(id="header", style="padding-top: 75px;") Scan Inventory
 
-  h5.mess( style="color:red; padding-top: 30px; padding-top: 30px; text-align:center;") You have successfully updated inventory!
+  h5(style="color:red;")=success
 
-  div.inputFields(style="background:#D0D0D0; width:90%; margin:80px auto; padding-top:50px; padding-bottom:50px; border-radius: 8px;")
-   h2(style="text-align:center")=error
+  div.inputFields(style="background:#D0D0D0; width:90%; margin:80px auto; padding-top:20px; padding-bottom:50px; border-radius: 8px;")
+   h2(style="text-align:center; padding-bottom: 10px;")=error
    div(style="float:right; margin-top: 0.35%; padding-right: 10px;")
     //- button.btn.btn-warning(onclick="myDeleteFunction()", style="font-size: 40px; background-color:red; color:white; border: 1px solid;") &#8593;
     //- br
@@ -19,7 +19,7 @@ block content
       td(style="width:50%;")
        input.form-control.scanner(type="text", required, id="loc", placeholder="LOCATION", name="bin11", size="18")
       td
-       input.form-control.scanner(type="text", required, id="loc", placeholder="PO", name="shipment", size="10")
+       input.form-control.scanner(type="number", required, id="loc", placeholder="PO", name="shipment", size="10")
      tr
       td
        input.form-control.scanner(type="text", required, id="upc", placeholder="UPC #1",  name="upc1", size="10")

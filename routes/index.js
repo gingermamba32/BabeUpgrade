@@ -36,6 +36,10 @@ var Locations = db.model('location', {
         type: Number,
         default: ''
         },
+    box: {
+    	type: Number, 
+    	default: ''
+    },
     created: {
         type: Date,
         default: Date.now
@@ -50,11 +54,11 @@ router.get('/', function(req, res, next) {
 
 /* GET home page with All Database Products*/
 router.get('/scan', function(req, res, next) {
-	Locations.find( {}, function(err, docs) {
-		docs.reverse();
-	res.render('index', { 'products': docs });
+	// Locations.find( {}, function(err, docs) {
+	// 	docs.reverse();
+	res.render('index');
 	});
-})
+
 
 router.get('/search', function(req, res, next) {
 	res.render('search');
@@ -156,7 +160,7 @@ router.post('/addUpc', function(req, res,next){
 			});
 							console.log(newUpc);
 							newUpc.save(function(err, callback){
-								res.redirect('/addUpc');
+							res.render('upc', {successmessage: 'You have successfully added '+ req.body.description+ ' to the database.'});
 							})
 		}
 	});
@@ -262,6 +266,11 @@ router.post('/addUpc', function(req, res,next){
 
 
 router.post('/locateThree', function( req, res, next ){
+	var num = new Date();
+	var num = Date.now();
+	console.log(Date.now())  
+	console.log(num);//time stamp for box number
+	console.log(typeof num);
 	console.log(req.body);
 	console.log(req.body.shipment)
 	console.log(req.body.bin11);
@@ -269,20 +278,15 @@ router.post('/locateThree', function( req, res, next ){
 	console.log(req.body.quantity1); //qty11
 	console.log(req.body.upc2); //productupc22
 	console.log(req.body.quantity2); //qty22
+
 	// console.log(req.body.upc3);   //productupc33
 	// console.log(req.body.quantity3); //qty33
 
 	// if it is a string, there is only one entry and thus not an array
 	if ( req.body.upc2 === '' && req.body.quantity2 === '' && req.body.upc3 === '' && req.body.quantity3 === '' && req.body.upc4 === '' && req.body.quantity4 === '' && req.body.upc5 === '' && req.body.quantity5 === ''&& req.body.upc6 === '' && req.body.quantity6 === '' && req.body.upc7 === '' && req.body.quantity7 === '' && req.body.upc8 === '' && req.body.quantity8 === ''){
-		Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upc1, shipment: req.body.shipment},  
-		{$inc: {
-                	quantity     	  : req.body.quantity1
-            }}, 
-            {upsert: false} , function(err, docs) {
-            	// console.log(docs + 'xxxxxx');
-            	console.log(req.body.upc1);
-            	if (docs === null) {
+					
+					var num1 = Date.now(); 
+
             		Locations.findOne({upc: req.body.upc1}, function(err, docss) {
             			if (docss === null){
             				res.render('invalid', {message: req.body.upc1 + ' does not exist. Please add it!'});
@@ -293,712 +297,439 @@ router.post('/locateThree', function( req, res, next ){
 								upc        : req.body.upc1,
 								description: docss.description,
 								shipment   : req.body.shipment,
-								quantity   : req.body.quantity1
+								quantity   : req.body.quantity1,
+								box        : num1
 							});
-							console.log(newLocation);
-							newLocation.save(function(err, callback){
-								res.redirect('/scan');
-							})
-						}
-
-            		});
-            	}
-            	else {
-            		console.log( docs + " Updated Document by searching bin upc and shipment");
-            	res.redirect('/scan');
-            	}
-
-		});
-	 }
-	//end of if statement
-	else if (req.body.upc3 === '' && req.body.quantity3 === '' && req.body.upc4 === '' && req.body.quantity4 === '' && req.body.upc5 === '' && req.body.quantity5 === ''&& req.body.upc6 === '' && req.body.quantity6 === '' && req.body.upc7 === '' && req.body.quantity7 === '' && req.body.upc8 === '' && req.body.quantity8 === '') {
-		Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upc1, shipment: req.body.shipment},  
-		{$inc: {
-                	quantity     	  : req.body.quantity1
-            }}, 
-            {upsert: false} , function(err, docs) {
-            	//console.log( docs + " Updated Document#1 by searching bin11 and upc11");
-            	// res.redirect('/');
-            	if (docs === null) {
-            		Locations.findOne({upc: req.body.upc1}, function(err, docss) {
-            				console.log(docss+ 'DOCCSSSSSSS')
-							if (docss === null){
-
-            				res.render('invalid', {message: req.body.upc1 + ' does not exist. Please add it!'});
-            				}
-					    	else { 
-								var newLocation = new Locations({
-								location   : req.body.bin11,
-								upc        : req.body.upc1,
-								description: docss.description,
-								shipment   : req.body.shipment,
-								quantity   : req.body.quantity1
-								});
 								console.log(newLocation);
 							newLocation.save(function(err, callback){
-						//res.redirect('/');
+								res.render('index', {success: req.body.upc1 + ' has been successfully added to ' + req.body.bin11 + '/PO#' + req.body.shipment});
 							})
-							}
-            		});
-            	}
-            	else {
-            		console.log( docs + " Updated Document by searching bin and upc");
-            	//res.redirect('/');
-            	}
-
-			});
-	Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upc2, shipment: req.body.shipment},  
-		{$inc: {
-                	quantity     	  : req.body.quantity2
-            }}, 
-            {upsert: false} , function(err, docs) {
-            	//console.log( docs + " Updated Document#2 by searching bin11 and upc22");
-            	//res.redirect('/');
-            	if (docs === null) {
-            		Locations.findOne({upc: req.body.upc2}, function(err, docss) {
-            				console.log(docss + 'DOCCSSSSSSS')
-							if (docss === null){
-            				res.render('invalid', {message: req.body.upc2 + ' does not exist. Only '+ req.body.upc1 + ' was added. Please add it!'});
-            				}
-					    	else { 
-							var newLocation = new Locations({
-								location   : req.body.bin11,
-								upc        : req.body.upc2,
-								description: docss.description,
-								shipment   : req.body.shipment,
-								quantity   : req.body.quantity2
-							});
-						console.log(newLocation);
-						newLocation.save(function(err, callback){
-						res.redirect('/scan');
-						})
 						}
             		});
-            	}
-            	else {
-            		console.log( docs + " Updated Document by searching bin and upc");
-            		res.redirect('/scan');
-            	}
-			});
-	}
-
-	else if (req.body.upc4 === '' && req.body.quantity4 === '' && req.body.upc5 === '' && req.body.quantity5 === ''&& req.body.upc6 === '' && req.body.quantity6 === '' && req.body.upc7 === '' && req.body.quantity7 === '' && req.body.upc8 === '' && req.body.quantity8 === ''){
-		Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upc1, shipment: req.body.shipment},  
-		{$inc: {
-                	quantity     	  : req.body.quantity1
-            }}, 
-            {upsert: false} , function(err, docs) {
-            	//console.log( docs + " Updated Document#1 by searching bin1 and upc11");
-            	// res.redirect('/');
-            	if (docs === null) {
+	 } 	//end of if statement
+	else if (req.body.upc3 === '' && req.body.quantity3 === '' && req.body.upc4 === '' && req.body.quantity4 === '' && req.body.upc5 === '' && req.body.quantity5 === ''&& req.body.upc6 === '' && req.body.quantity6 === '' && req.body.upc7 === '' && req.body.quantity7 === '' && req.body.upc8 === '' && req.body.quantity8 === '') {
+            		var num2 = Date.now();
             		Locations.findOne({upc: req.body.upc1}, function(err, docss) {
-            				if (docss === null){
+            			if (docss === null){
             				res.render('invalid', {message: req.body.upc1 + ' does not exist. Please add it!'});
-            				}
-					    	else { 
-							
+            			}
+					    else { 
 							var newLocation = new Locations({
 								location   : req.body.bin11,
 								upc        : req.body.upc1,
 								description: docss.description,
 								shipment   : req.body.shipment,
-								quantity   : req.body.quantity1
+								quantity   : req.body.quantity1,
+								box        : num2
 							});
-						console.log(newLocation);
-						newLocation.save(function(err, callback){
-						//res.redirect('/');
-						})
+								console.log(newLocation);
+							newLocation.save(function(err, callback){
+								//res.render('index', {success: req.body.upc1 + ' has been successfully added to ' + req.body.bin11 + '/PO#' + req.body.shipment});
+							})
 						}
             		});
-            	}
-            	else {
-            		console.log( docs + " Updated Document by searching bin and upc");
-            	//res.redirect('/');
-            	}
-			});
-	Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upc2, shipment: req.body.shipment},  
-		{$inc: {
-                	quantity     	  : req.body.quantity2
-            }}, 
-            {upsert: false} , function(err, docs) {
-            	//console.log( docs + " Updated Document#2 by searching bin1 and upc22");
-            	if (docs === null) {
             		Locations.findOne({upc: req.body.upc2}, function(err, docss) {
-							if (docss === null){
+            			if (docss === null){
             				res.render('invalid', {message: req.body.upc2 + ' does not exist. Only '+ req.body.upc1 + ' was added. Please add it!'});
-            				}
-					    	else { 
+            			}
+					    else { 
 							var newLocation = new Locations({
 								location   : req.body.bin11,
 								upc        : req.body.upc2,
 								description: docss.description,
 								shipment   : req.body.shipment,
-								quantity   : req.body.quantity2
+								quantity   : req.body.quantity2,
+								box        : num2
 							});
-						console.log(newLocation);
-						newLocation.save(function(err, callback){
-						//res.redirect('/');
-						console.log(callback)
-						})
+								console.log(newLocation);
+							newLocation.save(function(err, callback){
+								res.render('index', {success: req.body.upc1 + ' , ' +req.body.upc2 + ' have been successfully added to ' + req.body.bin11 + '/PO#' + req.body.shipment});
+							})
 						}
             		});
-            	}
-            	else {
-            		console.log( docs + " Updated Document by searching bin and upc");
-            	//res.redirect('/');
-            	}
-			});
-	Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upc3, shipment: req.body.shipment},  
-		{$inc: {
-                	quantity     	  : req.body.quantity3
-            }}, 
-            {upsert: false} , function(err, docs) {
-            	//console.log( docs + " Updated Document#3 by searching bin11 and upc33");
-            	//res.redirect('/');
-            	if (docs === null) {
+	
+	} //end of else
+
+	else if (req.body.upc4 === '' && req.body.quantity4 === '' && req.body.upc5 === '' && req.body.quantity5 === ''&& req.body.upc6 === '' && req.body.quantity6 === '' && req.body.upc7 === '' && req.body.quantity7 === '' && req.body.upc8 === '' && req.body.quantity8 === ''){
+					var num3 = Date.now();
+
+					Locations.findOne({upc: req.body.upc1}, function(err, docss) {
+            			if (docss === null){
+            				res.render('invalid', {message: req.body.upc1 + ' does not exist. Please add it!'});
+            			}
+					    else { 
+							var newLocation = new Locations({
+								location   : req.body.bin11,
+								upc        : req.body.upc1,
+								description: docss.description,
+								shipment   : req.body.shipment,
+								quantity   : req.body.quantity1,
+								box        : num3
+							});
+								console.log(newLocation);
+							newLocation.save(function(err, callback){
+								//res.render('index', {success: req.body.upc1 + ' has been successfully added to ' + req.body.bin11 + '/PO#' + req.body.shipment});
+							})
+						}
+            		});
+
+            		Locations.findOne({upc: req.body.upc2}, function(err, docss) {
+            			if (docss === null){
+            				res.render('invalid', {message: req.body.upc2 + ' does not exist. Only '+ req.body.upc1 + ' was added. Please add it!'});
+            			}
+					    else { 
+							var newLocation = new Locations({
+								location   : req.body.bin11,
+								upc        : req.body.upc2,
+								description: docss.description,
+								shipment   : req.body.shipment,
+								quantity   : req.body.quantity2,
+								box        : num3
+							});
+								console.log(newLocation);
+							newLocation.save(function(err, callback){
+								//res.render('index', {success: req.body.upc1 + ' , ' +req.body.upc2 + ' have been successfully added to ' + req.body.bin11 + '/PO#' + req.body.shipment});
+							})
+						}
+            		});
+
             		Locations.findOne({upc: req.body.upc3}, function(err, docss) {
-							if (docss === null){
+            			if (docss === null){
             				res.render('invalid', {message: req.body.upc3 + ' does not exist. Only '+ req.body.upc1 +' and ' +req.body.upc2+ ' were added. Please add it!'});
-            				}
-					    	else { 
+            			}
+					    else { 
 							var newLocation = new Locations({
 								location   : req.body.bin11,
 								upc        : req.body.upc3,
 								description: docss.description,
 								shipment   : req.body.shipment,
-								quantity   : req.body.quantity3
+								quantity   : req.body.quantity3,
+								box        : num3
 							});
-						console.log(newLocation);
-						newLocation.save(function(err, callback){
-						res.redirect('/scan');
-						})
+								console.log(newLocation);
+							newLocation.save(function(err, callback){
+								res.render('index', {success: req.body.upc1 + ' , ' +req.body.upc2 + ' , ' + req.body.upc3 + ' have been successfully added to ' + req.body.bin11 + '/PO#' + req.body.shipment});
+							})
 						}
             		});
-            	}
-            	else {
-            		console.log( docs + " Updated Document by searching bin and upc");
-            		res.redirect('/scan');
-            	}
-			});
+
+
 	}
 
 
 	else if (req.body.upc5 === '' && req.body.quantity5 === ''&& req.body.upc6 === '' && req.body.quantity6 === '' && req.body.upc7 === '' && req.body.quantity7 === '' && req.body.upc8 === '' && req.body.quantity8 === '') {
-		Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upc1, shipment: req.body.shipment},  
-		{$inc: {
-                	quantity     	  : req.body.quantity1
-            }}, 
-            {upsert: false} , function(err, docs) {
-            	//console.log( docs + " Updated Document#1 by searching bin1 and upc11");
-            	// res.redirect('/');
-            	if (docs === null) {
-            		Locations.findOne({upc: req.body.upc1}, function(err, docss) {
-            				if (docss === null){
+					var num4 = Date.now();
+
+					Locations.findOne({upc: req.body.upc1}, function(err, docss) {
+            			if (docss === null){
             				res.render('invalid', {message: req.body.upc1 + ' does not exist. Please add it!'});
-            				}
-					    	else { 
-							
+            			}
+					    else { 
 							var newLocation = new Locations({
 								location   : req.body.bin11,
 								upc        : req.body.upc1,
 								description: docss.description,
 								shipment   : req.body.shipment,
-								quantity   : req.body.quantity1
+								quantity   : req.body.quantity1,
+								box        : num4
 							});
-						console.log(newLocation);
-						newLocation.save(function(err, callback){
-						//res.redirect('/');
-						})
+								console.log(newLocation);
+							newLocation.save(function(err, callback){
+								//res.render('index', {success: req.body.upc1 + ' has been successfully added to ' + req.body.bin11 + '/PO#' + req.body.shipment});
+							})
 						}
             		});
-            	}
-            	else {
-            		console.log( docs + " Updated Document by searching bin and upc");
-            	//res.redirect('/');
-            	}
-			});
-	Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upc2, shipment: req.body.shipment},  
-		{$inc: {
-                	quantity     	  : req.body.quantity2
-            }}, 
-            {upsert: false} , function(err, docs) {
-            	//console.log( docs + " Updated Document#2 by searching bin1 and upc22");
-            	if (docs === null) {
+
             		Locations.findOne({upc: req.body.upc2}, function(err, docss) {
-							if (docss === null){
+            			if (docss === null){
             				res.render('invalid', {message: req.body.upc2 + ' does not exist. Only '+ req.body.upc1 + ' was added. Please add it!'});
-            				}
-					    	else { 
+            			}
+					    else { 
 							var newLocation = new Locations({
 								location   : req.body.bin11,
 								upc        : req.body.upc2,
 								description: docss.description,
 								shipment   : req.body.shipment,
-								quantity   : req.body.quantity2
+								quantity   : req.body.quantity2,
+								box        : num4
 							});
-						console.log(newLocation);
-						newLocation.save(function(err, callback){
-						//res.redirect('/');
-						console.log(callback)
-						})
+								console.log(newLocation);
+							newLocation.save(function(err, callback){
+								//res.render('index', {success: req.body.upc1 + ' , ' +req.body.upc2 + ' have been successfully added to ' + req.body.bin11 + '/PO#' + req.body.shipment});
+							})
 						}
             		});
-            	}
-            	else {
-            		console.log( docs + " Updated Document by searching bin and upc");
-            	//res.redirect('/');
-            	}
-			});
-	Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upc3, shipment: req.body.shipment},  
-		{$inc: {
-                	quantity     	  : req.body.quantity3
-            }}, 
-            {upsert: false} , function(err, docs) {
-            	//console.log( docs + " Updated Document#3 by searching bin11 and upc33");
-            	//res.redirect('/');
-            	if (docs === null) {
+
             		Locations.findOne({upc: req.body.upc3}, function(err, docss) {
-							if (docss === null){
+            			if (docss === null){
             				res.render('invalid', {message: req.body.upc3 + ' does not exist. Only '+ req.body.upc1 +' and ' +req.body.upc2+ ' were added. Please add it!'});
-            				}
-					    	else { 
+            			}
+					    else { 
 							var newLocation = new Locations({
 								location   : req.body.bin11,
 								upc        : req.body.upc3,
 								description: docss.description,
 								shipment   : req.body.shipment,
-								quantity   : req.body.quantity3
+								quantity   : req.body.quantity3,
+								box        : num4
 							});
-						console.log(newLocation);
-						newLocation.save(function(err, callback){
-						//res.redirect('/scan');
-						})
+								console.log(newLocation);
+							newLocation.save(function(err, callback){
+								//res.render('index', {success: req.body.upc1 + ' , ' +req.body.upc2 + ' , ' + req.body.upc3 + ' have been successfully added to ' + req.body.bin11 + '/PO#' + req.body.shipment});
+							})
 						}
             		});
-            	}
-            	else {
-            		console.log( docs + " Updated Document by searching bin and upc");
-            		//res.redirect('/scan');
-            	}
-			});
-		Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upc4, shipment: req.body.shipment},  
-		{$inc: {
-                	quantity     	  : req.body.quantity4
-            }}, 
-            {upsert: false} , function(err, docs) {
-            	//console.log( docs + " Updated Document#3 by searching bin11 and upc33");
-            	//res.redirect('/');
-            	if (docs === null) {
+
             		Locations.findOne({upc: req.body.upc4}, function(err, docss) {
-							if (docss === null){
+            			if (docss === null){
             				res.render('invalid', {message: req.body.upc4 + ' does not exist. Only '+ req.body.upc1 +' and ' +req.body.upc2 + ' and '+ req.body.upc3+' were added. Please add it!'});
-            				}
-					    	else { 
+            			}
+					    else { 
 							var newLocation = new Locations({
 								location   : req.body.bin11,
 								upc        : req.body.upc4,
 								description: docss.description,
 								shipment   : req.body.shipment,
-								quantity   : req.body.quantity4
+								quantity   : req.body.quantity4,
+								box        : num4
 							});
-						console.log(newLocation);
-						newLocation.save(function(err, callback){
-						res.redirect('/scan');
-						})
+								console.log(newLocation);
+							newLocation.save(function(err, callback){
+								res.render('index', {success: req.body.upc1 + ' , ' +req.body.upc2 + ' , ' + req.body.upc3 + ' , ' + req.body.upc4+ ' have been successfully added to ' + req.body.bin11 + '/PO#' + req.body.shipment});
+							})
 						}
             		});
-            	}
-            	else {
-            		console.log( docs + " Updated Document by searching bin and upc");
-            		res.redirect('/scan');
-            	}
-			});
 	} 
 
 	else if (req.body.upc6 === '' && req.body.quantity6 === '' && req.body.upc7 === '' && req.body.quantity7 === '' && req.body.upc8 === '' && req.body.quantity8 === '')  {
-		Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upc1, shipment: req.body.shipment},  
-		{$inc: {
-                	quantity     	  : req.body.quantity1
-            }}, 
-            {upsert: false} , function(err, docs) {
-            	//console.log( docs + " Updated Document#1 by searching bin1 and upc11");
-            	// res.redirect('/');
-            	if (docs === null) {
-            		Locations.findOne({upc: req.body.upc1}, function(err, docss) {
-            				if (docss === null){
+		var num5 = Date.now();
+
+					Locations.findOne({upc: req.body.upc1}, function(err, docss) {
+            			if (docss === null){
             				res.render('invalid', {message: req.body.upc1 + ' does not exist. Please add it!'});
-            				}
-					    	else { 
-							
+            			}
+					    else { 
 							var newLocation = new Locations({
 								location   : req.body.bin11,
 								upc        : req.body.upc1,
 								description: docss.description,
 								shipment   : req.body.shipment,
-								quantity   : req.body.quantity1
+								quantity   : req.body.quantity1,
+								box        : num5
 							});
-							console.log(newLocation);
+								console.log(newLocation);
 							newLocation.save(function(err, callback){
-							//res.redirect('/');
+								//res.render('index', {success: req.body.upc1 + ' has been successfully added to ' + req.body.bin11 + '/PO#' + req.body.shipment});
 							})
 						}
             		});
-            		}
 
-            	else {
-            		console.log( docs + " Updated Document by searching bin and upc");
-            	//res.redirect('/');
-            	}
-			});
-	Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upc2, shipment: req.body.shipment},  
-		{$inc: {
-                	quantity     	  : req.body.quantity2
-            }}, 
-            {upsert: false} , function(err, docs) {
-            	//console.log( docs + " Updated Document#2 by searching bin1 and upc22");
-            	if (docs === null) {
             		Locations.findOne({upc: req.body.upc2}, function(err, docss) {
-							if (docss === null){
+            			if (docss === null){
             				res.render('invalid', {message: req.body.upc2 + ' does not exist. Only '+ req.body.upc1 + ' was added. Please add it!'});
-            				}
-					    	else { 
+            			}
+					    else { 
 							var newLocation = new Locations({
 								location   : req.body.bin11,
 								upc        : req.body.upc2,
 								description: docss.description,
 								shipment   : req.body.shipment,
-								quantity   : req.body.quantity2
+								quantity   : req.body.quantity2,
+								box        : num5
 							});
-						console.log(newLocation);
-						newLocation.save(function(err, callback){
-						//res.redirect('/');
-						console.log(callback)
-						})
+								console.log(newLocation);
+							newLocation.save(function(err, callback){
+								//res.render('index', {success: req.body.upc1 + ' , ' +req.body.upc2 + ' have been successfully added to ' + req.body.bin11 + '/PO#' + req.body.shipment});
+							})
 						}
             		});
-            	}
-            	else {
-            		console.log( docs + " Updated Document by searching bin and upc");
-            	//res.redirect('/');
-            	}
-			});
-	Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upc3, shipment: req.body.shipment},  
-		{$inc: {
-                	quantity     	  : req.body.quantity3
-            }}, 
-            {upsert: false} , function(err, docs) {
-            	//console.log( docs + " Updated Document#3 by searching bin11 and upc33");
-            	//res.redirect('/');
-            	if (docs === null) {
+
             		Locations.findOne({upc: req.body.upc3}, function(err, docss) {
-							if (docss === null){
+            			if (docss === null){
             				res.render('invalid', {message: req.body.upc3 + ' does not exist. Only '+ req.body.upc1 +' and ' +req.body.upc2+ ' were added. Please add it!'});
-            				}
-					    	else { 
+            			}
+					    else { 
 							var newLocation = new Locations({
 								location   : req.body.bin11,
 								upc        : req.body.upc3,
 								description: docss.description,
 								shipment   : req.body.shipment,
-								quantity   : req.body.quantity3
+								quantity   : req.body.quantity3,
+								box        : num5
 							});
-						console.log(newLocation);
-						newLocation.save(function(err, callback){
-						//res.redirect('/scan');
-						})
+								console.log(newLocation);
+							newLocation.save(function(err, callback){
+								//res.render('index', {success: req.body.upc1 + ' , ' +req.body.upc2 + ' , ' + req.body.upc3 + ' have been successfully added to ' + req.body.bin11 + '/PO#' + req.body.shipment});
+							})
 						}
             		});
-            	}
-            	else {
-            		console.log( docs + " Updated Document by searching bin and upc");
-            		//res.redirect('/scan');
-            	}
-			});
-		Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upc4, shipment: req.body.shipment},  
-		{$inc: {
-                	quantity     	  : req.body.quantity4
-            }}, 
-            {upsert: false} , function(err, docs) {
-            	//console.log( docs + " Updated Document#3 by searching bin11 and upc33");
-            	//res.redirect('/');
-            	if (docs === null) {
+
             		Locations.findOne({upc: req.body.upc4}, function(err, docss) {
-							if (docss === null){
-            				res.render('invalid', {message: req.body.upc4 + ' does not exist. Only '+ req.body.upc1 +' and ' + req.body.upc2 + ' and ' + req.body.upc3+' were added. Please add it!'});
-            				}
-					    	else { 
+            			if (docss === null){
+            				res.render('invalid', {message: req.body.upc4 + ' does not exist. Only '+ req.body.upc1 +' and ' +req.body.upc2 + ' and '+ req.body.upc3+' were added. Please add it!'});
+            			}
+					    else { 
 							var newLocation = new Locations({
 								location   : req.body.bin11,
 								upc        : req.body.upc4,
 								description: docss.description,
 								shipment   : req.body.shipment,
-								quantity   : req.body.quantity4
+								quantity   : req.body.quantity4,
+								box        : num5
 							});
-						console.log(newLocation);
-						newLocation.save(function(err, callback){
-						//res.redirect('/scan');
-						})
+								console.log(newLocation);
+							newLocation.save(function(err, callback){
+								//res.render('index', {success: req.body.upc1 + ' , ' +req.body.upc2 + ' , ' + req.body.upc3 + ' , ' + req.body.upc4+ ' have been successfully added to ' + req.body.bin11 + '/PO#' + req.body.shipment});
+							})
 						}
             		});
-            	}
-            	else {
-            		console.log( docs + " Updated Document by searching bin and upc");
-            		//res.redirect('/scan');
-            	}
-			});
 
-		Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upc5, shipment: req.body.shipment},  
-		{$inc: {
-                	quantity     	  : req.body.quantity5
-            }}, 
-            {upsert: false} , function(err, docs) {
-            	//console.log( docs + " Updated Document#3 by searching bin11 and upc33");
-            	//res.redirect('/');
-            	if (docs === null) {
             		Locations.findOne({upc: req.body.upc5}, function(err, docss) {
-							if (docss === null){
+            			if (docss === null){
             				res.render('invalid', {message: req.body.upc5 + ' does not exist. Only '+ req.body.upc1 +' and ' +req.body.upc2 + ' and '+ req.body.upc3 + ' and ' +req.body.upc4 +' were added. Please add it!'});
-            				}
-					    	else { 
+            			}
+					    else { 
 							var newLocation = new Locations({
 								location   : req.body.bin11,
 								upc        : req.body.upc5,
 								description: docss.description,
 								shipment   : req.body.shipment,
-								quantity   : req.body.quantity5
+								quantity   : req.body.quantity5,
+								box        : num5
 							});
-							console.log(newLocation);
+								console.log(newLocation);
 							newLocation.save(function(err, callback){
-							res.redirect('/scan');
+								res.render('index', {success: req.body.upc1 + ' , ' +req.body.upc2 + ' , ' + req.body.upc3 + ' , ' +req.body.upc4+' , ' +req.body.upc5+ ' have been successfully added to ' + req.body.bin11 + '/PO#' + req.body.shipment});
 							})
 						}
             		});
-            	}
-            	else {
-            		console.log( docs + " Updated Document by searching bin and upc");
-            		res.redirect('/scan');
-            	}
-			});
 	} //close of else
 
 	else if (req.body.upc7 === '' && req.body.quantity7 === '' && req.body.upc8 === '' && req.body.quantity8 === '') {
-		Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upc1, shipment: req.body.shipment},  
-		{$inc: {
-                	quantity     	  : req.body.quantity1
-            }}, 
-            {upsert: false} , function(err, docs) {
-            	//console.log( docs + " Updated Document#1 by searching bin1 and upc11");
-            	// res.redirect('/');
-            	if (docs === null) {
-            		Locations.findOne({upc: req.body.upc1}, function(err, docss) {
-            				if (docss === null){
+					var num6 = Date.now();
+
+					Locations.findOne({upc: req.body.upc1}, function(err, docss) {
+            			if (docss === null){
             				res.render('invalid', {message: req.body.upc1 + ' does not exist. Please add it!'});
-            				}
-					    	else { 
-							
+            			}
+					    else { 
 							var newLocation = new Locations({
 								location   : req.body.bin11,
 								upc        : req.body.upc1,
 								description: docss.description,
 								shipment   : req.body.shipment,
-								quantity   : req.body.quantity1
+								quantity   : req.body.quantity1,
+								box        : num6
 							});
-						console.log(newLocation);
-						newLocation.save(function(err, callback){
-						//res.redirect('/');
-						})
+								console.log(newLocation);
+							newLocation.save(function(err, callback){
+								//res.render('index', {success: req.body.upc1 + ' has been successfully added to ' + req.body.bin11 + '/PO#' + req.body.shipment});
+							})
 						}
             		});
-            	}
-            	else {
-            		console.log( docs + " Updated Document by searching bin and upc");
-            	//res.redirect('/');
-            	}
-			});
-	Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upc2, shipment: req.body.shipment},  
-		{$inc: {
-                	quantity     	  : req.body.quantity2
-            }}, 
-            {upsert: false} , function(err, docs) {
-            	//console.log( docs + " Updated Document#2 by searching bin1 and upc22");
-            	if (docs === null) {
+
             		Locations.findOne({upc: req.body.upc2}, function(err, docss) {
-							if (docss === null){
+            			if (docss === null){
             				res.render('invalid', {message: req.body.upc2 + ' does not exist. Only '+ req.body.upc1 + ' was added. Please add it!'});
-            				}
-					    	else { 
+            			}
+					    else { 
 							var newLocation = new Locations({
 								location   : req.body.bin11,
 								upc        : req.body.upc2,
 								description: docss.description,
 								shipment   : req.body.shipment,
-								quantity   : req.body.quantity2
+								quantity   : req.body.quantity2,
+								box        : num6
 							});
-						console.log(newLocation);
-						newLocation.save(function(err, callback){
-						//res.redirect('/');
-						console.log(callback)
-						})
+								console.log(newLocation);
+							newLocation.save(function(err, callback){
+								//res.render('index', {success: req.body.upc1 + ' , ' +req.body.upc2 + ' have been successfully added to ' + req.body.bin11 + '/PO#' + req.body.shipment});
+							})
 						}
             		});
-            	}
-            	else {
-            		console.log( docs + " Updated Document by searching bin and upc");
-            	//res.redirect('/');
-            	}
-			});
-	Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upc3, shipment: req.body.shipment},  
-		{$inc: {
-                	quantity     	  : req.body.quantity3
-            }}, 
-            {upsert: false} , function(err, docs) {
-            	//console.log( docs + " Updated Document#3 by searching bin11 and upc33");
-            	//res.redirect('/');
-            	if (docs === null) {
+
             		Locations.findOne({upc: req.body.upc3}, function(err, docss) {
-							if (docss === null){
+            			if (docss === null){
             				res.render('invalid', {message: req.body.upc3 + ' does not exist. Only '+ req.body.upc1 +' and ' +req.body.upc2+ ' were added. Please add it!'});
-            				}
-					    	else { 
+            			}
+					    else { 
 							var newLocation = new Locations({
 								location   : req.body.bin11,
 								upc        : req.body.upc3,
 								description: docss.description,
 								shipment   : req.body.shipment,
-								quantity   : req.body.quantity3
+								quantity   : req.body.quantity3,
+								box        : num6
 							});
-						console.log(newLocation);
-						newLocation.save(function(err, callback){
-						//res.redirect('/scan');
-						})
+								console.log(newLocation);
+							newLocation.save(function(err, callback){
+								//res.render('index', {success: req.body.upc1 + ' , ' +req.body.upc2 + ' , ' + req.body.upc3 + ' have been successfully added to ' + req.body.bin11 + '/PO#' + req.body.shipment});
+							})
 						}
             		});
-            	}
-            	else {
-            		console.log( docs + " Updated Document by searching bin and upc");
-            		//res.redirect('/scan');
-            	}
-			});
-		Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upc4, shipment: req.body.shipment},  
-		{$inc: {
-                	quantity     	  : req.body.quantity4
-            }}, 
-            {upsert: false} , function(err, docs) {
-            	//console.log( docs + " Updated Document#3 by searching bin11 and upc33");
-            	//res.redirect('/');
-            	if (docs === null) {
+
             		Locations.findOne({upc: req.body.upc4}, function(err, docss) {
-							if (docss === null){
-            				res.render('invalid', {message: req.body.upc4 + ' does not exist. Only '+ req.body.upc1 +' and ' + req.body.upc2 + ' and ' + req.body.upc3+' were added. Please add it!'});
-            				}
-					    	else { 
+            			if (docss === null){
+            				res.render('invalid', {message: req.body.upc4 + ' does not exist. Only '+ req.body.upc1 +' and ' +req.body.upc2 + ' and '+ req.body.upc3+' were added. Please add it!'});
+            			}
+					    else { 
 							var newLocation = new Locations({
 								location   : req.body.bin11,
 								upc        : req.body.upc4,
 								description: docss.description,
 								shipment   : req.body.shipment,
-								quantity   : req.body.quantity4
+								quantity   : req.body.quantity4,
+								box        : num6
 							});
-						console.log(newLocation);
-						newLocation.save(function(err, callback){
-						//res.redirect('/scan');
-						})
+								console.log(newLocation);
+							newLocation.save(function(err, callback){
+								//res.render('index', {success: req.body.upc1 + ' , ' +req.body.upc2 + ' , ' + req.body.upc3 + ' , ' + req.body.upc4+ ' have been successfully added to ' + req.body.bin11 + '/PO#' + req.body.shipment});
+							})
 						}
             		});
-            	}
-            	else {
-            		console.log( docs + " Updated Document by searching bin and upc");
-            		//res.redirect('/scan');
-            	}
-			});
 
-		Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upc5, shipment: req.body.shipment},  
-		{$inc: {
-                	quantity     	  : req.body.quantity5
-            }}, 
-            {upsert: false} , function(err, docs) {
-            	//console.log( docs + " Updated Document#3 by searching bin11 and upc33");
-            	//res.redirect('/');
-            	if (docs === null) {
             		Locations.findOne({upc: req.body.upc5}, function(err, docss) {
-							if (docss === null){
+            			if (docss === null){
             				res.render('invalid', {message: req.body.upc5 + ' does not exist. Only '+ req.body.upc1 +' and ' +req.body.upc2 + ' and '+ req.body.upc3 + ' and ' +req.body.upc4 +' were added. Please add it!'});
-            				}
-					    	else { 
+            			}
+					    else { 
 							var newLocation = new Locations({
 								location   : req.body.bin11,
 								upc        : req.body.upc5,
 								description: docss.description,
 								shipment   : req.body.shipment,
-								quantity   : req.body.quantity5
+								quantity   : req.body.quantity5,
+								box        : num6
 							});
-						console.log(newLocation);
-						newLocation.save(function(err, callback){
-						//res.redirect('/scan');
-						})
+								console.log(newLocation);
+							newLocation.save(function(err, callback){
+								//res.render('index', {success: req.body.upc1 + ' , ' +req.body.upc2 + ' , ' + req.body.upc3 + ' , ' +req.body.upc4+' , ' +req.body.upc5+ ' have been successfully added to ' + req.body.bin11 + '/PO#' + req.body.shipment});
+							})
 						}
             		});
-            	}
-            	else {
-            		console.log( docs + " Updated Document by searching bin and upc");
-            		//res.redirect('/scan');
-            	}
-			});
 
-		Locations.findOneAndUpdate(
-		{location: req.body.bin11, upc: req.body.upc6, shipment: req.body.shipment},  
-		{$inc: {
-                	quantity     	  : req.body.quantity6
-            }}, 
-            {upsert: false} , function(err, docs) {
-            	//console.log( docs + " Updated Document#3 by searching bin11 and upc33");
-            	//res.redirect('/');
-            	if (docs === null) {
             		Locations.findOne({upc: req.body.upc6}, function(err, docss) {
-							if (docss === null){
+            			if (docss === null){
             				res.render('invalid', {message: req.body.upc6 + ' does not exist. Only '+ req.body.upc1 +' and ' +req.body.upc2 + ' and '+ req.body.upc3 + ' and ' +req.body.upc4 + ' and ' + req.body.upc5 +' were added. Please add it!'});
-            				}
-					    	else { 
+            			}
+					    else { 
 							var newLocation = new Locations({
 								location   : req.body.bin11,
 								upc        : req.body.upc6,
 								description: docss.description,
 								shipment   : req.body.shipment,
-								quantity   : req.body.quantity6
+								quantity   : req.body.quantity6,
+								box        : num6
 							});
-						console.log(newLocation);
-						newLocation.save(function(err, callback){
-						res.redirect('/scan');
-						})
+								console.log(newLocation);
+							newLocation.save(function(err, callback){
+								res.render('index', {success: req.body.upc1 + ' , ' +req.body.upc2 + ' , ' + req.body.upc3 + ' , ' +req.body.upc4+' , ' +req.body.upc5+' , ' + req.body.upc6 + ' have been successfully added to ' + req.body.bin11 + '/PO#' + req.body.shipment});
+							})
 						}
             		});
-            	}
-            	else {
-            		console.log( docs + " Updated Document by searching bin and upc");
-            		res.redirect('/scan');
-            	}
-			});
 		} //end of else
 	else if (req.body.upc8 === '' && req.body.quantity8 === '') {
+		var num7 = Date.now();
 		Locations.findOneAndUpdate(
 		{location: req.body.bin11, upc: req.body.upc1, shipment: req.body.shipment},  
 		{$inc: {
@@ -1515,6 +1246,43 @@ router.post('/locateThree', function( req, res, next ){
 
 });  //close of POST
 
+		//UPDATE DOCUMENT BY CONDITIONS *************full scan
+		// Locations.findOneAndUpdate(
+		// {location: req.body.bin11, upc: req.body.upc1, shipment: req.body.shipment},  
+		// {$inc: {
+  //               	quantity     	  : req.body.quantity1
+  //           }}, 
+  //           {upsert: false} , function(err, docs) {
+  //           	//console.log( docs + " Updated Document#1 by searching bin11 and upc11");
+  //           	// res.redirect('/');
+  //           	if (docs === null) {
+  //           		Locations.findOne({upc: req.body.upc1}, function(err, docss) {
+  //           				console.log(docss+ 'DOCCSSSSSSS')
+		// 					if (docss === null){
+
+  //           				res.render('invalid', {message: req.body.upc1 + ' does not exist. Please add it!'});
+  //           				}
+		// 			    	else { 
+		// 						var newLocation = new Locations({
+		// 						location   : req.body.bin11,
+		// 						upc        : req.body.upc1,
+		// 						description: docss.description,
+		// 						shipment   : req.body.shipment,
+		// 						quantity   : req.body.quantity1
+		// 						});
+		// 						console.log(newLocation);
+		// 					newLocation.save(function(err, callback){
+		// 				//res.redirect('/');
+		// 					})
+		// 					}
+  //           		});
+  //           	}
+  //           	else {
+  //           		console.log( docs + " Updated Document by searching bin and upc");
+  //           	//res.redirect('/');
+  //           	}
+
+		// 	});
 // // Sort by features
 // router.post('/type', function( req, res, next ){
 // 	console.log(req.body.type);
@@ -1582,19 +1350,15 @@ router.post('/query', function(req,res,next){
 	console.log(req.body.po);
 
 	globalUpc = req.body.barcode;
-	globalDesc = req.body.description;
+	globalDesc = (req.body.description).toUpperCase();
 	globalLoc = req.body.location;
 	globalQty = req.body.qty;
 	globalPo = req.body.po;
 	globalColor = undefined;
 	globalType = undefined;
 	globalLength = undefined;
-	// if ( globalDesc != '' || globalUpc != '' || globalLoc != '' || globalQty != '' || gloablPo != '') {
-	// 	globalType = '';
-	// 	globalLength = '';
-	// 	globalColor = '';
-	// }
-	console.log(globalUpc); //undefined when the 
+
+	console.log(globalUpc); 
 	console.log(globalDesc); 
 	console.log(globalLoc + ' this is the global location now');
 	console.log(globalQty);
@@ -1607,7 +1371,7 @@ router.post('/query', function(req,res,next){
 	}	
 
 	else if (req.body.barcode != '' && req.body.description != ''){
-		Locations.find({upc: req.body.barcode, description: req.body.description}).sort({shipment: 1}).exec(function(err,docs){
+		Locations.find({upc: req.body.barcode, description: new RegExp((req.body.description).toUpperCase())}).sort({shipment: 1}).exec(function(err,docs){
 		console.log( docs + ' good query');
 		res.render('query', {'nums':docs});	
 		})
@@ -1628,21 +1392,21 @@ router.post('/query', function(req,res,next){
 	}	
 
 	else if (req.body.description != '' && req.body.location != ''){
-		Locations.find({description: req.body.description, location: req.body.location}).sort({shipment: 1}).exec(function(err,docs){
+		Locations.find({description: new RegExp((req.body.description).toUpperCase()), location: req.body.location}).sort({shipment: 1}).exec(function(err,docs){
 		console.log( docs + ' good query');
 		res.render('query', {'nums':docs});	
 		})
 	}	
 
 	else if (req.body.description != '' && req.body.qty != ''){
-		Locations.find({description: req.body.description, quantity: req.body.qty}).sort({shipment: 1}).exec(function(err,docs){
+		Locations.find({description: new RegExp((req.body.description).toUpperCase()), quantity: req.body.qty}).sort({shipment: 1}).exec(function(err,docs){
 		console.log( docs + ' good query');
 		res.render('query', {'nums':docs});	
 		})
 	}	
 
 	else if (req.body.description != '' && req.body.po != ''){
-		Locations.find({description: req.body.description, shipment: req.body.po}).sort({shipment: 1}).exec(function(err,docs){
+		Locations.find({description: new RegExp((req.body.description).toUpperCase()), shipment: req.body.po}).sort({shipment: 1}).exec(function(err,docs){
 		console.log( docs + ' good query');
 		res.render('query', {'nums':docs});	
 		})
@@ -1678,7 +1442,7 @@ router.post('/query', function(req,res,next){
 	}
 
 	else if (req.body.description != ''){
-	Locations.find({description: req.body.description}).sort({shipment: 1}).exec(function(err, docs) {
+	Locations.find({description: new RegExp((req.body.description).toUpperCase())}).sort({shipment: 1}).exec(function(err, docs) {
 			console.log( docs + ' good query');
 		res.render('query', { 'nums': docs });
 	 });
@@ -1748,7 +1512,7 @@ router.get('/deleteuser/:id', function(req, res){
 		}	
 
 		else if (globalUpc != '' && globalDesc != ''){
-			Locations.find({upc: globalUpc, description: globalDesc}).sort({shipment: 1}).exec(function(err,docs){
+			Locations.find({upc: globalUpc, description: new RegExp(globalDesc)}).sort({shipment: 1}).exec(function(err,docs){
 			console.log( docs + ' good query upc + description');
 			res.render('query', {'nums':docs});	
 			})
@@ -1769,21 +1533,21 @@ router.get('/deleteuser/:id', function(req, res){
 		}	
 
 		else if (globalDesc != '' && globalLoc != ''){
-			Locations.find({description: globalDesc, location: globalLoc}).sort({shipment: 1}).exec(function(err,docs){
+			Locations.find({description: new RegExp(globalDesc), location: globalLoc}).sort({shipment: 1}).exec(function(err,docs){
 			console.log( docs + ' good query desc + loc');
 			res.render('query', {'nums':docs});	
 			})
 		}	
 
 		else if (globalDesc != '' && globalQty != ''){
-			Locations.find({description: globalDesc, quantity: globalQty}).sort({shipment: 1}).exec(function(err,docs){
+			Locations.find({description: new RegExp(globalDesc), quantity: globalQty}).sort({shipment: 1}).exec(function(err,docs){
 			console.log( docs + ' good query desc + qty');
 			res.render('query', {'nums':docs});	
 			})
 		}	
 
 		else if (globalDesc != '' && globalPo != ''){
-			Locations.find({description: globalDesc, shipment: globalPo}).sort({shipment: 1}).exec(function(err,docs){
+			Locations.find({description: new RegExp(globalDesc), shipment: globalPo}).sort({shipment: 1}).exec(function(err,docs){
 			console.log( docs + ' good query desc + po');
 			res.render('query', {'nums':docs});	
 			})
@@ -1819,7 +1583,7 @@ router.get('/deleteuser/:id', function(req, res){
 		}
 
 		else if (globalDesc != ''){
-		Locations.find({description: globalDesc}).sort({shipment: 1}).exec(function(err, docs) {
+		Locations.find({description: new RegExp(globalDesc)}).sort({shipment: 1}).exec(function(err, docs) {
 				console.log( docs + ' good query desc');
 			res.render('query', { 'nums': docs });
 		 });
@@ -1925,7 +1689,7 @@ router.post('/update', function(req, res){
 		}	
 
 		else if (globalUpc != '' && globalDesc != ''){
-			Locations.find({upc: globalUpc, description: globalDesc}).sort({shipment: 1}).exec(function(err,docs){
+			Locations.find({upc: globalUpc, description: new RegExp(globalDesc)}).sort({shipment: 1}).exec(function(err,docs){
 			console.log( docs + ' good query upc + description');
 			res.render('query', {'nums':docs});	
 			})
@@ -1946,21 +1710,21 @@ router.post('/update', function(req, res){
 		}	
 
 		else if (globalDesc != '' && globalLoc != ''){
-			Locations.find({description: globalDesc, location: globalLoc}).sort({shipment: 1}).exec(function(err,docs){
+			Locations.find({description: new RegExp(globalDesc), location: globalLoc}).sort({shipment: 1}).exec(function(err,docs){
 			console.log( docs + ' good query desc + loc');
 			res.render('query', {'nums':docs});	
 			})
 		}	
 
 		else if (globalDesc != '' && globalQty != ''){
-			Locations.find({description: globalDesc, quantity: globalQty}).sort({shipment: 1}).exec(function(err,docs){
+			Locations.find({description: new RegExp(globalDesc), quantity: globalQty}).sort({shipment: 1}).exec(function(err,docs){
 			console.log( docs + ' good query desc + qty');
 			res.render('query', {'nums':docs});	
 			})
 		}	
 
 		else if (globalDesc != '' && globalPo != ''){
-			Locations.find({description: globalDesc, shipment: globalPo}).sort({shipment: 1}).exec(function(err,docs){
+			Locations.find({description: new RegExp(globalDesc), shipment: globalPo}).sort({shipment: 1}).exec(function(err,docs){
 			console.log( docs + ' good query desc + po');
 			res.render('query', {'nums':docs});	
 			})
@@ -1996,7 +1760,7 @@ router.post('/update', function(req, res){
 		}
 
 		else if (globalDesc != ''){
-		Locations.find({description: globalDesc}).sort({shipment: 1}).exec(function(err, docs) {
+		Locations.find({description: new RegExp(globalDesc)}).sort({shipment: 1}).exec(function(err, docs) {
 				console.log( docs + ' good query desc');
 			res.render('query', { 'nums': docs });
 		 });
