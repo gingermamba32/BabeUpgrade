@@ -1232,13 +1232,25 @@ router.post('/query', function(req,res,next){
 	 });
 	}
 
+// mulit condition for the description field
 	else if (req.body.description != ''){
-	Locations.find({description: new RegExp((req.body.description).toUpperCase())}).sort({shipment: 1}).exec(function(err, docs) {
+		var reg = '22.SI.BURG.'
+		console.log((reg.split('.').length -1) + ' HELLO');
+		console.log(req.body.description.split('.').length -1);
+		if ( ((req.body.description).split('.').length-1) === 3 ){
+			Locations.find({description: new RegExp("^" + (req.body.description).toUpperCase() + '$')}).sort({shipment: 1}).exec(function(err, docs) {
+				console.log( docs + ' good query');
+				res.render('query', { 'nums': docs });
+	 		});
+		}
+		else {
+			Locations.find({description: new RegExp("^" + (req.body.description).toUpperCase())}).sort({shipment: 1}).exec(function(err, docs) {
 			console.log( docs + ' good query');
-		res.render('query', { 'nums': docs });
-	 });
+			res.render('query', { 'nums': docs });
+	 		});
+		}
 	}
-
+	// ******************
 	else if (req.body.location != '') {
 		Locations.find({location: req.body.location}).sort({shipment: 1}).exec(function(err, docs) {
 			console.log( docs + 'good query');

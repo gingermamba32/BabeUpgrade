@@ -32,6 +32,13 @@ block content
        input.form-control.quan(type="number", placeholder="Quantity", size="12", name="quantity" , style="font-size: 13px;padding:0px; margin:0px;text-align:center; height:50px;", required)
     button.btn.invSub(type="submit", style="font-size:25px;") Submit
 
+  div(style="width:700px; margin:0 auto")
+   h5(style="color:black;") Notes for adding a new UPC:
+   h5(style="text-align:left; color:black;") 1.  Description must contain all 3 Periods
+   h5(style="text-align:left; color:black;") 2.  The upc must be assigned 
+   h5(style="text-align:left; color:black;") 3.  Values must be input for all fields
+
+
   script.
    $(document).ready(function() {
    	$('input[name=upc]').focus();
