@@ -1232,7 +1232,7 @@ router.post('/query', function(req,res,next){
 	 });
 	}
 
-// mulit condition for the description field
+// multi condition for the description field
 	else if (req.body.description != ''){
 		var reg = '22.SI.BURG.'
 		console.log((reg.split('.').length -1) + ' HELLO');
