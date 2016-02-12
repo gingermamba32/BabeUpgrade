@@ -1293,6 +1293,8 @@ router.get('/deleteuser/:id', function(req, res){
 	console.log(globalLength);
 	console.log(globalColor);
 
+// To fix this we need to use find by id, find by upc, 2 conditions, one to update and one to remove
+
 	Locations.remove({ _id: req.params.id }, function(err, docs){
 
 	// 	Locations.find({location: globalLoc, location: globalLoc}).sort({shipment: 1}).exec(function(err,docs){
@@ -1301,6 +1303,7 @@ router.get('/deleteuser/:id', function(req, res){
 	// });
 	// });
 	// });
+	//if array of search is 1 findOneAnd
 		if (globalLength != undefined && globalColor != undefined && globalType != undefined) {
 		Locations.find({description: globalLength + "." + globalType + "." + globalColor + "."}).sort({shipment: 1}).exec(function(err,docs){
 			console.log( docs + ' good query all three modal');
