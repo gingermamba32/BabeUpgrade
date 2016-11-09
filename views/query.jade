@@ -48,204 +48,58 @@ block content
             button.close(type='button', data-dismiss='modal') ×
             h4.modal-title Search Product IDs
           .modal-body
-            form(role='form', id='radio1', method="Post", action="/radioSearch", name="Radio",style="margin: 0 auto; width: 600px;")
-             h7(style="float: left; padding-right:5px; padding-top: 5px;font-size: 15px; color: black; font-weight: 700;") Length:
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='length', value='14', style="vertical-align: middle; padding-top:5px;")
-              | 14"
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='length', value='18', style="vertical-align: middle;padding-top:5px;")
-              | 18"
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='length', value='22', style="vertical-align: middle;padding-top:5px;")
-              | 22"
+            form(role='form', id='radio1', method="Post", action="/radioSearch", name="Radio",style="margin: 0 auto; width: 800px;")
+             h7(style="float:left; padding-right:5px; padding-top: 5px;font-size: 15px; color: black; font-weight: 700;") Length: &nbsp;&nbsp;
+             div(style="width: 700px;")
+              each post, i in num
+               if post.type == "Length"
+                label.btn.btn-primary(style="font-size: 10px; float:center;")
+                 input(type='radio', name='length', value='#{post.radio}', style="vertical-align: middle")
+                 | #[span=post.radio]
              br
              br
              br
              br
-             br
-             h7(style="float: left; padding-right:5px; padding-top: 5px;font-size: 15px; color: black; font-weight: 700;") Type:
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='type', value='S-TAPE', style="vertical-align: middle")
-              | S-TAPE
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='type', value='SI', style="vertical-align: middle")
-              | SI
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='type', value='IBODY', style="vertical-align: middle")
-              | IBODY
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='type', value='ICURLY', style="vertical-align: middle")
-              | ICURLY
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='type', value='KLS', style="vertical-align: middle")
-              | KLS
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='type', value='KBODY', style="vertical-align: middle")
-              | KBODY
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='type', value='KBODY', style="vertical-align: middle")
-              | KCURLY
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='type', value='FTIP', style="vertical-align: middle")
-              | FTIP
+             h7(style="float: left; padding-right:5px; padding-top: 5px;font-size: 15px; color: black; font-weight: 700;") Style: &nbsp;&nbsp;
+             div(style="width: 700px;")
+             each post, i in num
+              if post.type == "Style"
+               label.btn.btn-primary(style="font-size: 10px; float:center;")
+                input(type='radio', name='type', value='#{post.radio}', style="vertical-align: middle")
+                | #[span=post.radio]
              br
              br
-             br
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='type', value='VA16-HUMAN', style="vertical-align: middle")
-              | VA16-HUMAN 
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='type', value='SWATCH', style="vertical-align: middle")
-              | SWATCH (only search by this)            
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='type', value='PRACTICE', style="vertical-align: middle")
-              | PRACTICE (only search by this)
-             br
-             br
-             br
-             br
-             br
-             h7(style="float: left; padding-right:5px; padding-top: 5px;font-size: 15px; color: black; font-weight: 700;") Color:
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='1', style="vertical-align: middle;")
-              | 1
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='10', style="vertical-align: middle")
-              | 10
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='1001', style="vertical-align: middle")
-              | 1001
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='12/600', style="vertical-align: middle")
-              | 12/600
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='1B', style="vertical-align: middle")
-              | 1B
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='2', style="vertical-align: middle")
-              | 2             
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='12', style="vertical-align: middle")
-              | 12
              br 
              br
-             br
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='24', style="vertical-align: middle")
-              | 24
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='27', style="vertical-align: middle")
-              | 27
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='27/613', style="vertical-align: middle")
-              | 27/613
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='27A', style="vertical-align: middle")
-              | 27A
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='30/33', style="vertical-align: middle")
-              | 30/33
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='3R', style="vertical-align: middle")
-              | 3R             
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='4', style="vertical-align: middle")
-              | 4
+             div(style="height: 75px;")
+             h7(style="float: left; padding-right:5px; padding-top: 5px;font-size: 15px; color: black; font-weight: 700;") Color:
+                          //- loop through "Color"....input name "color"
+             div(style="width: 700px;")
+             each post, i in num
+              if post.type == "Color"
+               label.btn.btn-primary(style="font-size: 10px; float:center;")
+                input(type='radio', name='color', value='#{post.radio}', style="vertical-align: middle")
+                | #[span=post.radio]
              br
              br
              br
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='5B', style="vertical-align: middle")
-              | 5B
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='5R', style="vertical-align: middle")
-              | 5R
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='6', style="vertical-align: middle")
-              | 6
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='60', style="vertical-align: middle")
-              | 60
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='600', style="vertical-align: middle")
-              | 600             
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='6/10', style="vertical-align: middle")
-              | 6/10             
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='613', style="vertical-align: middle")
-              | 613
+             br
+             div(style="height: 75px; margin-top: 75px;")
+             h7(style="float: left; padding-right:5px; padding-top: 5px;font-size: 15px; color: black; font-weight: 700;") Tools:
+             //- loop through "Tool".....input name "type"
+             div(style="width: 700px;")
+             each post, i in num
+              if post.type == "Tool"
+               label.btn.btn-primary(style="font-size: 10px;")
+                input(type='radio', name='type', value='#{post.radio}', style="vertical-align: middle")
+                | #[span=post.radio]
              br
              br
              br
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='8', style="vertical-align: middle")
-              | 8
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='BLUE', style="vertical-align: middle")
-              | BLUE
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='BURG', style="vertical-align: middle")
-              | BURG
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='DKFXA', style="vertical-align: middle")
-              | DKFXA
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='DKPURP', style="vertical-align: middle")
-              | DKPURP
-             br
-             br
-             br
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='FUNKY', style="vertical-align: middle")
-              | FUNKY
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='PINK', style="vertical-align: middle")
-              | PINK
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='PURP', style="vertical-align: middle")
-              | PURP             
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='RED', style="vertical-align: middle")
-              | RED
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='TEAL', style="vertical-align: middle")
-              | TEAL
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='SILVER', style="vertical-align: middle")
-              | SILVER
-             br
-             br
-             br
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='O-12_600', style="vertical-align: middle")
-              | O-12_600
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='O-1B_6', style="vertical-align: middle")
-              | O-1B_6
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='O-4_613', style="vertical-align: middle")
-              | O-4_613
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='O-2_27A', style="vertical-align: middle")
-              | O-2_27A
-             label.btn.btn-primary(style="font-size: 10px;")
-              input(type='radio', name='color', value='O-1B_SILVER', style="vertical-align: middle")
-              | O-1B_SILVER
-             br
-             br
-             br
-             button(type="submit", style="font-size:30px;") Search ProductID
+             div(style="height: 85px;")
+             button(type="submit", style="font-size:30px; padding-top:10px;") Search ProductID
+
              
-
-
-
-
-            //- p Some text in the modal.
-          .modal-footer
-            //- button.btn.btn-default(type='button', data-dismiss='modal', style="float:left;") Submit
-            button.btn.btn-default(type='button', data-dismiss='modal', style="font-size: 20px;") Close
   script.
     $(document).ready(function() {
       $('input[name=bin11]').focus();
