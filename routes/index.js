@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
+var csv = require('fast-csv');
+var fs = require('fs');
+var Busboy = require('busboy');
+var path = require('path');
 
 // try catch the database
 try{
@@ -1703,5 +1707,72 @@ router.post('/update', function(req, res){
 
 
 // });
+
+
+// Add the excel upload for products
+router.post('/excel', function(req, res, next) {
+	console.log(req.body.excel);
+    var busboy = new Busboy({ headers: req.headers });
+    busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
+    	// Save File
+    	var fstream = fs.createWriteStream('./public/uploads/' + filename);
+        file.pipe(fstream);
+
+    	// Read File
+	    file.pipe(csv({headers: true}))
+	      .on('data', function (data) {
+	        console.log('YAY, just the data I wanted!', data);
+	        console.log(data[0] + " Only the first column");
+	        console.log(data['UPC'] + " Only the first column");
+
+	        var excel_upc = data['UPC'];
+	        var excel_description = data['DESCRIPTION'];
+
+	        // Save the data to mongodb
+	        if (excel_upc != '') {
+
+
+	        	// Need to search for if UPC exists
+	        	// ************************
+
+				var newLocation = new Locations ({
+							location   : 'DO NOT DELETE',
+							upc        : excel_upc,
+							upcAlias   : excel_upc,
+							upcActual  : excel_upc,
+							description: excel_description,
+							shipment   : 'DO NOT DELETE',
+							quantity   : 0,
+							box        : moment(Date.now()).format('YYYY-MM-DD HH:mm:ss')
+						});
+						console.log(newLocation);
+						newLocation.save(function(err, callback){
+							console.log("upc saved!!");
+						})
+			
+	        }
+	        else { console.log("blank row!!!!")}
+						
+
+
+	      });
+	  });
+	busboy.on('finish', function() {
+	    console.log('Done parsing form!');
+	    // Display all files uploa
+	    fs.readdir(__dirname + '/../public/uploads', function(err, data){
+		console.log(data);
+		if (err) {
+		      res.status(500).send(err);
+		      return;
+		  }
+    	res.render('upc', {"files": data});
+	});
+	    
+	});
+
+    req.pipe(busboy);
+
+});
 
 module.exports = router;
