@@ -480,7 +480,7 @@ router.post('/locateThree', function( req, res, next ){
             		});
 
 
-	}
+	} 
 
 
 	else if (req.body.upc5 === '' && req.body.quantity5 === ''&& req.body.upc6 === '' && req.body.quantity6 === '' && req.body.upc7 === '' && req.body.quantity7 === '' && req.body.upc8 === '' && req.body.quantity8 === '') {
